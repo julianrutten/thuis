@@ -87,7 +87,7 @@ def tekening():
     o.append(tx(19430, -480, "buitendeur", "tx"))
     # loods en maten
     o.append(tx(1350, B + 1050, "toevoer Ø 150 uit de loods", "tl"))
-    o.append(tx(9300, B + 1050, "loods · niet kouder dan 7–8 °C", "ti"))
+    o.append(tx(9300, B + 1050, "loods · de airco houdt 10–12 °C aan", "ti"))
     t.TK = 100
     o.append(t.chain_h([K0, K1x, G0, G1, V0, V1, H0, H1], B + 2000, ["4950", "", "4950", "", "7880", "", "1970"], frm=B + 1450))
     o.append(t.chain_v([0, B], H1 + 750, ["4150"], frm=H1 + 120))
