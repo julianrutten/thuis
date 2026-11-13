@@ -63,8 +63,8 @@ def tekening():
     o.append(r(-740, 1150, 540, 500, "app") + tx(-470, 1500, "K1", "nm"))
     o.append(blok(2700, 1500, ["Kantoor", "415 × 495 · 20,5 m²", "21–22 °C · wand naar de loods kaal", "± 1,3 kW bij −10 °C"]))
     o.append('<path class="ld" d="M-470 1150 V620 H150"/>' + tx(200, 700, "kachel in een nis van 80 cm", "tl"))
-    o.append('<path class="pijl" d="M500 3500 H-700"/>' + tx(650, 3590, "afzuiging 410 m³/h", "tl"))
-    o.append(r(900, B - 10, 400, 190, "gat") + f'<path class="pijl" d="M1100 {B+750} V{B-250}"/>')
+    o.append(r(-910, 1000, 120, 800, "gat") + '<path class="pijl" d="M-250 1000 H-1150"/>' + tx(200, 1010, "warmte naar achteren (voorstel)", "tl"))
+    o.append('<path class="pijl" d="M500 3500 H-700"/>' + tx(650, 3590, "bestaande afzuiging", "tl"))
     # achter het kantoor
     o.append(f'<rect class="aan" x="-3500" y="0" width="3340" height="2350"/><rect class="aan" x="-3500" y="2500" width="3340" height="{B-2500}"/>')
     o.append('<circle class="app" cx="-1650" cy="1350" r="495"/>' + tx(-1650, 1450, "B1", "nm"))
@@ -86,7 +86,6 @@ def tekening():
     o.append(tx(18650, B + 1050, "R4 toilet: 18–19 °C · ± 0,3 kW"))
     o.append(tx(19430, -480, "buitendeur", "tx"))
     # loods en maten
-    o.append(tx(1350, B + 1050, "toevoer Ø 150 uit de loods", "tl"))
     o.append(tx(9300, B + 1050, "loods · de airco houdt 10–12 °C aan", "ti"))
     t.TK = 100
     o.append(t.chain_h([K0, K1x, G0, G1, V0, V1, H0, H1], B + 2000, ["4950", "", "4950", "", "7880", "", "1970"], frm=B + 1450))
