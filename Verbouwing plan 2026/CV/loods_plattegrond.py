@@ -45,7 +45,7 @@ def tekening():
     o.append(r(-3600, -200, H1 + 100 + 3600, 200, "iso"))
     o.append(r(-160, 0, 160, 900, "iso") + r(-160, 1900, 160, B - 1900 + 160, "iso"))
     o.append(r(-900, 800, 900, 100, "iso") + r(-900, 1900, 900, 100, "iso") + r(-900, 800, 100, 1200, "iso"))
-    o.append(r(-160, B, K1x + 260, 160, "iso"))
+    o.append(r(-160, B, K1x + 260, 100, "kaal"))          # wand naar de loods: al dicht, zonder isolatie
     o.append(r(K1x, 0, 100, B, "iso"))
     o.append(r(G0, B, H1 + 100 - G0, 100, "kaal"))
     o.append(r(G1, 0, 100, B, "kaal") + r(V1, 0, 100, HB + 100, "kaal") + r(H1, 0, 100, B + 100, "kaal"))
@@ -59,9 +59,9 @@ def tekening():
     o.append(r(18300, HB - 10, 750, 120, "gat") + f'<path class="blad" d="M18250 {HB+130} h800"/>')
     # kantoor
     o.append(r(2500, -200, 1500, 200, "raam") + '<path class="ld" d="M2500 -100 h1500"/>')
-    o.append(r(2500, 40, 1500, 110, "rad") + tx(3250, 480, "R3 · ± 1 kW"))
+    o.append(r(2500, 40, 1500, 110, "rad") + tx(3250, 480, "R3 · ± 1,3 kW"))
     o.append(r(-740, 1150, 540, 500, "app") + tx(-470, 1500, "K1", "nm"))
-    o.append(blok(2700, 1500, ["Kantoor", "415 × 495 · 20,5 m²", "rondom geïsoleerd · 21–22 °C", "± 1 kW bij −10 °C"]))
+    o.append(blok(2700, 1500, ["Kantoor", "415 × 495 · 20,5 m²", "21–22 °C · wand naar de loods kaal", "± 1,3 kW bij −10 °C"]))
     o.append('<path class="ld" d="M-470 1150 V620 H150"/>' + tx(200, 700, "kachel in een nis van 80 cm", "tl"))
     o.append('<path class="pijl" d="M500 3500 H-700"/>' + tx(650, 3590, "afzuiging 410 m³/h", "tl"))
     o.append(r(900, B - 10, 400, 190, "gat") + f'<path class="pijl" d="M1100 {B+750} V{B-250}"/>')
@@ -76,7 +76,8 @@ def tekening():
     o.append(tx(-3500, -1300, "buiten: warmtepomp WP1 naast de buitenunit van de airco (blijft)", "tl"))
     o.append(tx(4300, -480, "buitenwand en dak: sandwichpaneel met 100 of 150 mm steenwol erbij", "tl"))
     # berging, voorkamer, hal, toilet
-    o.append(blok(7525, 1300, ["Berging", "415 × 495 · 20,5 m²", "wordt deels kantoor,", "deels slaapkamer", "onverwarmd gerekend"]))
+    o.append(r(6800, 40, 1500, 110, "rad") + tx(7550, 480, "R6 · ± 1 kW"))
+    o.append(blok(7525, 1500, ["Berging", "415 × 495 · 20,5 m²", "wordt slaapkamer en deel kantoor", "18 °C · ± 1 kW bij −10 °C"]))
     o.append(r(12000, 40, 2400, 110, "rad") + tx(13200, 480, "R2 · plek aangenomen"))
     o.append(blok(14040, 1600, ["Voorkamer", "415 × 788 · 32,7 m²", "15–16 °C · ± 50 uur per seizoen in gebruik", "± 1,4 kW bij −10 °C · ± 1,8 kW in gebruik"]))
     o.append(f'<rect class="aan" x="{V1-650}" y="2750" width="600" height="1300"/>' + tx(V1 - 760, 3480, "keukenblok", "tr"))
