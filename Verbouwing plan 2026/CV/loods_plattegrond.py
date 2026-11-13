@@ -63,7 +63,7 @@ def tekening():
     o.append(r(-740, 1150, 540, 500, "app") + tx(-470, 1500, "K1", "nm"))
     o.append(blok(2700, 1500, ["Kantoor", "415 × 495 · 20,5 m²", "21–22 °C · wand naar de loods kaal", "± 1,3 kW bij −10 °C"]))
     o.append('<path class="ld" d="M-470 1150 V620 H150"/>' + tx(200, 700, "kachel in een nis van 80 cm", "tl"))
-    o.append(r(-910, 1000, 120, 800, "gat") + '<path class="pijl" d="M-250 1000 H-1150"/>' + tx(200, 1010, "warmte naar achteren (voorstel)", "tl"))
+    o.append(r(-910, 1000, 120, 800, "gat") + '<path class="pijl" d="M-250 1000 H-1150"/>' + tx(200, 1010, "warme lucht trekt naar achteren", "tl"))
     o.append('<path class="pijl" d="M500 3500 H-700"/>' + tx(650, 3590, "bestaande afzuiging", "tl"))
     # achter het kantoor
     o.append(f'<rect class="aan" x="-3500" y="0" width="3340" height="2350"/><rect class="aan" x="-3500" y="2500" width="3340" height="{B-2500}"/>')
