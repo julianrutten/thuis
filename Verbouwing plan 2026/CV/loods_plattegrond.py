@@ -30,6 +30,7 @@ STIJL = '''<style>
 .lp .zw{fill:none;stroke:#555;stroke-width:9px;stroke-dasharray:70 50}
 .lp .aan{fill:none;stroke:#1d1d1b;stroke-width:12px;stroke-dasharray:110 70}
 .lp .schuin{fill:none;stroke:#1d1d1b;stroke-width:60px;stroke-dasharray:260 90}
+.lp .duo{fill:none;stroke:#1d1d1b;stroke-width:34px;stroke-dasharray:320 90 50 90}
 .lp .app{fill:#fff;stroke:#1d1d1b;stroke-width:18px}.lp .rad{fill:#1d1d1b}.lp .raam{fill:#fff;stroke:#1d1d1b;stroke-width:10px}
 .lp .pijl{fill:none;stroke:#1d1d1b;stroke-width:22px;marker-end:url(#lpkop)}.lp .ld{stroke:#1d1d1b;stroke-width:8px;fill:none}
 </style><defs><marker id="lpkop" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#1d1d1b"/></marker></defs>'''
@@ -95,7 +96,11 @@ def inhoud():
     o.append(blok(7400, 1100, ["Berging", "415 × 495 · 20,5 m²", "wordt slaapkamer en", "deel kantoor · 18 °C", "± 1 kW bij −10 °C"]))
     o.append(r(12000, 40, 2400, 110, "rad") + tx(13200, 480, "R2 · plek aangenomen"))
     o.append(blok(14040, 1600, ["Voorkamer", "415 × 788 · 32,7 m²", "15–16 °C · ± 50 uur per seizoen in gebruik", "± 1,4 kW bij −10 °C · ± 1,8 kW in gebruik"]))
-    o.append(tx(V1 - 150, 3500, "keukentje", "tr") + f'<rect class="aan" x="{H0+60}" y="{T0+60}" width="{TX0-100-H0-120}" height="{B-T0-120}"/>')
+    # ---- duoleiding: boven het vlakke plafond langs de binnenwand naar voren, bij de hal dwars naar de rechtergevel en omlaag (A)
+    o.append(f'<path class="duo" d="M{-NIS-100} 3950 H{V1-100} V260"/><circle cx="{V1-100}" cy="260" r="110" fill="#1d1d1b"/>')
+    o.append(tx(11400, 3800, "duoleiding boven het plafond, langs de binnenwand", "ti"))
+    o.append(tx(V1 - 300, 800, "A · omlaag in een koof,", "tr") + tx(V1 - 300, 1130, "onder de fundering door naar het huis", "tr"))
+    o.append(tx(V1 - 420, 3500, "keukentje", "tr") + f'<rect class="aan" x="{H0+60}" y="{T0+60}" width="{TX0-100-H0-120}" height="{B-T0-120}"/>')
     o.append(blok(18800, 420, ["Hal", "245 × 197"]))
     o.append(blok((TX0 + H1)/2, 3150, ["Toilet", "117 × 142"]) + r(TX0 + 60, T1 - 150, 700, 90, "rad"))
     o.append(tx(18200, B + 1050, "R4 toilet: 18–19 °C · ± 0,3 kW"))
