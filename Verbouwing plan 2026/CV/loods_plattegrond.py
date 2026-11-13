@@ -89,7 +89,7 @@ def inhoud():
     o.append(r(-2500, -1050, 1300, 450, "app") + tx(-1850, -720, "WP1", "nm"))
     o.append('<rect class="aan" x="-950" y="-1000" width="800" height="350"/>')
     o.append(tx(-AL - 100, -1300, "buiten: warmtepomp WP1 naast de buitenunit van de airco (blijft)", "tl"))
-    o.append(tx(4300, -480, "rechtergevel en dak: sandwichpaneel met 100 of 150 mm steenwol erbij", "tl"))
+    o.append(tx(4300, -480, "sandwichpaneel met glaswol erbij: dak 150 mm, rechtergevel 100 mm", "tl"))
     # ---- berging, voorkamer, hal, toilet
     o.append(r(6800, 40, 1500, 110, "rad") + tx(7550, 480, "R6 · ± 1 kW"))
     o.append(blok(7400, 1100, ["Berging", "415 × 495 · 20,5 m²", "wordt slaapkamer en", "deel kantoor · 18 °C", "± 1 kW bij −10 °C"]))
