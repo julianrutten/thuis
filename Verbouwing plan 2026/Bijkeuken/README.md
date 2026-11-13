@@ -2,7 +2,7 @@
 
 Bron van `../Detaillering bijkeuken Gasthuisstraat 6-a.pdf` (A3, negen bladen).
 
-**Actuele versie: 13-11-2026, na het gesprek met de loodgieter.** De versie van 29-10-2026 staat in `../archief/`.
+**Actuele versie: 13-11-2026, na het gesprek met de loodgieter.** De versie van 29-10-2026 staat in de git-geschiedenis.
 
 | Bestand | Inhoud |
 |---|---|
