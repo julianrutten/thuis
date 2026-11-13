@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>CV-installatie woning · detaillering · Gasthuisstraat 6-a</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* A4 liggend. Alles moet leesbaar zijn op een A4 in zwart-wit:
+   lopende tekst >= 9 pt, tekst in tekeningen >= 7 pt, leidingen verschillen in lijnsoort en dikte, niet alleen in kleur. */
+@page{size:297mm 210mm;margin:0}
+:root{
+  --ink:#1b1b1b; --muted:#444; --rule:#bdb9b0; --card:#f6f4ef; --cardrule:#8f8b82;
+  --koud:#143d80; --warm:#8f1a14; --cv:#8f3608; --gas:#4d3b00; --wtw:#07504c; --el:#1b1b1b;
+  --tech:#f9e1cd; --techrule:#7a4318;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:Inter,"Helvetica Neue",Arial,sans-serif;color:var(--ink);font-size:9.6pt;line-height:1.4;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.sheet{width:297mm;height:210mm;padding:8mm 10mm 0;position:relative;page-break-after:always;overflow:hidden}
+.sheet:last-child{page-break-after:auto}
+.eyebrow{font-size:7.4pt;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 1.5mm}
+h1{font-size:21pt;line-height:1.1;font-weight:700;margin:0 0 2.2mm;letter-spacing:-.01em}
+h2{font-size:15pt;line-height:1.15;font-weight:700;margin:0 0 1mm}
+h3{font-size:10.6pt;font-weight:700;margin:0 0 1.6mm}
+p{margin:0 0 2mm}
+.lead{font-size:10.8pt;line-height:1.4;margin-bottom:3.5mm}
+.sub{color:var(--muted);font-size:8.8pt;margin:0}
+.card{background:var(--card);border:.3mm solid var(--cardrule);border-radius:1.4mm;padding:3.2mm 4mm}
+.card ol,.card ul{margin:0;padding-left:5mm}
+.card li{margin-bottom:1.1mm}
+.card li:last-child{margin-bottom:0}
+.card.klein{font-size:9pt;padding:2.8mm 3.4mm}
+table.vv{font-size:8.4pt}table.vv td{padding:.75mm 1.6mm .75mm 0}table.vv td.n,table.vv th:nth-child(n+3){text-align:right;white-space:nowrap}table.vv tr.tot td{border-bottom:0;border-top:.35mm solid var(--ink)}
+.hoh{display:flex;gap:3mm;font-size:8.6pt;margin-top:2.5mm;align-items:center}.hoh span{display:flex;align-items:center;gap:1.2mm;white-space:nowrap}.hoh svg{width:8.5mm;height:3.9mm}.card.klein ul{padding-left:4.2mm}.card.klein li{break-inside:avoid}
+table{border-collapse:collapse;width:100%;font-size:9pt}
+th{font-size:7.2pt;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;text-align:left;padding:0 2mm 1mm 0;border-bottom:.4mm solid var(--ink);white-space:nowrap}
+td{padding:1.1mm 2mm 1.1mm 0;border-bottom:.2mm solid var(--rule);vertical-align:top}
+td.c{font-weight:700;white-space:nowrap}
+.wie td{font-size:10pt;padding:1.7mm 3mm 1.7mm 0}
+.wie tr:last-child td{border-bottom:0}
+.grid{display:grid;gap:6mm}
+.foot{position:absolute;left:10mm;right:10mm;bottom:5.5mm;border-top:.35mm solid var(--ink);display:grid;grid-template-columns:3.1fr 2.5fr 1.2fr 1.7fr .8fr;font-size:8pt}
+.foot div{padding:1.3mm 2.5mm 0 2.5mm;border-left:.2mm solid var(--rule);min-height:8.5mm}
+.foot div:first-child{border-left:0;padding-left:0}
+.foot span{display:block;font-size:6.6pt;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.3mm}
+.foot b{font-weight:600}
+table.cat{font-size:9pt}table.cat td{padding:.95mm 3mm .95mm 0}table.cat tr.hoofd td{border-top:.35mm solid var(--ink);padding-top:1.4mm}table.cat tr.sub td{border-bottom:0;color:#222}table.cat tr.sub td:nth-child(2){padding-left:4.5mm}table.cat tr.sub td:nth-child(2)::before{content:"– "}.open{font-style:italic}table.cat.totaal td{padding:1.2mm 3mm 1.2mm 0;font-size:9.6pt}table.cat th.n,table.cat td.n,td.n{text-align:right;white-space:nowrap}table.cat tr.tot td{border-bottom:0;border-top:.35mm solid var(--ink)}
+a{color:var(--ink);text-decoration:underline;text-underline-offset:.5mm}
+.key{display:grid;grid-template-columns:repeat(4,auto);gap:1mm 5mm;font-size:8.8pt;align-items:center;justify-content:end}
+.key span{display:flex;align-items:center;gap:1.8mm;white-space:nowrap}
+.key svg{width:13mm;height:3mm;flex:none}
+.cap{font-size:8.8pt;margin:1.2mm 0 0}
+.cap b{font-weight:700}
+.cap span{color:var(--muted)}
+svg{display:block}
+/* leidingplan (eenheid = punt van blad 9 van VO4; op A4 is 1 eenheid 0,4704 mm = schaal 1:75) */
+.lb{font-family:Inter,Arial,sans-serif;font-size:5.3px;fill:var(--ink);paint-order:stroke;stroke:#fff;stroke-width:1.5px;stroke-linejoin:round}
+.lbb{font-weight:700;font-size:5.6px}
+.rm{font-family:Inter,Arial,sans-serif;font-size:4.4px;letter-spacing:.4px;fill:#333;font-weight:600;paint-order:stroke;stroke:#fff;stroke-width:1.3px;stroke-linejoin:round}
+.case{fill:none;stroke:#fff;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.pp{fill:none;stroke-linejoin:round}
+.cva{stroke:var(--cv);stroke-width:1.3;stroke-linecap:round}
+.cvr{stroke:var(--cv);stroke-width:1.3;stroke-dasharray:3.4 1.9}
+.ww{stroke:var(--warm);stroke-width:.75;stroke-linecap:round}
+.kw{stroke:var(--koud);stroke-width:.75;stroke-dasharray:1.7 1.1}
+.vk1{fill:none;stroke:#333;stroke-width:2.7}.vk2{fill:none;stroke:#fff;stroke-width:1.5}
+.af{fill:none;stroke:#6b5a3c;stroke-width:2.2;stroke-dasharray:6 1.5;stroke-linejoin:round}
+.wt{stroke:var(--wtw);stroke-width:.75;stroke-dasharray:2.4 1 .01 1;stroke-linecap:round}
+.ld{fill:none;stroke:var(--ink);stroke-width:.35}
+.tap{fill:#fff;stroke:var(--ink);stroke-width:.5}
+/* BK-STIJL */
+/* tekenstijl: gelijk aan de detaillering van 29-10-2026 (dunne lijnen, kleine tekst) */
+.wall{fill:#1d1d1b}.newwall{fill:#6f6a62}.floor{fill:#fff}
+.cab{fill:#efece5;stroke:#5c5a55;stroke-width:4px}.app{fill:#e2e9f1;stroke:#3b5b7a;stroke-width:4px}.tech{fill:#f9e8d9;stroke:#a2602b;stroke-width:5px}
+.oven{fill:#e9ddd2;stroke:#8a4a2a;stroke-width:5px}.mouth{fill:#5a3a2a}.niche{fill:url(#hatchN);stroke:#1d1d1b;stroke-width:4px}.nbg{fill:#fff}.nln{stroke:#a9a9a9;stroke-width:5px}
+.glass{fill:#eef3f6;stroke:#1d1d1b;stroke-width:4px}.thin{fill:none;stroke:#1d1d1b;stroke-width:7px}.hair{fill:none;stroke:#5c5a55;stroke-width:3px}
+.pocket{fill:none;stroke:#fff;stroke-width:5px;stroke-dasharray:30 22}.arcwall{fill:none;stroke:#1d1d1b;stroke-width:100px}
+.swing{fill:none;stroke:#8a8a8a;stroke-width:4px;stroke-dasharray:26 20}.hood{fill:none;stroke:#3b5b7a;stroke-width:5px;stroke-dasharray:36 20}
+.shelfline{fill:none;stroke:#8a8174;stroke-width:4px;stroke-dasharray:30 22}.drum{fill:#fff;stroke:#3b5b7a;stroke-width:4px}.vat{fill:#fff;stroke:#a2602b;stroke-width:5px}
+.sink{fill:#fff;stroke:#5c5a55;stroke-width:4px}.hanger{stroke:#b3aca0;stroke-width:5px}.rail{stroke:#8a8174;stroke-width:8px}
+.dim{fill:none;stroke:#3a3a3a;stroke-width:3px}.ext{fill:none;stroke:#8a8a8a;stroke-width:2.5px}
+.dimt{fill:#333;font-size:56px;text-anchor:middle;letter-spacing:1.5px}
+.lbl{fill:#333;font-size:50px;text-anchor:middle;letter-spacing:1px}.lbls{fill:#5a3a1c;font-size:46px;text-anchor:middle}.it{fill:#777;font-style:italic}
+.bdg{font-weight:700;text-anchor:middle;dominant-baseline:central;fill:#1d1d1b}
+.dott{fill:#fff;font-weight:700;text-anchor:middle;dominant-baseline:central}
+.wallbg{fill:#fbfaf7;stroke:#1d1d1b;stroke-width:7px}.floorline{stroke:#1d1d1b;stroke-width:8px}
+.cabhatch{fill:#e4dfd5;stroke:#5c5a55;stroke-width:4px}
+.grill{fill:#f4f2ee;stroke:#5c5a55;stroke-width:3px;stroke-dasharray:10 8}.door{fill:#fff;stroke:#1d1d1b;stroke-width:8px}.pane{fill:#eef3f6;stroke:#8aa0b2;stroke-width:4px}
+.ghost{fill:none;stroke:#a2602b;stroke-width:4px;stroke-dasharray:26 18}.top{fill:#cfc9bd;stroke:#5c5a55;stroke-width:3px}.plinth{fill:#d9d5cc;stroke:#5c5a55;stroke-width:3px}
+.splash{fill:#f1efea}.open{fill:#f8f6f2;stroke:#5c5a55;stroke-width:3px}.cushion{fill:#c9bfae;stroke:#8a8174;stroke-width:3px}.coat{fill:#ddd7cb;stroke:#8a8174;stroke-width:3px}
+.line{stroke:#5c5a55;stroke-width:3px}.panel{fill:#5c5a55}.knob{fill:#5c5a55}.stone{fill:#5d656c}
+.duct{stroke:#3b5b7a;stroke-width:5px;stroke-dasharray:22 16}.shield{fill:#d9c9a8}.fan{fill:#fff;stroke:#3b5b7a;stroke-width:4px}
+.elbox{fill:#e0a400;stroke:#8a6a1f;stroke-width:3px}.wbox{fill:#fff;stroke:#3f8f3f;stroke-width:5px}
+.s75.bkp .lbl{font-size:135px}.s75.bkp .cab,.s75.bkp .app,.s75.bkp .sink,.s75.bkp .drum,.s75.bkp .oven{stroke-width:11px}
+.s20 .dimt{font-size:46px}.s20 .lbl{font-size:42px}.s20 .lbls{font-size:40px}
+.s40 .lbl{font-size:70px}
+.fade .cab{fill:#f6f4f0;stroke:#bdb9b1}.fade .app{fill:#eef3f7;stroke:#a9b8c8}.fade .tech{fill:#fcf3ea;stroke:#d6b08c}.fade .oven{fill:#f3ede7;stroke:#cdb0a2}
+.fade .mouth{fill:#b9aca4}.fade .newwall{fill:#bdb9b3}.fade .drum{stroke:#a9b8c8}.fade .vat{stroke:#d6b08c}.fade .sink{stroke:#bdb9b1}.fade .hood{stroke:#a9b8c8}
+.b{font-weight:700}
+.lbt{fill:#1d1d1b;font-size:54px}.lbs{fill:#333;font-size:48px}.ld2{stroke:#1d1d1b;stroke-width:3px}
+.duct2{fill:#fff;stroke:#1d1d1b;stroke-width:4px;stroke-dasharray:22 12}
+.s50.cv .lbt{font-size:128px}.s50.cv .lbl{font-size:112px}.s50.cv .dimt{font-size:118px}.s50.cv .unit,.s50.cv .vat{stroke-width:11px}.s50.cv .tech{stroke-width:12px}.s50.cv .dim{stroke-width:8px}.s50.cv .ext{stroke-width:6px}.s50.cv .ghost{stroke-width:12px;stroke-dasharray:60 40}
+.cv .dimt{font-size:54px;fill:#1d1d1b}.cv .lbl{font-size:48px;fill:#1d1d1b}.cv .it{fill:#444}.cv .ghost{stroke:#7a4318;stroke-width:5px}.cv .tech{stroke:#7a4318}.cv .vat{stroke:#1d1d1b}
+.unit{fill:#fff;stroke:#1d1d1b;stroke-width:4px}.sens{fill:#fff;stroke:#1d1d1b;stroke-width:4px}
+.bkp .cab,.bkp .app,.bkp .sink,.bkp .drum,.bkp .oven{stroke-width:8px}.bkp .tech,.bkp .vat{stroke-width:12px}
+.bkp .hair,.bkp .shelfline,.bkp .hood,.bkp .hanger{stroke-width:6px}.bkp .rail{stroke-width:10px}.bkp .pocket{stroke-width:9px}
+.bkp .lbl{font-size:92px;letter-spacing:0;fill:#6f6a61}.bkp .swing{stroke-width:7px}.bkp .thin{stroke-width:10px}
+
+/* /BK-STIJL */
+</style>
+</head>
+<body>
+
+<!-- ============================================================ BLAD 1 -->
+<section class="sheet">
+  <p class="eyebrow">Uitwerking bij ontwerp VO4 (Lenz) · op basis van CV-ontwerp rev. W · 13-11-2026 · versie 2, met de zoneregeling</p>
+  <h1>CV-installatie woning · detaillering</h1>
+  <p class="lead">De woning krijgt haar warmte uit de loods, via een geïsoleerde <b>grondleiding</b> naar de <b>techniekkast</b>: een hoekkast van 700 × 1400 in de speelkamer, in de hoek bij de trap.</p>
+
+  <div class="grid" style="grid-template-columns:128mm 1fr;align-items:start">
+    <div class="card">
+      <h3>Wie maakt wat</h3>
+      <table class="wie">
+        <tr><td class="c">Eigen werk</td><td>Loods en grondleiding, tot en met de muurdoorvoer in de linkergevel. De stroomvoorziening in de techniekkast: groepen, wandcontactdozen en kabels.</td></tr>
+        <tr><td class="c">Loodgieter</td><td>Leiding in de vloer van de gevel naar de techniekkast, techniekkast, vloerverwarming met zoneregeling, tapwater, afvoeren, WTW-unit met kanalen.</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Uitgangspunten</h3>
+      <ol>
+        <li>Onderlegger: grondplan VO4 (Lenz, 02-10-2026). Posities zijn afgelezen (± 50 mm): <b>inmeten vóór uitvoering.</b></li>
+        <li>Techniekkast: hoekkast 700 × 1400, minimaal 2400 hoog.</li>
+        <li>Begane grond: vloerverwarming, 14 groepen op één verdeler, 8 zones met elk een draadloze thermostaat (blad 3). Verdieping: bestaande radiatoren op een eigen pompgroep.</li>
+        <li>Warm tapwater: verswatermodule op een buffervat van 80 L. Geen circulatieleiding.</li>
+        <li>Ventilatie: WTW-unit in de techniekkast. Afzuiging in badkamer en keuken, toevoer bij de slaapkamer.</li>
+        <li>Alle afvoeren naar de standleiding in de techniekkast, ook die van de badkamer boven.</li>
+        <li>Veiligheidsventielen 2,5 bar. De gasaansluiting wordt afgesloten.</li>
+        <li>Gegevens zijn indicatief. De installateur bepaalt de uitvoering.</li>
+      </ol>
+    </div>
+  </div>
+
+
+  <p class="sub" style="margin-top:2.5mm"><b>Bladen:</b> 1 voorblad · 2 leidingplan begane grond · 3 vloerverwarming · 4 techniekkast · 5 principeschema en onderdelen · 6 en 7 bestellijsten. </p>
+
+  <div class="foot">
+    <div><span>Project</span><b>CV-installatie woning · Gasthuisstraat 6-a, Langenboom</b></div>
+    <div><span>Blad</span><b>Voorblad en overzicht</b></div>
+    <div><span>Schaal (op A4)</span><b>–</b></div>
+    <div><span>Datum · status</span><b>13-11-2026 · concept 2</b></div>
+    <div><span>Blad</span><b>1 / 7</b></div>
+  </div>
+</section>
+
+<!-- ============================================================ BLAD 2 -->
+<section class="sheet" style="padding-top:7mm">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:6mm;margin-bottom:1.5mm">
+    <div>
+      <h2 style="margin:0">Leidingplan begane grond</h2>
+      <p class="sub">Leidingen in of onder de vloer; posities indicatief. <b>TK</b> = techniekkast · <b>S</b> = standleiding, alle afvoeren · <b>MK</b> = meterkast.</p>
+    </div>
+    <div class="key">
+      <span><svg viewBox="0 0 26 6"><path class="pp cva" d="M1 3 H25"/></svg>CV aanvoer</span>
+      <span><svg viewBox="0 0 26 6"><path class="pp ww" d="M1 3 H25"/></svg>warm tapwater</span>
+      <span><svg viewBox="0 0 26 6"><path class="pp wt" d="M1 3 H25"/></svg>voorverwarmd (douche)</span>
+      <span><svg viewBox="0 0 26 6"><path class="af" d="M1 3 H25"/></svg>afvoer</span>
+      <span><svg viewBox="0 0 26 6"><path class="pp cvr" d="M1 3 H25"/></svg>CV retour</span>
+      <span><svg viewBox="0 0 26 6"><path class="pp kw" d="M1 3 H25"/></svg>koud water</span>
+      <span><svg viewBox="0 0 26 6"><path class="vk1" d="M1 3 H25"/><path class="vk2" d="M1 3 H25"/></svg>ventilatiekanaal</span>
+    </div>
+  </div>
+
+  <svg viewBox="520 283 552 338" style="width:259.7mm;height:159mm;margin:0 auto" xmlns="http://www.w3.org/2000/svg">
+    <image href="grondplan-vo4.svg" x="0" y="0" width="1190.55" height="841.89"/>
+    <rect x="520" y="262" width="552" height="364" fill="#fff" opacity=".55"/>
+    <g fill="#fff">
+      <rect x="739" y="520" width="34" height="31"/><rect x="866" y="523" width="27" height="13"/>
+      <rect x="992" y="519.5" width="38" height="20"/><rect x="624" y="499" width="31" height="22"/><rect x="858" y="421" width="68" height="27.5"/>
+    </g>
+
+    <!-- BK:leidingplan -->
+<g id="bk" class="bkp" transform="translate(602 432.28) scale(0.028346)">
+<path class="cab" d="M 0 1508 L 0 300 L 1100 300 L 1100 0 L 1478 0 A 1298 1298 0 0 1 2741 1000 L 650 1000 L 650 1508 Z"/>
+<line class="hair" x1="650" y1="300" x2="650" y2="1000"/><line class="hair" x1="0" y1="1000" x2="650" y2="1000"/>
+<line class="shelfline" x1="350" y1="300" x2="350" y2="1508"/>
+<rect class="sink" x="125" y="1080" width="400" height="340" rx="50"/>
+<rect class="oven" x="736" y="388" width="1305" height="600"/><rect class="mouth" x="820" y="900" width="1137" height="60"/>
+<rect class="hood" x="688" y="400" width="1400" height="600"/><circle class="drum" cx="1388" cy="600" r="75"/>
+<path class="shelfline" d="M 2088 447 A 1048 1048 0 0 1 2482 1000"/>
+<rect class="cab" x="2126" y="1000" width="615" height="1108"/>
+<rect class="cab" x="0" y="1508" width="650" height="1280"/>
+<rect class="app" x="25" y="1538" width="600" height="600"/><rect class="app" x="25" y="2158" width="600" height="600"/>
+<rect class="cab" x="2126" y="2108" width="650" height="680"/><rect class="app" x="2151" y="2148" width="600" height="600"/><circle class="drum" cx="2451" cy="2448" r="230"/>
+<rect class="newwall" x="0" y="2788" width="1000" height="100"/><rect class="newwall" x="1850" y="2788" width="926" height="100"/>
+<line class="pocket" x1="110" y1="2838" x2="1000" y2="2838"/>
+<rect class="glass" x="1000" y="2826" width="850" height="24"/>
+<rect class="cab" x="0" y="4188" width="852" height="600"/>
+<line class="rail" x1="60" y1="4490" x2="792" y2="4490"/>
+<line class="hanger" x1="150" y1="4330" x2="150" y2="4650"/><line class="hanger" x1="300" y1="4330" x2="300" y2="4650"/>
+<line class="hanger" x1="552" y1="4330" x2="552" y2="4650"/><line class="hanger" x1="702" y1="4330" x2="702" y2="4650"/>
+<rect class="cab" x="852" y="4188" width="680" height="600"/>
+<rect class="cab" x="1532" y="4288" width="800" height="500"/><path class="shelfline" d="M1532 4188 H2332"/>
+<rect class="cab" x="2332" y="4188" width="444" height="600"/>
+</g>
+<!-- /BK:leidingplan -->
+
+    <!-- kast met lades (847,8-921,2) en de techniekkast: hoekkast 700 x 1400 in de hoek bij trap en garderobe -->
+    <rect x="847.8" y="465.7" width="70.6" height="16.7" fill="#efece6" stroke="#6f6a61" stroke-width=".5"/>
+    <path d="M847.8 478.1 H918.4" fill="none" stroke="#6f6a61" stroke-width=".35"/>
+    <rect x="918.4" y="442.7" width="19.8" height="39.7" fill="var(--tech)" stroke="var(--techrule)" stroke-width=".8"/>
+
+    <!-- afvoeren: alles naar de standleiding S in de techniekkast, van daar naar het riool -->
+    <g class="case" style="stroke-width:3.3">
+      <path d="M922.8 480.6 V600 M1035 583.6 V546 H922.8 M1030 503 V546 M956.7 552 V546 M1008.5 565 H1035 M935 556 V546 M614 472.5 V482 H627 V540 H922.8 M671 499.5 V540 M776.2 552.5 V540"/>
+    </g>
+    <path class="af" d="M922.8 480.6 V600 M1035 583.6 V546 H922.8 M1030 503 V546 M956.7 552 V546 M1008.5 565 H1035 M935 556 V546 M614 472.5 V482 H627 V540 H922.8 M671 499.5 V540 M776.2 552.5 V540"/>
+    <path d="M922.8 604.5 l-2.6 -4.6 h5.2 z" fill="#6b5a3c"/>
+
+    <!-- ventilatie (WTW-unit in de hoekkast), indicatief: kanaal van de keuken achter de lades -->
+    <path class="vk1" d="M918.4 480.9 H843"/><path class="vk2" d="M918.4 480.9 H843"/><path d="M838.6 480.9 l4.4 -2.5 v5 z" fill="var(--ink)" transform="rotate(180 840.8 480.9)"/>
+    <path class="vk1" d="M938.2 455 H950"/><path class="vk2" d="M938.2 455 H950"/><path d="M953.4 455 l-4.2 -2.4 v4.8 z" fill="var(--ink)"/>
+    <path class="vk1" d="M943 463.5 H953"/><path class="vk2" d="M943 463.5 H953"/><path d="M939.4 463.5 l4.2 -2.4 v4.8 z" fill="var(--ink)"/>
+
+    <g class="case">
+      <path d="M520 418 H597 L918.4 470.5 M520 420.6 H597 L918.4 473.1"/>
+      <path d="M918.4 460.5 L717.4 399.3 M918.4 463 L717.4 401.8"/>
+      <path d="M932.5 482.4 V530 M774 530 H1040 V506 M774 530 V553 M1017.5 530 V571 M1017.5 557 H1012 M1017.5 571 H1012 M1017.5 563.5 H1023 M918.4 475.8 H624.5 V468 H612.5 M918.4 465.5 L716.4 404"/>
+      <path d="M896 541 V533.5 M935 482.4 V533.5 M778.5 533.5 H1043 V506 M778.5 533.5 V553 M1020 533.5 V588 H1026 M1020 559.5 H1012 M1020 573.5 H1012 M931 533.5 V586 M931 557 H928.5 M948 533.5 V546 M918.4 478.2 H622 V471 H612.5 M918.4 468 L708.1 404 M668 478.2 V496"/>
+      <path d="M1026 585.6 H1024.6 V566"/>
+    </g>
+    <path class="pp cva" d="M520 418 H597 L918.4 470.5"/>
+    <path class="pp cvr" d="M520 420.6 H597 L918.4 473.1"/>
+    <path class="pp cva" d="M918.4 460.5 L717.4 399.3"/>
+    <path class="pp cvr" d="M918.4 463 L717.4 401.8"/>
+    <path class="pp ww" d="M932.5 482.4 V530 M774 530 H1040 V506 M774 530 V553 M1017.5 530 V571 M1017.5 557 H1012 M1017.5 571 H1012 M1017.5 563.5 H1023 M918.4 475.8 H624.5 V468 H612.5 M918.4 465.5 L716.4 404"/>
+    <path class="pp kw" d="M896 541 V533.5 M935 482.4 V533.5 M778.5 533.5 H1043 V506 M778.5 533.5 V553 M1020 533.5 V588 H1026 M1020 559.5 H1012 M1020 573.5 H1012 M931 533.5 V586 M931 557 H928.5 M948 533.5 V546 M918.4 478.2 H622 V471 H612.5 M918.4 468 L708.1 404 M668 478.2 V496"/>
+    <path class="pp wt" d="M1026 585.6 H1024.6 V566"/>
+    <rect x="703.2" y="396.4" width="14.2" height="7.6" rx="1.2" fill="#fff" stroke="var(--ink)" stroke-width=".55"/>
+    <path d="M706.4 402.2 v-4 m-1.3 1.5 l1.3 -1.5 l1.3 1.5 M710.3 402.2 v-4 m-1.3 1.5 l1.3 -1.5 l1.3 1.5 M714.2 402.2 v-4 m-1.3 1.5 l1.3 -1.5 l1.3 1.5" fill="none" stroke="var(--ink)" stroke-width=".4"/>
+
+    <rect x="1026" y="583.6" width="18" height="5.6" fill="#fff" stroke="var(--ink)" stroke-width=".5"/>
+    <rect x="890.6" y="541" width="10" height="24" fill="#fff" stroke="var(--ink)" stroke-width=".5"/>
+    <g class="tap">
+      <circle cx="776.2" cy="554.6" r="1.5"/><circle cx="611.3" cy="469.5" r="1.5"/><circle cx="668" cy="497.6" r="1.4"/>
+      <circle cx="1010.6" cy="558.2" r="1.4"/><circle cx="1010.6" cy="572.2" r="1.4"/><circle cx="1041.5" cy="504.6" r="1.5"/>
+      <circle cx="931" cy="587" r="1.3"/><circle cx="948" cy="547.2" r="1.3"/><circle cx="1024.5" cy="564" r="1.5"/>
+    </g>
+    <text class="lb lbb" x="929.7" y="459.4" text-anchor="middle" style="stroke-width:0">TK</text>
+    <text class="lb lbb" x="895.6" y="554.6" text-anchor="middle" style="font-size:4.6px;stroke-width:0">MK</text>
+    <text class="lb" x="1035" y="588" text-anchor="middle" style="font-size:4px;stroke-width:0">DWTW</text>
+
+    <text class="rm" x="806" y="521.4">KEUKEN</text>
+    <text class="rm" x="868" y="521.4">ENTREE</text>
+    <text class="rm" x="952" y="579.6">BADKAMER</text>
+    <text class="rm" x="643" y="489.4" text-anchor="middle">BIJKEUKEN</text>
+    <text class="rm" x="872" y="428.6" text-anchor="middle">SPEELKAMER</text>
+
+    <g>
+      <text class="lb lbb" x="523" y="408">Grondleiding CV</text>
+      <text class="lb" x="523" y="414.4">uit de loods · 2 × 40</text>
+      <text class="lb" x="620" y="419.4">CV uit de loods, in de vloer</text>
+      <text class="lb" x="523" y="427.4">bij de buitendeur</text>
+
+      <text class="lb" x="627.6" y="466.4">spoelbak</text>
+      <text class="lb" x="630.5" y="498.6">was + droger</text>
+      <text class="lb" x="789" y="558.6">spoelbak</text>
+
+      <text class="lb lbb" x="937" y="431" text-anchor="end">Techniekkast (TK)</text>
+      <text class="lb" x="937" y="437.6" text-anchor="end">hoekkast 700 × 1400</text>
+      <text class="lb" x="849.5" y="472.6">kast</text>
+      <text class="lb" x="832" y="487.4" text-anchor="end">afzuiging keuken</text>
+      <path class="ld" d="M922.8 479.4 L914 491"/>
+      <text class="lb lbb" x="909" y="495.4">S</text>
+
+      <text class="lb" x="955.5" y="456.8">toevoer slaapkamer</text>
+      <text class="lb" x="955.5" y="465.3">afzuiging badkamer</text>
+
+      <text class="lb lbb" x="700" y="390" text-anchor="end">Naar de verdieping</text>
+      <text class="lb" x="700" y="396.6" text-anchor="end">bestaande leidingen:</text>
+      <text class="lb" x="700" y="403.2" text-anchor="end">CV, warm en koud water</text>
+
+      <path class="pp ww" d="M844 548 h4.5"/><text class="lb" x="850" y="549.9">warm water</text>
+      <path class="pp kw" d="M844 554.5 h4.5"/><text class="lb" x="850" y="556.4">koud water</text>
+      <path class="af" d="M844 561 h4.5"/><text class="lb" x="850" y="562.9">afvoer</text>
+      <text class="lb" transform="translate(889.2 566) rotate(-90)">meterkast</text>
+
+      <text class="lb" x="1014" y="518">bad</text>
+      <text class="lb" x="980" y="586">wastafels</text>
+      <text class="lb" x="940.5" y="572.4">wc</text>
+      <text class="lb" x="911" y="574.4">wc</text>
+      <text class="lb" x="1028" y="563">douche</text>
+      <path class="ld" d="M1035 605 V589.4"/>
+      <text class="lb" x="1068" y="610.4" text-anchor="end">douchegoot met warmteterugwinning (DWTW)</text>
+      <text class="lb" x="927" y="603.2">naar het riool</text>
+
+      <path class="ld" d="M727.5 304 L719 317"/>
+      <text class="lb lbb" x="728" y="302.6">Tunnelhaard, niet op de CV</text>
+    </g>
+
+    <g>
+      <rect x="523" y="614.4" width="141.73" height="1.9" fill="#fff" stroke="var(--ink)" stroke-width=".3"/>
+      <rect x="523" y="614.4" width="28.35" height="1.9" fill="var(--ink)"/><rect x="579.7" y="614.4" width="28.35" height="1.9" fill="var(--ink)"/><rect x="636.4" y="614.4" width="28.35" height="1.9" fill="var(--ink)"/>
+      <text class="lb" x="523" y="612.4">0</text><text class="lb" x="664.7" y="612.4" text-anchor="end">5 m</text>
+    </g>
+  </svg>
+
+  <div class="foot">
+    <div><span>Project</span><b>CV-installatie woning · Gasthuisstraat 6-a, Langenboom</b></div>
+    <div><span>Blad</span><b>Leidingplan begane grond</b></div>
+    <div><span>Schaal (op A4)</span><b>1:75</b></div>
+    <div><span>Datum · status</span><b>13-11-2026 · concept 2</b></div>
+    <div><span>Blad</span><b>2 / 7</b></div>
+  </div>
+</section>
+
+<!-- ============================================================ BLAD 3: VLOERVERWARMING -->
+<section class="sheet" style="padding-top:7mm">
+  <div class="grid" style="grid-template-columns:168.6mm 1fr;gap:8mm;align-items:start">
+    <div>
+      <h2 style="margin:0">Vloerverwarming: groepenplan</h2>
+      <p class="sub" style="margin-bottom:1.5mm">Lijntjes = buisafstand op schaal. Dikke pijl = aanloop (gestreept: in mantelbuis). Dunne pijl = begin van de lus. Stippellijn = andere buisafstand binnen de groep. Dikke rand = houten vloer, de rest tegels.</p>
+      <!-- BK:vvplan -->
+<svg viewBox="584 283 478 317" style="width:168.6mm;height:111.8mm" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern id="h100" width="10" height="2.834" patternUnits="userSpaceOnUse"><rect width="10" height="2.834" fill="#fff" fill-opacity=".55"/><line x1="0" y1="1.42" x2="10" y2="1.42" stroke="#8f3608" stroke-width=".6"/></pattern>
+<pattern id="h150" width="10" height="4.252" patternUnits="userSpaceOnUse"><rect width="10" height="4.252" fill="#fff" fill-opacity=".55"/><line x1="0" y1="2.13" x2="10" y2="2.13" stroke="#8f3608" stroke-width=".6"/></pattern>
+<pattern id="h200" width="10" height="5.669" patternUnits="userSpaceOnUse"><rect width="10" height="5.669" fill="#fff" fill-opacity=".55"/><line x1="0" y1="2.83" x2="10" y2="2.83" stroke="#8f3608" stroke-width=".6"/></pattern>
+<marker id="pijl" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4.2" markerHeight="4.2" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#1b1b1b"/></marker>
+<marker id="pijlk" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M0 1 L9 5 L0 9 Z" fill="#1b1b1b"/></marker>
+</defs>
+<image href="grondplan-vo4.svg" x="0" y="0" width="1190.55" height="841.89"/>
+<rect x="584" y="283" width="478" height="317" fill="#fff" opacity=".6"/>
+<path d="M600 293 L617 293 L617 429 L600 429 Z" fill="url(#h100)"/>
+<path d="M617 293 L645 293 L645 310 L617 310 Z" fill="url(#h100)"/>
+<path d="M617 310 L645 310 L645 429 L617 429 Z" fill="url(#h150)"/>
+<path d="M645 293 L724 293 L724 310 L645 310 Z" fill="url(#h100)"/>
+<path d="M645 310 L685 310 L685 429 L645 429 Z" fill="url(#h150)"/>
+<path d="M685 310 L703 310 L703 420 L685 420 Z" fill="url(#h200)"/>
+<path d="M703 310 L724 310 L724 317 L703 317 Z" fill="url(#h200)"/>
+<path d="M752 310 L787 310 L787 442 L752 442 Z" fill="url(#h150)"/>
+<path d="M787 310 L815 310 L815 442 L787 442 Z" fill="url(#h100)"/>
+<path d="M724 293 L842 293 L842 310 L724 310 Z" fill="url(#h100)"/>
+<path d="M815 310 L842 310 L842 442 L815 442 Z" fill="url(#h200)"/>
+<path d="M724 310 L752 310 L752 395 L724 395 Z" fill="url(#h200)"/>
+<path d="M709.5 383 L724 383 L724 395 L752 395 L752 438.6 L740.5 437.2 L730.5 433.1 L721.9 426.5 L715.3 417.9 L711.2 407.9 L709.8 397.2 L709.5 397 Z" fill="url(#h200)"/>
+<path d="M850 293 L937 293 L937 318.5 L850 318.5 Z" fill="url(#h100)"/>
+<path d="M850 318.5 L937 318.5 L937 375.0 L850 375.0 Z" fill="url(#h150)"/>
+<path d="M850 375 L937 375 L937 442.5 L850 442.5 Z" fill="url(#h150)"/>
+<path d="M850 442.5 L918 442.5 L918 465.5 L850 465.5 Z" fill="url(#h150)"/>
+<path d="M946 293 L1049 293 L1049 409 L946 409 Z" fill="url(#h200)"/>
+<path d="M946 410 L971 410 L971 431 L946 431 Z" fill="url(#h150)"/>
+<path d="M946 431 L1049 431 L1049 469 L946 469 Z" fill="url(#h150)"/>
+<path d="M946 469 L971 469 L971 511 L946 511 Z" fill="url(#h150)"/>
+<path d="M946 514 L1003 514 L1003 591 L946 591 Z" fill="url(#h100)"/>
+<path d="M1003 514 L1049 514 L1049 541 L1003 541 Z" fill="url(#h100)"/>
+<path d="M1017 541 L1049 541 L1049 591 L1017 591 Z" fill="url(#h100)"/>
+<path d="M845 487 L937 487 L937 515 L845 515 Z" fill="url(#h150)"/>
+<path d="M845 515 L937 515 L937 541 L845 541 Z" fill="url(#h150)"/>
+<path d="M845 541 L889 541 L889 567 L845 567 Z" fill="url(#h150)"/>
+<path d="M903 545 L937 545 L937 591 L903 591 Z" fill="url(#h100)"/>
+<path d="M686 518 L842 518 L842 547 L686 547 Z" fill="url(#h100)"/>
+<path d="M804 480 L842 480 L842 518 L804 518 Z" fill="url(#h150)"/>
+<path d="M686 442 L842 442 L842 480 L686 480 Z" fill="url(#h150)"/>
+<path d="M686 480 L741 480 L741 518 L686 518 Z" fill="url(#h150)"/>
+<path d="M662 429 L703 429 L703 397 L705.2 397.2 L706.9 409.1 L711.4 420.2 L718.7 429.7 L728.2 437 L736 441 L736 442 L686 442 L686 470 L684 470 L683.3 462 L680 452.7 L675 444.5 L670 439.4 L665 435.6 L662 433.8 Z" fill="url(#h150)"/>
+<path d="M621 461 L661 461 L661 510 L621 510 Z" fill="url(#h150)"/>
+<path d="M603 515 L680 515 L680 550 L603 550 Z" fill="url(#h100)"/>
+<path d="M617.0 310.0 L617 429 M617 310 L645 310" fill="none" stroke="#555" stroke-width=".4" stroke-dasharray="1.6 1.6"/>
+<path d="M600 293 L617 293 M600 429 L617 429 M600 293 L600 429 M617 293 L645 293 M645 293 L645 310 M645 310 L645 429 M617 429 L645 429" fill="none" stroke="#1b1b1b" stroke-width="0.45" stroke-linecap="square"/>
+<path d="M645 310 L685.0 310.0 M685 310 L685 420 M685 310 L703 310 M703 310 L724 310" fill="none" stroke="#555" stroke-width=".4" stroke-dasharray="1.6 1.6"/>
+<path d="M645 293 L724 293 M724 293 L724 310 M645 293 L645 310 M685.0 420.0 L685 429 M645 429 L685 429 M645 310 L645 429 M703.0 317.0 L703 420 M685 420 L703 420 M724 310 L724 317 M703 317 L724 317" fill="none" stroke="#1b1b1b" stroke-width="0.45" stroke-linecap="square"/>
+<path d="M787 310 L787 442" fill="none" stroke="#555" stroke-width=".4" stroke-dasharray="1.6 1.6"/>
+<path d="M752 310 L787 310 M752 442 L787 442 M752 310 L752 442 M787 310 L815 310 M815 310 L815 442 M787 442 L815 442" fill="none" stroke="#1b1b1b" stroke-width="1.5" stroke-linecap="square"/>
+<path d="M724 310 L752 310 M815 310 L842 310" fill="none" stroke="#555" stroke-width=".4" stroke-dasharray="1.6 1.6"/>
+<path d="M724 293 L842 293 M842 293 L842 310 M752.0 310.0 L815.0 310.0 M724 293 L724 310 M842 310 L842 442 M815 442 L842 442 M815 310 L815 442 M752 310 L752 395 M724 310 L724.0 383.0 M709.5 383 L724 383 M752 395 L752 438.6 M740.5 437.2 L752 438.6 M730.5 433.1 L740.5 437.2 M721.9 426.5 L730.5 433.1 M715.3 417.9 L721.9 426.5 M711.2 407.9 L715.3 417.9 M709.8 397.2 L711.2 407.9 M709.5 397 L709.8 397.2 M709.5 383 L709.5 397" fill="none" stroke="#1b1b1b" stroke-width="1.5" stroke-linecap="square"/>
+<path d="M850 318.5 L937 318.5" fill="none" stroke="#555" stroke-width=".4" stroke-dasharray="1.6 1.6"/>
+<path d="M850 293 L937 293 M937 293 L937 318.5 M850 293 L850 318.5 M937 318.5 L937 375.0 M850 375.0 L937 375.0 M850 318.5 L850 375.0" fill="none" stroke="#1b1b1b" stroke-width="0.45" stroke-linecap="square"/>
+<path d="M850 375 L937 375 M937 375 L937 442.5 M918.0 442.5 L937 442.5 M850 375 L850 442.5 M918 442.5 L918 465.5 M850 465.5 L918 465.5 M850 442.5 L850 465.5" fill="none" stroke="#1b1b1b" stroke-width="0.45" stroke-linecap="square"/>
+<path d="M946 293 L1049 293 M1049 293 L1049 409 M946 409 L1049 409 M946 293 L946 409" fill="none" stroke="#1b1b1b" stroke-width="1.5" stroke-linecap="square"/>
+<path d="M946 410 L971 410 M971 410 L971 431 M946 410 L946 431 M971.0 431.0 L1049 431 M1049 431 L1049 469 M971.0 469.0 L1049 469 M946 431 L946 469 M971 469 L971 511 M946 511 L971 511 M946 469 L946 511" fill="none" stroke="#1b1b1b" stroke-width="1.5" stroke-linecap="square"/>
+<path d="M946 514 L1003 514 M1003 514 L1003 591 M946 591 L1003 591 M946 514 L946 591" fill="none" stroke="#1b1b1b" stroke-width="0.45" stroke-linecap="square"/>
+<path d="M1003 514 L1049 514 M1049 514 L1049 541 M1003 541 L1017.0 541.0 M1003 514 L1003 541 M1049 541 L1049 591 M1017 591 L1049 591 M1017 541 L1017 591" fill="none" stroke="#1b1b1b" stroke-width="0.45" stroke-linecap="square"/>
+<path d="M845 487 L937 487 M937 487 L937 515 M845 487 L845 515 M937 515 L937 541 M889.0 541.0 L937 541 M845 515 L845 541 M889 541 L889 567 M845 567 L889 567 M845 541 L845 567 M903 545 L937 545 M937 545 L937 591 M903 591 L937 591 M903 545 L903 591" fill="none" stroke="#1b1b1b" stroke-width="0.45" stroke-linecap="square"/>
+<path d="M804.0 518.0 L842 518" fill="none" stroke="#555" stroke-width=".4" stroke-dasharray="1.6 1.6"/>
+<path d="M686 518 L804.0 518.0 M842 518 L842 547 M686 547 L842 547 M686 518 L686 547 M804 480 L842 480 M842 480 L842 518 M804 480 L804 518" fill="none" stroke="#1b1b1b" stroke-width="0.45" stroke-linecap="square"/>
+<path d="M736.0 442.0 L842 442 M842 442 L842 480 M741.0 480.0 L842 480 M686.0 470.0 L686 480 M741 480 L741 518 M686 518 L741 518 M686 480 L686 518 M662 429 L703 429 M703 397 L703 429 M703 397 L705.2 397.2 M705.2 397.2 L706.9 409.1 M706.9 409.1 L711.4 420.2 M711.4 420.2 L718.7 429.7 M718.7 429.7 L728.2 437 M728.2 437 L736 441 M736 441 L736 442 M684 470 L686 470 M683.3 462 L684 470 M680 452.7 L683.3 462 M675 444.5 L680 452.7 M670 439.4 L675 444.5 M665 435.6 L670 439.4 M662 433.8 L665 435.6 M662 429 L662 433.8" fill="none" stroke="#1b1b1b" stroke-width="0.45" stroke-linecap="square"/>
+<path d="M621 461 L661 461 M661 461 L661 510 M621 510 L661 510 M621 461 L621 510 M603 515 L680 515 M680 515 L680 550 M603 550 L680 550 M603 515 L603 550" fill="none" stroke="#1b1b1b" stroke-width="0.45" stroke-linecap="square"/>
+<rect x="847.8" y="465.7" width="70.6" height="16.7" fill="#efece6" stroke="#6f6a61" stroke-width=".5"/>
+<rect x="918.4" y="442.7" width="19.8" height="39.7" fill="#f9e1cd" stroke="#7a4318" stroke-width=".9"/>
+<path d="M690 425 H609 V300" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M694 432 V302 H650" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M801 438 V318" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M829 438 V302 H735 V385" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M690 425 H609 V300" fill="none" stroke="#1b1b1b" stroke-width=".8" stroke-linejoin="round" marker-end="url(#pijlk)"/>
+<path d="M694 432 V302 H650" fill="none" stroke="#1b1b1b" stroke-width=".8" stroke-linejoin="round" marker-end="url(#pijlk)"/>
+<path d="M801 438 V318" fill="none" stroke="#1b1b1b" stroke-width=".8" stroke-linejoin="round" marker-end="url(#pijlk)"/>
+<path d="M829 438 V302 H735 V385" fill="none" stroke="#1b1b1b" stroke-width=".8" stroke-linejoin="round" marker-end="url(#pijlk)"/>
+<path d="M918 455 L850 451" fill="none" stroke="#fff" stroke-width="4.2" stroke-linejoin="round"/>
+<path d="M850 451 H716 L698 437" fill="none" stroke="#fff" stroke-width="4.2" stroke-linejoin="round"/>
+<path d="M838 451 L829 441" fill="none" stroke="#fff" stroke-width="4.2" stroke-linejoin="round"/>
+<path d="M838 451 L801 441" fill="none" stroke="#fff" stroke-width="4.2" stroke-linejoin="round"/>
+<path d="M929 482.4 V531 H690" fill="none" stroke="#fff" stroke-width="4.2" stroke-linejoin="round"/>
+<path d="M938.2 462 H958 V413" fill="none" stroke="#fff" stroke-width="4.2" stroke-linejoin="round"/>
+<path d="M958 462 V511" fill="none" stroke="#fff" stroke-width="4.2" stroke-linejoin="round"/>
+<path d="M918 455 L850 451" fill="none" stroke="#1b1b1b" stroke-width="1.7" stroke-linejoin="round" stroke-dasharray="3.2 2.2" marker-end="url(#pijl)"/>
+<path d="M850 451 H716 L698 437" fill="none" stroke="#1b1b1b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#pijl)"/>
+<path d="M838 451 L829 441" fill="none" stroke="#1b1b1b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#pijl)"/>
+<path d="M838 451 L801 441" fill="none" stroke="#1b1b1b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#pijl)"/>
+<path d="M929 482.4 V531 H690" fill="none" stroke="#1b1b1b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#pijl)"/>
+<path d="M938.2 462 H958 V413" fill="none" stroke="#1b1b1b" stroke-width="1.7" stroke-linejoin="round" marker-end="url(#pijl)"/>
+<path d="M958 462 V511" fill="none" stroke="#1b1b1b" stroke-width="1.7" stroke-linejoin="round" stroke-dasharray="3.2 2.2" marker-end="url(#pijl)"/>
+<text x="886" y="446.5" font-family="Inter,Arial,sans-serif" font-size="7.4" font-weight="700" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.4" stroke-linejoin="round">N</text>
+<text x="935.5" y="508" font-family="Inter,Arial,sans-serif" font-size="7.4" font-weight="700" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.4" stroke-linejoin="round">Z</text>
+<text x="965" y="458.5" font-family="Inter,Arial,sans-serif" font-size="7.4" font-weight="700" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.4" stroke-linejoin="round">O</text>
+<text x="928.3" y="465.5" font-family="Inter,Arial,sans-serif" font-size="6.4" font-weight="700" text-anchor="middle" fill="#1b1b1b">VD</text>
+<circle cx="631" cy="370" r="6.3" fill="#fff" stroke="#1b1b1b" stroke-width=".8"/><text x="631" y="372.5" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#1b1b1b">1</text><text x="639.5" y="372.3" font-family="Inter,Arial,sans-serif" font-size="7" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">150</text>
+<circle cx="608.5" cy="345" r="6.3" fill="#fff" stroke="#1b1b1b" stroke-width=".8"/><text x="608.5" y="347.5" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#1b1b1b">1</text><text x="617.0" y="347.3" font-family="Inter,Arial,sans-serif" font-size="7" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">100</text>
+<circle cx="665" cy="370" r="6.3" fill="#fff" stroke="#1b1b1b" stroke-width=".8"/><text x="665" y="372.5" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#1b1b1b">2</text><text x="673.5" y="372.3" font-family="Inter,Arial,sans-serif" font-size="7" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">150</text>
+<circle cx="675" cy="301.5" r="6.3" fill="#fff" stroke="#1b1b1b" stroke-width=".8"/><text x="675" y="304.0" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#1b1b1b">2</text><text x="683.5" y="303.8" font-family="Inter,Arial,sans-serif" font-size="7" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">100</text>
+<circle cx="694" cy="355" r="6.3" fill="#fff" stroke="#1b1b1b" stroke-width=".8"/><text x="694" y="357.5" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#1b1b1b">2</text><text x="702.5" y="357.3" font-family="Inter,Arial,sans-serif" font-size="7" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">200</text>
+<circle cx="767" cy="400" r="6.3" fill="#fff" stroke="#1b1b1b" stroke-width=".8"/><text x="767" y="402.5" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#1b1b1b">3</text><text x="775.5" y="402.3" font-family="Inter,Arial,sans-serif" font-size="7" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">150</text>
+<circle cx="801" cy="400" r="6.3" fill="#fff" stroke="#1b1b1b" stroke-width=".8"/><text x="801" y="402.5" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#1b1b1b">3</text><text x="809.5" y="402.3" font-family="Inter,Arial,sans-serif" font-size="7" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">100</text>
+<circle cx="790" cy="301.5" r="6.3" fill="#fff" stroke="#1b1b1b" stroke-width=".8"/><text x="790" y="304.0" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#1b1b1b">4</text><text x="798.5" y="303.8" font-family="Inter,Arial,sans-serif" font-size="7" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">100</text>
+<circle cx="828.5" cy="345" r="6.3" fill="#fff" stroke="#1b1b1b" stroke-width=".8"/><text x="828.5" y="347.5" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#1b1b1b">4</text><text x="837.0" y="347.3" font-family="Inter,Arial,sans-serif" font-size="7" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">200</text>
+<circle cx="738" cy="352" r="6.3" fill="#fff" stroke="#1b1b1b" stroke-width=".8"/><text x="738" y="354.5" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#1b1b1b">4</text><text x="746.5" y="354.3" font-family="Inter,Arial,sans-serif" font-size="7" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">200</text>
+<circle cx="893" cy="305.75" r="6.3" fill="#fff" stroke="#1b1b1b" stroke-width=".8"/><text x="893" y="308.25" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#1b1b1b">5</text><text x="901.5" y="308.05" font-family="Inter,Arial,sans-serif" font-size="7" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">100</text>
+<circle cx="893" cy="347" r="6.3" fill="#fff" stroke="#1b1b1b" stroke-width=".8"/><text x="893" y="349.5" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#1b1b1b">5</text><text x="901.5" y="349.3" font-family="Inter,Arial,sans-serif" font-size="7" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">150</text>
+<circle cx="886" cy="415" r="6.3" fill="#fff" stroke="#1b1b1b" stroke-width=".8"/><text x="886" y="417.5" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#1b1b1b">6</text><text x="894.5" y="417.3" font-family="Inter,Arial,sans-serif" font-size="7" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">150</text>
+<circle cx="997" cy="351" r="6.3" fill="#fff" stroke="#1b1b1b" stroke-width=".8"/><text x="997" y="353.5" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#1b1b1b">7</text><text x="1005.5" y="353.3" font-family="Inter,Arial,sans-serif" font-size="7" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">200</text>
+<circle cx="1010" cy="450" r="6.3" fill="#fff" stroke="#1b1b1b" stroke-width=".8"/><text x="1010" y="452.5" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#1b1b1b">8</text><text x="1018.5" y="452.3" font-family="Inter,Arial,sans-serif" font-size="7" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">150</text>
+<circle cx="975" cy="530" r="6.3" fill="#fff" stroke="#1b1b1b" stroke-width=".8"/><text x="975" y="532.5" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#1b1b1b">9</text><text x="983.5" y="532.3" font-family="Inter,Arial,sans-serif" font-size="7" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">100</text>
+<circle cx="1033" cy="563" r="6.3" fill="#fff" stroke="#1b1b1b" stroke-width=".8"/><text x="1033" y="565.5" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#1b1b1b">10</text><text x="1041.5" y="565.3" font-family="Inter,Arial,sans-serif" font-size="7" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">100</text>
+<circle cx="885" cy="505" r="6.3" fill="#fff" stroke="#1b1b1b" stroke-width=".8"/><text x="885" y="507.5" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#1b1b1b">11</text><text x="893.5" y="507.3" font-family="Inter,Arial,sans-serif" font-size="7" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">150</text>
+<circle cx="920" cy="566" r="6.3" fill="#fff" stroke="#1b1b1b" stroke-width=".8"/><text x="920" y="568.5" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#1b1b1b">11</text><text x="928.5" y="568.3" font-family="Inter,Arial,sans-serif" font-size="7" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">100</text>
+<circle cx="764" cy="532.5" r="6.3" fill="#fff" stroke="#1b1b1b" stroke-width=".8"/><text x="764" y="535.0" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#1b1b1b">12</text><text x="772.5" y="534.8" font-family="Inter,Arial,sans-serif" font-size="7" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">100</text>
+<circle cx="818" cy="499" r="6.3" fill="#fff" stroke="#1b1b1b" stroke-width=".8"/><text x="818" y="501.5" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#1b1b1b">12</text><text x="826.5" y="501.3" font-family="Inter,Arial,sans-serif" font-size="7" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">150</text>
+<circle cx="764" cy="465" r="6.3" fill="#fff" stroke="#1b1b1b" stroke-width=".8"/><text x="764" y="467.5" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#1b1b1b">13</text><text x="772.5" y="467.3" font-family="Inter,Arial,sans-serif" font-size="7" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">150</text>
+<circle cx="713.5" cy="499" r="6.3" fill="#fff" stroke="#1b1b1b" stroke-width=".8"/><text x="713.5" y="501.5" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#1b1b1b">13</text><text x="722.0" y="501.3" font-family="Inter,Arial,sans-serif" font-size="7" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">150</text>
+<circle cx="641" cy="485" r="6.3" fill="#fff" stroke="#1b1b1b" stroke-width=".8"/><text x="641" y="487.5" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#1b1b1b">14</text><text x="649.5" y="487.3" font-family="Inter,Arial,sans-serif" font-size="7" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">150</text>
+<circle cx="641" cy="532.5" r="6.3" fill="#fff" stroke="#1b1b1b" stroke-width=".8"/><text x="641" y="535.0" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="700" text-anchor="middle" fill="#1b1b1b">14</text><text x="649.5" y="534.8" font-family="Inter,Arial,sans-serif" font-size="7" fill="#1b1b1b" paint-order="stroke" stroke="#fff" stroke-width="2.2" stroke-linejoin="round">100</text>
+<rect x="676.4" y="444.4" width="9.2" height="9.2" rx="1.2" fill="#1b1b1b" stroke="#fff" stroke-width=".8"/><text x="681" y="451.6" font-family="Inter,Arial,sans-serif" font-size="7.2" font-weight="700" text-anchor="middle" fill="#fff">A</text>
+<rect x="835.4" y="421.4" width="9.2" height="9.2" rx="1.2" fill="#1b1b1b" stroke="#fff" stroke-width=".8"/><text x="840" y="428.6" font-family="Inter,Arial,sans-serif" font-size="7.2" font-weight="700" text-anchor="middle" fill="#fff">B</text>
+<rect x="928.4" y="347.4" width="9.2" height="9.2" rx="1.2" fill="#1b1b1b" stroke="#fff" stroke-width=".8"/><text x="933" y="354.6" font-family="Inter,Arial,sans-serif" font-size="7.2" font-weight="700" text-anchor="middle" fill="#fff">C</text>
+<rect x="928.4" y="395.4" width="9.2" height="9.2" rx="1.2" fill="#1b1b1b" stroke="#fff" stroke-width=".8"/><text x="933" y="402.6" font-family="Inter,Arial,sans-serif" font-size="7.2" font-weight="700" text-anchor="middle" fill="#fff">D</text>
+<rect x="946.4" y="387.4" width="9.2" height="9.2" rx="1.2" fill="#1b1b1b" stroke="#fff" stroke-width=".8"/><text x="951" y="394.6" font-family="Inter,Arial,sans-serif" font-size="7.2" font-weight="700" text-anchor="middle" fill="#fff">E</text>
+<rect x="946.4" y="516.4" width="9.2" height="9.2" rx="1.2" fill="#1b1b1b" stroke="#fff" stroke-width=".8"/><text x="951" y="523.6" font-family="Inter,Arial,sans-serif" font-size="7.2" font-weight="700" text-anchor="middle" fill="#fff">F</text>
+<rect x="927.4" y="519.4" width="9.2" height="9.2" rx="1.2" fill="#1b1b1b" stroke="#fff" stroke-width=".8"/><text x="932" y="526.6" font-family="Inter,Arial,sans-serif" font-size="7.2" font-weight="700" text-anchor="middle" fill="#fff">G</text>
+<rect x="671.4" y="498.4" width="9.2" height="9.2" rx="1.2" fill="#1b1b1b" stroke="#fff" stroke-width=".8"/><text x="676" y="505.6" font-family="Inter,Arial,sans-serif" font-size="7.2" font-weight="700" text-anchor="middle" fill="#fff">H</text>
+<rect x="590" y="594" width="141.73" height="1.9" fill="#fff" stroke="#1b1b1b" stroke-width=".3"/><rect x="590" y="594" width="28.35" height="1.9" fill="#1b1b1b"/><rect x="646.7" y="594" width="28.35" height="1.9" fill="#1b1b1b"/><rect x="703.4" y="594" width="28.35" height="1.9" fill="#1b1b1b"/>
+<text x="735" y="596.4" font-family="Inter,Arial,sans-serif" font-size="6.6" fill="#1b1b1b">5 m</text>
+</svg>
+<!-- /BK:vvplan -->
+      <ul style="margin:2.5mm 0 0;padding-left:5mm;font-size:9pt;line-height:1.4">
+        <li><b>Buisafstand:</b> 100 mm in badkamer en toilet, in de doorloop van de bijkeuken, langs het aanrecht, vóór de bank, onder het bureau in de speelkamer en 0,6 m langs de ruiten. 200 mm in de slaapkamer, bij de haard en onder de bank. Elders 150 mm.</li>
+        <li><b>Eetkamer en woonkamer:</b> elke lus begint langs het glas. Groep 4 ligt als een U om groep 3, open aan de keukenkant.</li>
+        <li><b>Aanloop:</b> drie bundels (N, Z, O). In mantelbuis door de speelkamer en door het halletje naar de badkamer.</li>
+        <!-- BK:vvzones -->
+<li><b>Zones</b> (zwart blokje = plek van de thermostaat): <b>A</b> eethoek en keuken (1, 2, 12, 13) · <b>B</b> zithoek (3, 4) · <b>C</b> kantoor (5) · <b>D</b> speelkamer (6) · <b>E</b> slaapkamer en garderobe (7, 8) · <b>F</b> badkamer (9, 10) · <b>G</b> hal (11) · <b>H</b> bijkeuken (14).</li>
+<!-- /BK:vvzones -->
+        <li><b>Indicatief:</b> de installateur maakt het legplan en regelt in.</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="margin:1mm 0 2mm">Groepen</h3>
+      <!-- BK:vvtabel -->
+<table class="vv"><thead><tr><th>Nr</th><th>Ruimte</th><th>h.o.h.</th><th>m²</th><th>Buis</th><th>Zone</th></tr></thead><tbody><tr><td class="c">1</td><td>Eetkamer links, vanaf de linkerruit</td><td class="n">100 / 150</td><td class="n">7,6</td><td class="n">± 85 m</td><td class="n">A</td></tr><tr><td class="c">2</td><td>Eetkamer rechts, vanaf de bovenruit, en langs de haard</td><td class="n">100 / 150 / 200</td><td class="n">10,2</td><td class="n">± 90 m</td><td class="n">A</td></tr><tr><td class="c">3</td><td>Woonkamer, vóór de bank · hout</td><td class="n">100 / 150</td><td class="n">10,4</td><td class="n">± 90 m</td><td class="n">B</td></tr><tr><td class="c">4</td><td>Woonkamer, in een U om de bank heen · hout</td><td class="n">100 / 200</td><td class="n">11,9</td><td class="n">± 80 m</td><td class="n">B</td></tr><tr><td class="c">5</td><td>Speelkamer, raamkant, met het bureau</td><td class="n">100 / 150</td><td class="n">8,9</td><td class="n">± 75 m</td><td class="n">C</td></tr><tr><td class="c">6</td><td>Speelkamer, kant kast</td><td class="n">150</td><td class="n">9,3</td><td class="n">± 65 m</td><td class="n">D</td></tr><tr><td class="c">7</td><td>Slaapkamer · hout</td><td class="n">200</td><td class="n">14,9</td><td class="n">± 80 m</td><td class="n">E</td></tr><tr><td class="c">8</td><td>Garderobe en halletje · hout</td><td class="n">150</td><td class="n">6,8</td><td class="n">± 50 m</td><td class="n">E</td></tr><tr><td class="c">9</td><td>Badkamer, kant deur en wc</td><td class="n">100</td><td class="n">5,5</td><td class="n">± 60 m</td><td class="n">F</td></tr><tr><td class="c">10</td><td>Badkamer, wastafels en douche</td><td class="n">100</td><td class="n">3,5</td><td class="n">± 45 m</td><td class="n">F</td></tr><tr><td class="c">11</td><td>Entree, onder de trap en toilet</td><td class="n">100 / 150</td><td class="n">9,6</td><td class="n">± 75 m</td><td class="n">G</td></tr><tr><td class="c">12</td><td>Keuken: aanrecht en rechts van het eiland</td><td class="n">100 / 150</td><td class="n">7,4</td><td class="n">± 80 m</td><td class="n">A</td></tr><tr><td class="c">13</td><td>Keuken: looproute en links van het eiland</td><td class="n">150</td><td class="n">11,4</td><td class="n">± 80 m</td><td class="n">A</td></tr><tr><td class="c">14</td><td>Bijkeuken: doorloop en werkruimte</td><td class="n">100 / 150</td><td class="n">5,8</td><td class="n">± 70 m</td><td class="n">H</td></tr><tr class="tot"><td></td><td><b>Totaal</b></td><td></td><td class="n"><b>123</b></td><td class="n"><b>± 1010 m</b></td><td></td></tr></tbody></table>
+<!-- /BK:vvtabel -->
+      <div class="hoh">
+        <span><svg viewBox="0 0 22 10"><path d="M0 1.5H22M0 4.3H22M0 7.1H22M0 9.9H22" stroke="#8f3608" stroke-width=".6"/></svg>100</span>
+        <span><svg viewBox="0 0 22 10"><path d="M0 1.5H22M0 5.75H22M0 10H22" stroke="#8f3608" stroke-width=".6"/></svg>150</span>
+        <span><svg viewBox="0 0 22 10"><path d="M0 2H22M0 7.67H22" stroke="#8f3608" stroke-width=".6"/></svg>200 mm h.o.h.</span>
+      </div>
+      <p class="sub" style="margin-top:2.5mm">Buis 16 × 2. "Buis" = lus plus aanloop heen en terug. Zone = thermostaat. Bundels: N via de deur naar de woonkamer, Z onder de trap door, O door de wand naar de garderobe.</p>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div><span>Project</span><b>CV-installatie woning · Gasthuisstraat 6-a, Langenboom</b></div>
+    <div><span>Blad</span><b>Vloerverwarming: groepenplan</b></div>
+    <div><span>Schaal (op A4)</span><b>1:100</b></div>
+    <div><span>Datum · status</span><b>13-11-2026 · concept 2</b></div>
+    <div><span>Blad</span><b>3 / 7</b></div>
+  </div>
+</section>
+
+<!-- ============================================================ BLAD 4 (techniekkast) -->
+<section class="sheet">
+  <h2>Techniekkast: hoekkast 700 × 1400</h2>
+  <p class="sub" style="margin-bottom:2.5mm">Tegen de wand van de trap en de wand van de garderobe, minimaal 2400 hoog. Indeling is een voorstel; maten van de voorgestelde apparaten (blad 6). Bruine banden = leidingen met isolatie, op schaal: dicht = aanvoer, open = retour.</p>
+  <div class="grid" style="grid-template-columns:101mm 56mm 1fr;align-items:start;gap:6mm">
+    <div>
+      <!-- BK:techwand -->
+<svg class="s20 cv" viewBox="-420 -100 2020 2800" style="width:101.0mm;height:140.0mm" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="hatchN" width="44" height="44" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><rect class="nbg" width="44" height="44"/><line class="nln" x1="0" y1="0" x2="0" y2="44"/></pattern><pattern id="muur" width="26" height="26" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="26" height="26" fill="#d9d5cc"/><line x1="0" y1="0" x2="0" y2="26" stroke="#b9b4aa" stroke-width="7"/></pattern></defs>
+<rect x="1400" y="-40" width="120" height="2480" fill="url(#muur)" stroke="#1d1d1b" stroke-width="4"/>
+<text class="lbl it" x="1478" y="1200" transform="rotate(-90 1478 1200)" style="fill:#1d1d1b">achterwand (kant trap)</text>
+<rect class="tech" x="0" y="0" width="1400" height="2400"/>
+<text class="lbl it" x="-45" y="1200" transform="rotate(-90 -45 1200)">deur aan de kopse kant</text>
+<rect class="duct2" x="70" y="0" width="125" height="265"/><rect class="duct2" x="208" y="0" width="125" height="265"/><rect class="duct2" x="346" y="0" width="125" height="265"/><rect class="duct2" x="484" y="0" width="125" height="265"/>
+<text class="lbs" x="670" y="132" text-anchor="middle" transform="rotate(-90 670 132)">4 × Ø 125</text>
+<rect class="unit" x="60" y="265" width="560" height="635"/>
+<text class="lbt b" x="340" y="545" text-anchor="middle" style="font-size:62px">WTW-unit</text><text class="lbs" x="340" y="610" text-anchor="middle">S&amp;P Energisava 260 R</text><text class="lbs" x="340" y="666" text-anchor="middle">560 × 635 × 260</text>
+<path d="M590 900 V1000" fill="none" stroke="#1d1d1b" stroke-width="5" stroke-dasharray="14 12"/><text class="lbs" x="565" y="990" text-anchor="end">condens</text>
+<rect class="unit" x="100" y="1030" width="280" height="295" rx="55"/><text class="lbt b" x="240" y="1172" text-anchor="middle">X2</text><text class="lbs" x="240" y="1234" text-anchor="middle">12 L</text>
+<text class="lbs it" x="700" y="1190" text-anchor="middle">vrij: wand-</text><text class="lbs it" x="700" y="1246" text-anchor="middle">contactdozen</text>
+<rect class="unit" x="440" y="1340" width="330" height="118"/><text class="lbs b" x="605" y="1415" text-anchor="middle" style="fill:#1d1d1b">ZR</text>
+<text class="lbs" x="605" y="1516" text-anchor="middle">zoneregelaar</text><text class="lbs" x="605" y="1572" text-anchor="middle">330 × 118 × 57</text>
+<path d="M990 580 H950 V1730 H885" fill="none" stroke="#7a4318" stroke-width="44" stroke-linejoin="round"/><path d="M990 725 H896 V1650" fill="none" stroke="#7a4318" stroke-width="44" stroke-linejoin="round"/><path d="M990 725 H896 V1650" fill="none" stroke="#fff" stroke-width="28" stroke-linejoin="round"/><path d="M1075 1250 V1520" fill="none" stroke="#7a4318" stroke-width="44" stroke-linejoin="round"/><path d="M1145 1250 V1520" fill="none" stroke="#7a4318" stroke-width="44" stroke-linejoin="round"/><path d="M1145 1250 V1520" fill="none" stroke="#fff" stroke-width="28" stroke-linejoin="round"/>
+<text class="lbs" x="870" y="1100" text-anchor="end">naar VD</text>
+<path d="M95 2050 V2400" fill="none" stroke="#9c3d0c" stroke-width="6"/><path d="M145 2050 V2400" fill="none" stroke="#9c3d0c" stroke-width="6"/><path d="M195 2050 V2400" fill="none" stroke="#9c3d0c" stroke-width="6"/><path d="M245 2050 V2400" fill="none" stroke="#9c3d0c" stroke-width="6"/><path d="M295 2050 V2400" fill="none" stroke="#9c3d0c" stroke-width="6"/><path d="M345 2050 V2400" fill="none" stroke="#9c3d0c" stroke-width="6"/><path d="M395 2050 V2400" fill="none" stroke="#9c3d0c" stroke-width="6"/><path d="M445 2050 V2400" fill="none" stroke="#9c3d0c" stroke-width="6"/><path d="M495 2050 V2400" fill="none" stroke="#9c3d0c" stroke-width="6"/><path d="M545 2050 V2400" fill="none" stroke="#9c3d0c" stroke-width="6"/><path d="M595 2050 V2400" fill="none" stroke="#9c3d0c" stroke-width="6"/><path d="M645 2050 V2400" fill="none" stroke="#9c3d0c" stroke-width="6"/><path d="M695 2050 V2400" fill="none" stroke="#9c3d0c" stroke-width="6"/><path d="M745 2050 V2400" fill="none" stroke="#9c3d0c" stroke-width="6"/>
+<rect class="unit" x="60" y="1650" width="825" height="400"/><path d="M85 1725 H750" stroke="#9c3d0c" stroke-width="9"/><path d="M85 1980 H750" stroke="#9c3d0c" stroke-width="9" stroke-dasharray="30 18"/>
+<rect x="770" y="1670" width="100" height="360" fill="#fff" stroke="#1d1d1b" stroke-width="4"/><circle cx="820" cy="1780" r="34" fill="#fff" stroke="#1d1d1b" stroke-width="4"/><path d="M803 1762 L839 1780 L803 1798 Z" fill="#1d1d1b"/><text class="lbs" x="820" y="1900" text-anchor="middle">P5</text><text class="lbs" x="820" y="1955" text-anchor="middle">V2</text>
+<text class="lbt b" x="415" y="1825" text-anchor="middle">VD · verdeler met pomp</text><text class="lbs" x="415" y="1888" text-anchor="middle">14 groepen · 35 °C</text><text class="lbs" x="415" y="1942" text-anchor="middle">825 × 400 × 160</text>
+<rect class="vat" x="990" y="130" width="395" height="1120" rx="60"/>
+<text class="lbt b" x="1187" y="590" text-anchor="middle" style="font-size:66px">B2</text><text class="lbt" x="1187" y="662" text-anchor="middle">buffervat 80 L</text><text class="lbs" x="1187" y="722" text-anchor="middle">Ø 395 × 1120</text><text class="lbs" x="1187" y="778" text-anchor="middle">hangend</text>
+<circle class="sens" cx="1065" cy="400" r="44"/><text class="lbt" x="1065" y="415" text-anchor="middle" style="font-size:42px">T5</text>
+<circle class="sens" cx="1065" cy="1000" r="44"/><text class="lbt" x="1065" y="1015" text-anchor="middle" style="font-size:42px">T8</text>
+<path class="sens" d="M1187 130 V100 M1159 100 H1215 L1187 52 Z"/><text class="lbs" x="1232" y="98">VV2</text>
+<rect x="1232" y="930" width="30" height="320" fill="none" stroke="#1d1d1b" stroke-width="5" stroke-dasharray="14 10"/><rect x="1212" y="1250" width="70" height="80" fill="#fff" stroke="#1d1d1b" stroke-width="5"/>
+<text class="lbt b" x="1302" y="1308">E2</text>
+<rect class="unit" x="1010" y="1520" width="366" height="573"/>
+<text class="lbt b" x="1193" y="1770" text-anchor="middle">FWM2</text><text class="lbs" x="1193" y="1832" text-anchor="middle">verswatermodule</text><text class="lbs" x="1193" y="1888" text-anchor="middle">366 × 573 × 160</text>
+<line class="floorline" x1="-150" y1="2400" x2="1620" y2="2400"/>
+<line class="dim" x1="-330" y1="0" x2="-330" y2="2400"/><line class="dim" x1="-356" y1="26" x2="-304" y2="-26"/><line class="ext" x1="-140" y1="0" x2="-385" y2="0"/><line class="dim" x1="-356" y1="2426" x2="-304" y2="2374"/><line class="ext" x1="-140" y1="2400" x2="-385" y2="2400"/><text class="dimt" x="-356" y="1200.0" transform="rotate(-90 -356 1200.0)">≥ 2400</text><line class="dim" x1="0" y1="2620" x2="1400" y2="2620"/><line class="dim" x1="-26" y1="2646" x2="26" y2="2594"/><line class="ext" x1="0" y1="2440" x2="0" y2="2675"/><line class="dim" x1="1374" y1="2646" x2="1426" y2="2594"/><line class="ext" x1="1400" y1="2440" x2="1400" y2="2675"/><text class="dimt" x="700.0" y="2594">1400</text></svg>
+<!-- /BK:techwand -->
+      <p class="cap"><b>Lange wand</b> <span>· kant garderobe, gezien vanaf de kast · 1:20</span></p>
+    </div>
+    <div>
+      <!-- BK:techachter -->
+<svg class="s20 cv" viewBox="-200 -100 1120 2800" style="width:56.0mm;height:140.0mm" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="hatchN" width="44" height="44" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><rect class="nbg" width="44" height="44"/><line class="nln" x1="0" y1="0" x2="0" y2="44"/></pattern><pattern id="muur" width="26" height="26" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="26" height="26" fill="#d9d5cc"/><line x1="0" y1="0" x2="0" y2="26" stroke="#b9b4aa" stroke-width="7"/></pattern></defs>
+<rect x="-120" y="-40" width="120" height="2480" fill="url(#muur)" stroke="#1d1d1b" stroke-width="4"/>
+<text class="lbl it" x="-42" y="1200" transform="rotate(-90 -42 1200)" style="fill:#1d1d1b">lange wand (kant garderobe)</text>
+<rect class="cabhatch" x="700" y="0" width="110" height="2400"/><text class="lbl" x="772" y="1200" transform="rotate(-90 772 1200)">kast ernaast</text>
+<rect class="tech" x="0" y="0" width="700" height="2400"/>
+<rect x="590" y="0" width="110" height="2400" fill="#dcdcdc" stroke="#1d1d1b" stroke-width="4"/>
+<text class="lbt b" x="645" y="90" text-anchor="middle">S</text>
+<path d="M665 2400 V265 H545" fill="none" stroke="#7a4318" stroke-width="44" stroke-linejoin="round"/><path d="M612 2400 V1060 H545" fill="none" stroke="#7a4318" stroke-width="44" stroke-linejoin="round"/><path d="M612 2400 V1060 H545" fill="none" stroke="#fff" stroke-width="28" stroke-linejoin="round"/><path d="M150 265 H40 V1520" fill="none" stroke="#7a4318" stroke-width="44" stroke-linejoin="round"/><path d="M150 1060 H100 V1520" fill="none" stroke="#7a4318" stroke-width="44" stroke-linejoin="round"/><path d="M150 1060 H100 V1520" fill="none" stroke="#fff" stroke-width="28" stroke-linejoin="round"/><path d="M150 580 H95" fill="none" stroke="#7a4318" stroke-width="44" stroke-linejoin="round"/><path d="M150 725 H95" fill="none" stroke="#7a4318" stroke-width="44" stroke-linejoin="round"/><path d="M150 725 H95" fill="none" stroke="#fff" stroke-width="28" stroke-linejoin="round"/><path d="M545 580 H590" fill="none" stroke="#7a4318" stroke-width="44" stroke-linejoin="round"/><path d="M545 725 H590" fill="none" stroke="#7a4318" stroke-width="44" stroke-linejoin="round"/><path d="M545 725 H590" fill="none" stroke="#fff" stroke-width="28" stroke-linejoin="round"/>
+<text class="lbs" x="140" y="652" text-anchor="middle" transform="rotate(-90 140 652)">VD</text><text class="lbs" x="585" y="652" text-anchor="middle" transform="rotate(-90 585 652)">V4</text>
+<path d="M643 1352 L687 1388 V1352 L643 1388 Z" fill="#fff" stroke="#1d1d1b" stroke-width="4"/><path d="M590 1352 L634 1388 V1352 L590 1388 Z" fill="#fff" stroke="#1d1d1b" stroke-width="4"/><text class="lbs" x="575" y="1387" text-anchor="end">kranen</text>
+<rect class="vat" x="150" y="130" width="395" height="1120" rx="60"/>
+<text class="lbt b" x="347" y="700" text-anchor="middle" style="font-size:66px">B2</text><text class="lbt" x="347" y="772" text-anchor="middle">buffervat</text><text class="lbt" x="347" y="836" text-anchor="middle">80 L</text>
+<path class="sens" d="M347 130 V100 M319 100 H375 L347 52 Z"/>
+<rect x="332" y="930" width="30" height="320" fill="none" stroke="#1d1d1b" stroke-width="5" stroke-dasharray="14 10"/><rect x="312" y="1250" width="70" height="80" fill="#fff" stroke="#1d1d1b" stroke-width="5"/>
+<text class="lbt b" x="347" y="1392" text-anchor="middle">E2</text><text class="lbs" x="347" y="1446" text-anchor="middle">in het vat</text>
+<text class="lbs it" x="345" y="1760" text-anchor="middle">vrij onder</text><text class="lbs it" x="345" y="1816" text-anchor="middle">het vat</text>
+<rect class="unit" x="0" y="1520" width="160" height="573"/><text class="lbs b" x="97" y="1806" text-anchor="middle" transform="rotate(-90 97 1806)" style="fill:#1d1d1b">FWM2</text>
+<rect class="unit" x="530" y="1500" width="170" height="400"/><text class="lbs b" x="632" y="1700" text-anchor="middle" transform="rotate(-90 632 1700)" style="fill:#1d1d1b">V4 + P7</text>
+<line class="floorline" x1="-200" y1="2400" x2="900" y2="2400"/>
+<line class="dim" x1="0" y1="2620" x2="700" y2="2620"/><line class="dim" x1="-26" y1="2646" x2="26" y2="2594"/><line class="ext" x1="0" y1="2440" x2="0" y2="2675"/><line class="dim" x1="674" y1="2646" x2="726" y2="2594"/><line class="ext" x1="700" y1="2440" x2="700" y2="2675"/><text class="dimt" x="350.0" y="2594">700</text></svg>
+<!-- /BK:techachter -->
+      <p class="cap"><b>Achterwand</b> <span>· kant trap · 1:20 · S = afvoer</span></p>
+    </div>
+    <div>
+      <!-- BK:techplan -->
+<svg class="s20 cv" viewBox="-460 -330 2020 2090" style="width:101.0mm;height:104.5mm" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="hatchN" width="44" height="44" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><rect class="nbg" width="44" height="44"/><line class="nln" x1="0" y1="0" x2="0" y2="44"/></pattern><pattern id="muur" width="26" height="26" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="26" height="26" fill="#d9d5cc"/><line x1="0" y1="0" x2="0" y2="26" stroke="#b9b4aa" stroke-width="7"/></pattern></defs>
+<rect x="-150" y="-150" width="1500" height="150" fill="url(#muur)" stroke="#1d1d1b" stroke-width="4"/>
+<rect x="-150" y="0" width="150" height="1520" fill="url(#muur)" stroke="#1d1d1b" stroke-width="4"/>
+<rect class="cab" x="700" y="0" width="650" height="600"/>
+<rect class="duct2" x="700" y="14" width="650" height="125"/><text class="lbs" x="1025" y="94" text-anchor="middle">afzuiging keuken, bovenin</text>
+<text class="lbl" x="1025" y="400">kast</text>
+<rect class="tech" x="0" y="0" width="700" height="1400"/>
+<rect class="unit" x="8" y="24" width="160" height="366"/><text class="lbs b" x="72" y="207" text-anchor="middle" transform="rotate(-90 72 207)" style="fill:#1d1d1b">FWM2</text>
+<rect class="unit" x="8" y="515" width="160" height="825"/><text class="lbs b" x="105" y="1200" text-anchor="middle" transform="rotate(-90 105 1200)" style="fill:#1d1d1b">VD</text>
+<rect class="ghost" x="8" y="780" width="260" height="560"/><text class="lbs b" x="215" y="1070" text-anchor="middle" style="fill:#1d1d1b">WTW</text><text class="lbs" x="215" y="1122" text-anchor="middle">boven</text>
+<path d="M150 212 h-50 M545 212 h45" fill="none" stroke="#1d1d1b" stroke-width="14"/><circle class="vat" cx="347" cy="212" r="198"/><text class="lbt b" x="347" y="207" text-anchor="middle">B2</text><text class="lbs" x="347" y="265" text-anchor="middle">80 L</text>
+<circle cx="645" cy="55" r="52" fill="#dcdcdc" stroke="#1d1d1b" stroke-width="4"/><text class="lbs b" x="645" y="72" text-anchor="middle" style="fill:#1d1d1b">S</text>
+<circle cx="665" cy="165" r="22" fill="#fff" stroke="#7a4318" stroke-width="9"/><circle cx="665" cy="240" r="22" fill="#fff" stroke="#7a4318" stroke-width="9"/><text class="lbs" x="617" y="160" text-anchor="middle">GL</text>
+<rect class="unit" x="530" y="300" width="162" height="265"/><text class="lbs b" x="628" y="432" text-anchor="middle" transform="rotate(-90 628 432)" style="fill:#1d1d1b">V4 + P7</text>
+<path class="ghost" d="M0 1400 H700 V600"/>
+<text class="lbl it" x="350" y="1462">deur</text><text class="lbl it" x="755" y="1000" transform="rotate(-90 755 1000)">deur</text>
+<text class="lbs it" x="485" y="1000" text-anchor="middle">vloer vrij</text>
+<text class="lbl it" x="600" y="-195">achterwand (trap)</text>
+<text class="lbl it" x="-195" y="700" transform="rotate(-90 -195 700)">lange wand (garderobe)</text>
+<text class="lbl it" x="1075" y="1000">Speelkamer / Studie</text>
+<line class="dim" x1="0" y1="1670" x2="700" y2="1670"/><line class="dim" x1="-26" y1="1696" x2="26" y2="1644"/><line class="ext" x1="0" y1="1540" x2="0" y2="1725"/><line class="dim" x1="674" y1="1696" x2="726" y2="1644"/><line class="ext" x1="700" y1="1540" x2="700" y2="1725"/><text class="dimt" x="350.0" y="1644">700</text><line class="dim" x1="-390" y1="0" x2="-390" y2="1400"/><line class="dim" x1="-416" y1="26" x2="-364" y2="-26"/><line class="ext" x1="-260" y1="0" x2="-445" y2="0"/><line class="dim" x1="-416" y1="1426" x2="-364" y2="1374"/><line class="ext" x1="-260" y1="1400" x2="-445" y2="1400"/><text class="dimt" x="-416" y="700.0" transform="rotate(-90 -416 700.0)">1400</text><line class="dim" x1="1460" y1="0" x2="1460" y2="600"/><line class="dim" x1="1434" y1="26" x2="1486" y2="-26"/><line class="ext" x1="1370" y1="0" x2="1515" y2="0"/><line class="dim" x1="1434" y1="626" x2="1486" y2="574"/><line class="ext" x1="1370" y1="600" x2="1515" y2="600"/><text class="dimt" x="1434" y="300.0" transform="rotate(-90 1434 300.0)">600</text></svg>
+<!-- /BK:techplan -->
+      <p class="cap" style="margin-bottom:3mm"><b>Plattegrond</b> <span>· 1:20 · deuren aan de kopse kant en opzij</span></p>
+      <div class="card klein">
+        <h3>Let op</h3>
+        <ul>
+          <li>Vat hangt op de achterwand: ± 100 kg gevuld. Aansluitingen 4 × 5/4" per kant.</li>
+          <li>Element E2 gaat van onderaf in de mof van 6/4": de ruimte onder het vat blijft vrij.</li>
+          <li>Extra voelerhuls ½" op het vat voor de thermostaat van het element, naast die voor T5 en T8.</li>
+          <li>Kranen van de grondleiding aan de kastkant. De volgorde van de aansluitingen op het vat is indicatief.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div><span>Project</span><b>CV-installatie woning · Gasthuisstraat 6-a, Langenboom</b></div>
+    <div><span>Blad</span><b>Techniekkast</b></div>
+    <div><span>Schaal (op A4)</span><b>1:20</b></div>
+    <div><span>Datum · status</span><b>13-11-2026 · concept 2</b></div>
+    <div><span>Blad</span><b>4 / 7</b></div>
+  </div>
+</section>
+
+<!-- ============================================================ BLAD 4 -->
+<section class="sheet">
+  <div class="grid" style="grid-template-columns:168mm 1fr;align-items:start;gap:8mm">
+    <div>
+      <h2>Principeschema woning</h2>
+      <p class="sub" style="margin-bottom:3mm">Niet op schaal. Doorgetrokken = aanvoer, gestreept = retour.</p>
+      <svg viewBox="0 0 650 440" style="width:168mm;height:113.7mm" xmlns="http://www.w3.org/2000/svg" font-family="Inter,Arial,sans-serif" font-size="11.5" fill="#1b1b1b">
+        <defs>
+          <g id="kk"><path d="M-6,-5 L6,5 L6,-5 L-6,5Z" fill="#fff" stroke="#1b1b1b" stroke-width="1.1" stroke-linejoin="round"/></g>
+          <g id="pomp"><circle r="9" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/><path d="M-4,-5.5 L6,0 L-4,5.5Z" fill="#1b1b1b"/></g>
+          <g id="drieweg"><path d="M-12,-6 L0,0 L-12,6Z M12,-6 L0,0 L12,6Z M-6,12 L0,0 L6,12Z" fill="#fff" stroke="#1b1b1b" stroke-width="1.1" stroke-linejoin="round"/></g>
+        </defs>
+        <g fill="none" stroke-width="2.6" stroke-linejoin="round">
+          <path d="M10 200 H190" stroke="var(--cv)"/>
+          <path d="M10 350 H190" stroke="var(--cv)" stroke-dasharray="7 4"/>
+          <path d="M150 350 V392" stroke="var(--cv)" stroke-dasharray="7 4"/>
+          <!-- verswatermodule -->
+          <path d="M270 120 H350" stroke="var(--cv)"/>
+          <path d="M470 150 H638 V374 H230 V366" stroke="var(--cv)" stroke-dasharray="7 4"/>
+          <!-- radiatoren verdieping -->
+          <path d="M270 196 H470" stroke="var(--cv)"/>
+          <path d="M470 222 H270 M330 222 V206" stroke="var(--cv)" stroke-dasharray="7 4"/>
+          <!-- vloer -->
+          <path d="M270 262 H420" stroke="var(--cv)"/>
+          <path d="M420 330 H270 M330 330 V272" stroke="var(--cv)" stroke-dasharray="7 4"/>
+          <!-- tapwater -->
+          <path d="M385 96 V40" stroke="var(--koud)" stroke-width="1.8" stroke-dasharray="4 3"/>
+          <path d="M435 96 V40" stroke="var(--warm)" stroke-width="1.8"/>
+        </g>
+        <path d="M470 196 l-7 -4 v8 z M470 222 l7 -4 v8 z" fill="var(--cv)"/>
+        <use href="#kk" x="60" y="200"/><use href="#kk" x="60" y="350"/>
+        <rect x="190" y="96" width="80" height="276" rx="26" fill="#fff" stroke="#1b1b1b" stroke-width="1.8"/>
+        <text x="216" y="238" text-anchor="middle" font-weight="700" font-size="14">B2</text><text x="216" y="253" text-anchor="middle">80 L</text>
+        <rect x="166" y="306" width="24" height="18" fill="#fff" stroke="#1b1b1b" stroke-width="1.6"/><text x="178" y="319" text-anchor="middle" font-size="10" font-weight="700">E2</text>
+        <polyline points="190,315 198,309 206,321 214,309 222,321 230,309 236,315" fill="none" stroke="#1b1b1b" stroke-width="1.6"/>
+        <circle cx="252" cy="290" r="9.5" fill="#fff" stroke="#1b1b1b"/><text x="252" y="293.6" text-anchor="middle" font-size="10">T5</text>
+        <circle cx="252" cy="350" r="9.5" fill="#fff" stroke="#1b1b1b"/><text x="252" y="353.6" text-anchor="middle" font-size="10">T8</text>
+        <rect x="134" y="392" width="32" height="40" rx="9" fill="#fff" stroke="#1b1b1b" stroke-width="1.5"/><text x="150" y="416" text-anchor="middle" font-size="10.5" font-weight="700">X2</text>
+        <path d="M230 96 V74 M222 74 H238 L230 60Z" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/>
+        <rect x="350" y="96" width="120" height="66" rx="3" fill="#fff" stroke="#1b1b1b" stroke-width="1.6"/>
+        <text x="410" y="126" text-anchor="middle" font-weight="700" font-size="13">FWM2</text><text x="410" y="142" text-anchor="middle">warm water 50 °C</text>
+        <use href="#drieweg" x="330" y="196"/><use href="#pomp" x="372" y="196"/>
+        <use href="#drieweg" x="330" y="262"/><use href="#pomp" x="372" y="262"/>
+        <rect x="278" y="236" width="204" height="118" rx="3" fill="none" stroke="#1b1b1b" stroke-width="1" stroke-dasharray="5 3"/>
+        <rect x="420" y="244" width="56" height="104" rx="2" fill="#fff" stroke="#1b1b1b" stroke-width="1.6"/>
+        <path d="M430 268 H466 M430 292 H466 M430 316 H466" stroke="#555" stroke-dasharray="3 3"/>
+        <text x="10" y="190" font-weight="700">Uit de loods</text><text x="10" y="216" fill="#333">aanvoer, max 75 °C</text>
+        <text x="10" y="340" font-weight="700">Naar de loods</text><text x="10" y="367" fill="#333">retour</text>
+        <text x="158" y="290" text-anchor="end" font-weight="700">Element E2</text><text x="158" y="304" text-anchor="end" fill="#333">3 kW, 75 °C</text><text x="158" y="318" text-anchor="end" fill="#333">handbediend</text>
+        <text x="246" y="66" font-weight="700">VV2</text><text x="246" y="80" fill="#333">2,5 bar</text>
+        <text x="172" y="410" fill="#333">expansievat</text><text x="172" y="424" fill="#333">12 L</text>
+        <text x="380" y="34" text-anchor="end" font-weight="700">koud in</text>
+        <text x="442" y="34" font-weight="700">warm naar tappunten</text>
+        <text x="314" y="186" text-anchor="end" font-weight="700">V4</text><text x="372" y="180" text-anchor="middle" font-weight="700">P7</text>
+        <text x="482" y="194" font-weight="700">Radiatoren verdieping</text><text x="482" y="208" fill="#333">bestaande leidingen</text><text x="482" y="222" fill="#333">aanvoer max 60 °C</text>
+        <text x="314" y="252" text-anchor="end" font-weight="700">V2</text><text x="312" y="290" text-anchor="end" fill="#333">35 °C</text>
+        <text x="372" y="290" text-anchor="middle" font-weight="700">P5</text>
+        <text x="490" y="270" font-weight="700">VD · verdeler met pomp</text><text x="490" y="284" fill="#333">vloer begane grond</text><text x="490" y="298" fill="#333">14 groepen</text><text x="490" y="312" fill="#333">V2 en P5 zitten</text><text x="490" y="326" fill="#333">in de verdeler</text>
+        
+      </svg>
+    </div>
+
+    <div>
+      <h2>Onderdelen</h2>
+      <p class="sub" style="margin-bottom:2.5mm">De codes staan op de tekeningen. Merk, type en winkel staan op blad 6 en 7.</p>
+      <table>
+        <tbody>
+          <tr><td class="c">TK</td><td><b>Techniekkast</b> · hoekkast 700&nbsp;×&nbsp;1400, minimaal 2400 hoog</td></tr>
+          <tr><td class="c">B2</td><td><b>Buffervat</b> · Metalac 80 L wandmodel: Ø 395 × 1120, 6 bar, aansluitingen 5/4"</td></tr>
+          <tr><td class="c">E2</td><td><b>Elektrisch element</b> · 3 kW, 356 mm lang, van onderaf in de mof van 6/4". Thermostaat met maximaalbeveiliging, 75&nbsp;°C</td></tr>
+          <tr><td class="c">FWM2</td><td><b>Verswatermodule</b> · 30 L/min, warm water 50&nbsp;°C, 366 × 573 × 160</td></tr>
+          <tr><td class="c">VD</td><td><b>Verdeler vloerverwarming met pomp</b> · 14 groepen, 825 × 400 × 160. Mengventiel (35&nbsp;°C), pomp en maximaalthermostaat ingebouwd. Ventielen M30 × 1,5 met een thermische motor per groep</td></tr>
+          <tr><td class="c">ZR</td><td><b>Zoneregeling vloerverwarming</b> · regelaar bij de verdeler (330 × 118 × 57), 8 draadloze thermostaten (plekken op blad 3) en een bedieningspaneel met tijdschema's en app. Schakelt ook de pomp van de verdeler</td></tr>
+          <tr><td class="c">V4 + P7</td><td><b>Pompgroep radiatoren verdieping</b> · mengventiel, maximaal 60&nbsp;°C</td></tr>
+          <tr><td class="c">X2 · VV2</td><td><b>Expansievat en veiligheidsventiel</b> · 12 L, voordruk 1,0 bar · 2,5 bar</td></tr>
+          <tr><td class="c">WTW</td><td><b>WTW-unit ventilatie</b> · S&amp;P Energisava 260 R: 560 × 635 × 260, 4 × Ø 125</td></tr>
+          <tr><td class="c">S</td><td><b>Standleiding afvoer</b> · alle afvoeren, condens WTW-unit en veiligheidsventiel</td></tr>
+          <tr><td class="c">DWTW</td><td><b>Douchegoot met warmteterugwinning</b></td></tr>
+          <tr><td class="c">MK</td><td><b>Meterkast</b> · koud water. De gasaansluiting wordt afgesloten</td></tr>
+          <tr><td class="c">Haard</td><td><b>Spartherm tunnelhaard</b> · niet op de&nbsp;CV</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div><span>Project</span><b>CV-installatie woning · Gasthuisstraat 6-a, Langenboom</b></div>
+    <div><span>Blad</span><b>Principeschema en onderdelen</b></div>
+    <div><span>Schaal (op A4)</span><b>–</b></div>
+    <div><span>Datum · status</span><b>13-11-2026 · concept 2</b></div>
+    <div><span>Blad</span><b>5 / 7</b></div>
+  </div>
+</section>
+
+<!-- ============================================================ BLAD 6 -->
+<section class="sheet">
+  <h2>Bestellijst 1: hoofdonderdelen met toebehoren</h2>
+  <p class="sub" style="margin-bottom:2.5mm">De winkelnaam is een link naar het product. Prijzen inclusief btw, op 13-11-2026. De stroomvoorziening (groepen, wandcontactdozen, kabels) staat er niet in.</p>
+  <table class="cat">
+    <thead><tr><th>Code</th><th>Onderdeel</th><th>Merk en type</th><th class="n">Aantal</th><th>Winkel</th><th class="n">Prijs per stuk</th></tr></thead>
+    <tbody>
+      <tr class="hoofd"><td class="c">B2</td><td><b>Buffervat, wandmodel</b></td><td>Metalac 80 L, 80-8 TPZ, art. 30601080 · Ø 395 × 1120</td><td class="n">1</td><td><a href="https://www.buurs.nl/artikel/6389/metalac-buffervat-80-liter-voor-wandmontage-80-8-tpz.html">buurs.nl</a></td><td class="n">€ 385,00</td></tr>
+      <tr class="sub"><td></td><td>Elektrisch element E2</td><td>Inventum 3 kW, 230 V, 1½" × 14" (356 mm), art. 107656</td><td class="n">1</td><td><a href="https://www.technim.nl/p/inventum-verwarmingselement-3kw-230v-14-x-1-1-2/">technim.nl</a></td><td class="n">€ 107,44</td></tr>
+      <tr class="sub"><td></td><td>Thermostaat met begrenzer voor E2</td><td>JUMO 603070/0170, 16 A · regelaar 0–120 °C, begrenzer 70–130 °C, dompelhuls ½"</td><td class="n">1</td><td><a href="https://www.oeg.net/nl/jumo-boilerthermostaat-met-veiligheidstemperatuurbegrenzer-incl-dompelhuls-211213194">oeg.net</a></td><td class="n">€ 219,19</td></tr>
+      <tr class="sub"><td></td><td>Ontluchter bovenop</td><td>Caleffi automatische ontluchter ½", art. 502640</td><td class="n">1</td><td><a href="https://www.technim.nl/p/caleffi-automatische-ontluchter-1-2-502640/">technim.nl</a></td><td class="n">€ 8,94</td></tr>
+      <tr class="sub"><td></td><td>Kranen grondleiding</td><td>Bonfix kogelkraan 5/4" binnendraad, rode hendel</td><td class="n">2</td><td><a href="https://www.technim.nl/p/bonfix-kogelkraan-5-4-bi-dr-x-5-4-bi-dr-rode-hendel/">technim.nl</a></td><td class="n">€ 22,63</td></tr>
+      <tr class="sub"><td></td><td>Veiligheidsventiel VV2</td><td>Overstortventiel voor verwarming ½", 2,5 bar, OEG-nr. 512240130</td><td class="n">1</td><td><a href="https://www.oeg.net/nl/overstort-overdrukventiel-voor-verwarming-1-2-2-5-bar-512240130">oeg.net</a></td><td class="n">€ 8,59</td></tr>
+      <tr class="hoofd"><td class="c">X2</td><td><b>Expansievat</b></td><td>12 L, 8 bar, art. 103073 · Ø 280 × 295</td><td class="n">1</td><td><a href="https://www.technim.nl/p/sol-expvat-12l-1-5-8b-roo-6301210/">technim.nl</a></td><td class="n">€ 39,70</td></tr>
+      <tr class="sub"><td></td><td>Wandbeugel</td><td>Watts ¾", verstelbaar 160–250 mm</td><td class="n">1</td><td><a href="https://www.technim.nl/p/watts-expansievatbeugel-3-4-verstelbaar-160-250-mm-tbv-wandmontage-expansievat-buffervat/">technim.nl</a></td><td class="n">€ 28,66</td></tr>
+      <tr class="hoofd"><td class="c">VD</td><td><b>Verdeler vloerverwarming met pomp</b></td><td>VTE Composiet 14 groepen + Grundfos UPM3, art. 103954 · 825 × 400 × 160 · V2, P5 en T7 ingebouwd</td><td class="n">1</td><td><a href="https://www.technim.nl/p/vte-composiet-14-groepen-verdeler-upm3-pomp/">technim.nl</a></td><td class="n">€ 648,80</td></tr>
+      <tr class="sub"><td></td><td>Aansluiting vloerbuis</td><td>Euroconus-adapter ¾" voor buis 16 × 2, art. 100683</td><td class="n">28</td><td><a href="https://www.technim.nl/p/euroconus-moer-16x34/">technim.nl</a></td><td class="n">€ 2,15</td></tr>
+      <tr class="sub"><td></td><td>Thermische motoren</td><td>Honeywell Home MT4-230-NC-HCC, 230 V, stroomloos dicht, M30 × 1,5, art. 105654 · één per groep</td><td class="n">14</td><td><a href="https://www.technim.nl/p/honeywell-thermische-motor-mt4-230-nc-hcc/">technim.nl</a></td><td class="n">€ 23,18</td></tr>
+      <tr class="hoofd"><td class="c">ZR</td><td><b>Zoneregeling vloerverwarming</b></td><td>Honeywell Home HCC100 met 4 draadloze thermostaten DT4R (DTS42), wit, art. 105673 · 8 zones, 20 uitgangen voor motoren, pomprelais · 330 × 118 × 57</td><td class="n">1</td><td><a href="https://www.technim.nl/p/honeywell-home-zoneregelaar-hcc100-4x-honeywell-thermostaat-dt4r-draadloos-wit/">technim.nl</a></td><td class="n">€ 554,49</td></tr>
+      <tr class="sub"><td></td><td>Thermostaten erbij, samen 8</td><td>Honeywell Home DT4R draadloos, DTS42WRFST20, wit, art. 105715</td><td class="n">4</td><td><a href="https://www.technim.nl/p/honeywell-home-ruimtethermostaat-dts4r-wit-draadloos-aan-uit-alleen-de-thermostaat/">technim.nl</a></td><td class="n">€ 84,84</td></tr>
+      <tr class="sub"><td></td><td>Bedieningspaneel</td><td>Honeywell Home Evohome ATC938G4000, art. 112131 · tijdschema's per zone en app</td><td class="n">1</td><td><a href="https://www.technim.nl/p/honeywell-home-evohome-bedieningspaneel-los-atc938g4000/">technim.nl</a></td><td class="n">€ 237,35</td></tr>
+      <tr class="sub"><td></td><td>Muurplaat met voeding</td><td>Honeywell Home Evohome ATF600, art. 104442 · voor het bedieningspaneel</td><td class="n">1</td><td><a href="https://www.technim.nl/p/honeywell-home-evohome-muurplaat-voedingsmodule-atf600/">technim.nl</a></td><td class="n">€ 59,85</td></tr>
+      <tr class="hoofd"><td class="c">V4 + P7</td><td><b>Pompgroep radiatoren verdieping</b></td><td>EnergyBy DN25, thermostatisch mengventiel 30–60 °C, met pomp, art. EBPG02-02500-EBP-30/60</td><td class="n">1</td><td><a href="https://www.energyby.nl/energyby-dn25-pompgroep-met-thermostatisch-mengventiel-30-tot-60graden-en-energyby-cv-pomp.htm">energyby.nl</a></td><td class="n">€ 499,00</td></tr>
+      <tr class="sub"><td></td><td>Muurbeugel</td><td>EnergyBy muurbeugel voor pompgroep</td><td class="n">1</td><td><a href="https://www.energyby.nl/energyby-muurbeugel-tbv-pompgroep.htm">energyby.nl</a></td><td class="n">€ 14,50</td></tr>
+      <tr class="sub"><td></td><td>Thermostaat verdieping</td><td>Nog te kiezen · schakelt de pomp van de pompgroep</td><td class="n">1</td><td></td><td class="n">–</td></tr>
+      <tr class="hoofd"><td class="c">FWM2</td><td><b>Verswatermodule</b></td><td>Technische Alternative FRISTAR3, art. 01/FRISTAR3 · 30 L/min bij buffer 65 °C · 366 × 573 × 160</td><td class="n">1</td><td><a href="https://www.heizungsdiscount24.de/regelungstechnik/technische-alternative-fristar3-frischwasserstation-01fristar3.html">heizungsdiscount24.de</a></td><td class="n">€ 1.249,00</td></tr>
+      <tr class="hoofd"><td class="c">WTW</td><td><b>WTW-unit ventilatie</b></td><td>S&amp;P Energisava 260, rechter uitvoering · 560 × 635 × 260 · 4 × Ø 125</td><td class="n">1</td><td><a href="https://www.ventilatieshop.com/energisava-260-s-p-wtw-rechter-uitvoering/">ventilatieshop.com</a></td><td class="n">€ 1.355,00</td></tr>
+      <tr class="tot"><td></td><td><b>Samen bestellijst 1</b></td><td></td><td></td><td></td><td class="n"><b>€ 6.184,85</b></td></tr>
+    </tbody>
+  </table>
+
+  <div class="foot">
+    <div><span>Project</span><b>CV-installatie woning · Gasthuisstraat 6-a, Langenboom</b></div>
+    <div><span>Blad</span><b>Bestellijst 1: hoofdonderdelen</b></div>
+    <div><span>Schaal (op A4)</span><b>–</b></div>
+    <div><span>Datum · status</span><b>13-11-2026 · concept 2</b></div>
+    <div><span>Blad</span><b>6 / 7</b></div>
+  </div>
+</section>
+
+<!-- ============================================================ BLAD 7 -->
+<section class="sheet">
+  <h2>Bestellijst 2: vloerverwarming en klein materiaal</h2>
+  <p class="sub" style="margin-bottom:2.5mm">Lengtes gemeten op het leidingplan, met ± 10 % extra. Afstemmen wie dit levert.</p>
+  <table class="cat">
+    <thead><tr><th>Code</th><th>Onderdeel</th><th>Merk en type</th><th class="n">Aantal</th><th>Winkel</th><th class="n">Prijs per stuk</th></tr></thead>
+    <tbody>
+      <tr class="hoofd"><td class="c"></td><td><b>Vloerbuis 16 × 2</b></td><td>Uponor Comfort Pipe Plus PE-Xa, rol 640 m</td><td class="n">1</td><td><a href="https://www.technim.nl/p/comfort-pipe-plus-leiding-16x2-0-640m/">technim.nl</a></td><td class="n">€ 576,15</td></tr>
+      <tr class="sub"><td></td><td>tweede maat</td><td>Zelfde buis, rol 240 m · samen 1120 m voor ± 1010 m</td><td class="n">2</td><td><a href="https://www.technim.nl/p/comfort-pipe-plus-leiding-16x2-0-240m/">technim.nl</a></td><td class="n">€ 216,06</td></tr>
+      <tr class="hoofd"><td class="c"></td><td><b>Noppenplaat, raster 50 mm</b></td><td>Rehau Rautherm Varionova met 11 mm isolatie, doos 22,4 m² · 6 dozen voor ± 124 m²</td><td class="n">6</td><td><a href="https://www.technim.nl/p/rehau-noppenplaat-doos/">technim.nl</a></td><td class="n">€ 299,00</td></tr>
+      <tr class="hoofd"><td class="c"></td><td><b>Randisolatie</b></td><td>10 cm hoog, met plakstrip en flap, rol 50 m · aantal geschat</td><td class="n">± 4</td><td><a href="https://www.technim.nl/p/randisolatie-blauw-50m/">technim.nl</a></td><td class="n">€ 26,22</td></tr>
+      <tr class="hoofd"><td class="c"></td><td><b>Tapwaterleiding warm</b></td><td>Uponor Uni Pipe Plus 16 × 2, geïsoleerd, rood, per meter · gemeten op blad 2, met opgangen</td><td class="n">46 m</td><td><a href="https://www.technim.nl/p/flex-buis-16mm-10-meter-2/">technim.nl</a></td><td class="n">€ 3,52</td></tr>
+      <tr class="sub"><td></td><td>koud</td><td>Zelfde buis, blauw, per meter</td><td class="n">52 m</td><td><a href="https://www.technim.nl/p/flex-buis-16mm-10-meter-3/">technim.nl</a></td><td class="n">€ 3,52</td></tr>
+      <tr class="hoofd"><td class="c"></td><td><b>Leiding naar de radiatoren boven</b></td><td>Uponor Uni Pipe Plus 25 × 2,5, geïsoleerd, per meter · aanvoer en retour naar het stijgpunt bij de haard</td><td class="n">20 m</td><td><a href="https://www.technim.nl/p/flex-buis-25mm-10-meter-2/">technim.nl</a></td><td class="n">€ 8,39</td></tr>
+      <tr class="hoofd"><td class="c"></td><td><b>Leidingen in de techniekkast</b></td><td>Uponor Uni Pipe Plus 25 × 2,5, starre buis van 5 m · tussen vat, verdeler, pompgroep en verswatermodule</td><td class="n">2</td><td><a href="https://www.technim.nl/p/uponor-uni-pipe-plus-25x25-5-meter/">technim.nl</a></td><td class="n">€ 42,19</td></tr>
+      <tr class="hoofd"><td class="c"></td><td><b>Trechter onder het veiligheidsventiel</b></td><td>Dyka trechter 100 × 40, naar de standleiding</td><td class="n">1</td><td><a href="https://www.technim.nl/p/dyka-trechter-grijs/">technim.nl</a></td><td class="n">€ 10,40</td></tr>
+      <tr class="tot"><td></td><td><b>Samen bestellijst 2</b></td><td></td><td></td><td></td><td class="n"><b>€ 3.514,69</b></td></tr>
+    </tbody>
+  </table>
+  <table class="cat totaal" style="margin-top:3.5mm">
+    <tbody>
+      <tr><td>Bestellijst 1: hoofdonderdelen met toebehoren, met de zoneregeling (blad 6)</td><td class="n">€ 6.184,85</td></tr>
+      <tr><td>Bestellijst 2: vloerverwarming en klein materiaal (dit blad)</td><td class="n">€ 3.514,69</td></tr>
+      <tr class="tot"><td><b>Totaal beide lijsten</b> · inclusief btw, zonder verzendkosten en zonder de stroomvoorziening</td><td class="n"><b>€ 9.699,54</b></td></tr>
+    </tbody>
+  </table>
+  <div style="margin-top:4mm;max-width:170mm">
+      <h3 style="margin-bottom:1mm">Via de loodgieter, niet in deze lijst</h3>
+      <table>
+        <tbody>
+          <tr><td>Koppelingen en fittingen: op het vat (8 × 5/4"), in de kast en bij de tappunten. Die hangen af van zijn perssysteem</td></tr>
+          <tr><td>Afvoeren (± 28 m op het leidingplan) en de standleiding</td></tr>
+          <tr><td>Ventilatiekanalen Ø 125 en ventielen: pas als de routes vastliggen</td></tr>
+        </tbody>
+      </table>
+  </div>
+
+  <div class="foot">
+    <div><span>Project</span><b>CV-installatie woning · Gasthuisstraat 6-a, Langenboom</b></div>
+    <div><span>Blad</span><b>Bestellijst 2: klein materiaal</b></div>
+    <div><span>Schaal (op A4)</span><b>–</b></div>
+    <div><span>Datum · status</span><b>13-11-2026 · concept 2</b></div>
+    <div><span>Blad</span><b>7 / 7</b></div>
+  </div>
+</section>
+
+
+</body>
+</html>

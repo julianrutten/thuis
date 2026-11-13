@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>CV-installatie loods · zelf regelen · Gasthuisstraat 6-a</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* A4 liggend. Alles moet leesbaar zijn op een A4 in zwart-wit:
+   lopende tekst >= 9 pt, tekst in tekeningen >= 7 pt, leidingen verschillen in lijnsoort en dikte, niet alleen in kleur. */
+@page{size:297mm 210mm;margin:0}
+:root{
+  --ink:#1b1b1b; --muted:#444; --rule:#bdb9b0; --card:#f6f4ef; --cardrule:#8f8b82;
+  --koud:#143d80; --warm:#8f1a14; --cv:#8f3608; --gas:#4d3b00; --wtw:#07504c; --el:#1b1b1b;
+  --tech:#f9e1cd; --techrule:#7a4318;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:Inter,"Helvetica Neue",Arial,sans-serif;color:var(--ink);font-size:9.6pt;line-height:1.4;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.sheet{width:297mm;height:210mm;padding:8mm 10mm 0;position:relative;page-break-after:always;overflow:hidden}
+.sheet:last-child{page-break-after:auto}
+.eyebrow{font-size:7.4pt;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 1.5mm}
+h1{font-size:21pt;line-height:1.1;font-weight:700;margin:0 0 2.2mm;letter-spacing:-.01em}
+h2{font-size:15pt;line-height:1.15;font-weight:700;margin:0 0 1mm}
+h3{font-size:10.6pt;font-weight:700;margin:0 0 1.6mm}
+p{margin:0 0 2mm}
+.lead{font-size:10.8pt;line-height:1.4;margin-bottom:3.5mm}
+.sub{color:var(--muted);font-size:8.8pt;margin:0}
+.card{background:var(--card);border:.3mm solid var(--cardrule);border-radius:1.4mm;padding:3.2mm 4mm}
+.card ol,.card ul{margin:0;padding-left:5mm}
+.card li{margin-bottom:1.1mm}
+.card li:last-child{margin-bottom:0}
+.card.klein{font-size:9pt;padding:2.8mm 3.4mm}
+table.vv{font-size:8.4pt}table.vv td{padding:.75mm 1.6mm .75mm 0}table.vv td.n,table.vv th:nth-child(n+3){text-align:right;white-space:nowrap}table.vv tr.tot td{border-bottom:0;border-top:.35mm solid var(--ink)}
+.hoh{display:flex;gap:3mm;font-size:8.6pt;margin-top:2.5mm;align-items:center}.hoh span{display:flex;align-items:center;gap:1.2mm;white-space:nowrap}.hoh svg{width:8.5mm;height:3.9mm}.card.klein ul{padding-left:4.2mm}
+table{border-collapse:collapse;width:100%;font-size:9pt}
+th{font-size:7.2pt;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;text-align:left;padding:0 2mm 1mm 0;border-bottom:.4mm solid var(--ink);white-space:nowrap}
+td{padding:1.1mm 2mm 1.1mm 0;border-bottom:.2mm solid var(--rule);vertical-align:top}
+td.c{font-weight:700;white-space:nowrap}
+.wie td{font-size:10pt;padding:1.7mm 3mm 1.7mm 0}
+.wie tr:last-child td{border-bottom:0}
+.grid{display:grid;gap:6mm}
+.foot{position:absolute;left:10mm;right:10mm;bottom:5.5mm;border-top:.35mm solid var(--ink);display:grid;grid-template-columns:3.1fr 2.5fr 1.2fr 1.7fr .8fr;font-size:8pt}
+.foot div{padding:1.3mm 2.5mm 0 2.5mm;border-left:.2mm solid var(--rule);min-height:8.5mm}
+.foot div:first-child{border-left:0;padding-left:0}
+.foot span{display:block;font-size:6.6pt;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.3mm}
+.foot b{font-weight:600}
+table.cat{font-size:9pt}table.cat td{padding:.95mm 3mm .95mm 0}table.cat tr.hoofd td{border-top:.35mm solid var(--ink);padding-top:1.4mm}table.cat tr.sub td{border-bottom:0;color:#222}table.cat tr.sub td:nth-child(2){padding-left:4.5mm}table.cat tr.sub td:nth-child(2)::before{content:"– "}.open{font-style:italic}table.cat.totaal td{padding:1.2mm 3mm 1.2mm 0;font-size:9.6pt}table.cat th.n,table.cat td.n,td.n{text-align:right;white-space:nowrap}table.cat tr.tot td{border-bottom:0;border-top:.35mm solid var(--ink)}
+a{color:var(--ink);text-decoration:underline;text-underline-offset:.5mm}
+.key{display:grid;grid-template-columns:repeat(4,auto);gap:1mm 5mm;font-size:8.8pt;align-items:center;justify-content:end}
+.key span{display:flex;align-items:center;gap:1.8mm;white-space:nowrap}
+.key svg{width:13mm;height:3mm;flex:none}
+.cap{font-size:8.8pt;margin:1.2mm 0 0}
+.cap b{font-weight:700}
+.cap span{color:var(--muted)}
+svg{display:block}
+/* leidingplan (eenheid = punt van blad 9 van VO4; op A4 is 1 eenheid 0,4704 mm = schaal 1:75) */
+.lb{font-family:Inter,Arial,sans-serif;font-size:5.3px;fill:var(--ink);paint-order:stroke;stroke:#fff;stroke-width:1.5px;stroke-linejoin:round}
+.lbb{font-weight:700;font-size:5.6px}
+.rm{font-family:Inter,Arial,sans-serif;font-size:4.4px;letter-spacing:.4px;fill:#333;font-weight:600;paint-order:stroke;stroke:#fff;stroke-width:1.3px;stroke-linejoin:round}
+.case{fill:none;stroke:#fff;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.pp{fill:none;stroke-linejoin:round}
+.cva{stroke:var(--cv);stroke-width:1.3;stroke-linecap:round}
+.cvr{stroke:var(--cv);stroke-width:1.3;stroke-dasharray:3.4 1.9}
+.ww{stroke:var(--warm);stroke-width:.75;stroke-linecap:round}
+.kw{stroke:var(--koud);stroke-width:.75;stroke-dasharray:1.7 1.1}
+.vk1{fill:none;stroke:#333;stroke-width:2.7}.vk2{fill:none;stroke:#fff;stroke-width:1.5}
+.af{fill:none;stroke:#6b5a3c;stroke-width:2.2;stroke-dasharray:6 1.5;stroke-linejoin:round}
+.wt{stroke:var(--wtw);stroke-width:.75;stroke-dasharray:2.4 1 .01 1;stroke-linecap:round}
+.ld{fill:none;stroke:var(--ink);stroke-width:.35}
+.tap{fill:#fff;stroke:var(--ink);stroke-width:.5}
+/* BK-STIJL */
+/* tekenstijl: gelijk aan de detaillering van 29-10-2026 (dunne lijnen, kleine tekst) */
+.wall{fill:#1d1d1b}.newwall{fill:#6f6a62}.floor{fill:#fff}
+.cab{fill:#efece5;stroke:#5c5a55;stroke-width:4px}.app{fill:#e2e9f1;stroke:#3b5b7a;stroke-width:4px}.tech{fill:#f9e8d9;stroke:#a2602b;stroke-width:5px}
+.oven{fill:#e9ddd2;stroke:#8a4a2a;stroke-width:5px}.mouth{fill:#5a3a2a}.niche{fill:url(#hatchN);stroke:#1d1d1b;stroke-width:4px}.nbg{fill:#fff}.nln{stroke:#a9a9a9;stroke-width:5px}
+.glass{fill:#eef3f6;stroke:#1d1d1b;stroke-width:4px}.thin{fill:none;stroke:#1d1d1b;stroke-width:7px}.hair{fill:none;stroke:#5c5a55;stroke-width:3px}
+.pocket{fill:none;stroke:#fff;stroke-width:5px;stroke-dasharray:30 22}.arcwall{fill:none;stroke:#1d1d1b;stroke-width:100px}
+.swing{fill:none;stroke:#8a8a8a;stroke-width:4px;stroke-dasharray:26 20}.hood{fill:none;stroke:#3b5b7a;stroke-width:5px;stroke-dasharray:36 20}
+.shelfline{fill:none;stroke:#8a8174;stroke-width:4px;stroke-dasharray:30 22}.drum{fill:#fff;stroke:#3b5b7a;stroke-width:4px}.vat{fill:#fff;stroke:#a2602b;stroke-width:5px}
+.sink{fill:#fff;stroke:#5c5a55;stroke-width:4px}.hanger{stroke:#b3aca0;stroke-width:5px}.rail{stroke:#8a8174;stroke-width:8px}
+.dim{fill:none;stroke:#3a3a3a;stroke-width:3px}.ext{fill:none;stroke:#8a8a8a;stroke-width:2.5px}
+.dimt{fill:#333;font-size:56px;text-anchor:middle;letter-spacing:1.5px}
+.lbl{fill:#333;font-size:50px;text-anchor:middle;letter-spacing:1px}.lbls{fill:#5a3a1c;font-size:46px;text-anchor:middle}.it{fill:#777;font-style:italic}
+.bdg{font-weight:700;text-anchor:middle;dominant-baseline:central;fill:#1d1d1b}
+.dott{fill:#fff;font-weight:700;text-anchor:middle;dominant-baseline:central}
+.wallbg{fill:#fbfaf7;stroke:#1d1d1b;stroke-width:7px}.floorline{stroke:#1d1d1b;stroke-width:8px}
+.cabhatch{fill:#e4dfd5;stroke:#5c5a55;stroke-width:4px}
+.grill{fill:#f4f2ee;stroke:#5c5a55;stroke-width:3px;stroke-dasharray:10 8}.door{fill:#fff;stroke:#1d1d1b;stroke-width:8px}.pane{fill:#eef3f6;stroke:#8aa0b2;stroke-width:4px}
+.ghost{fill:none;stroke:#a2602b;stroke-width:4px;stroke-dasharray:26 18}.top{fill:#cfc9bd;stroke:#5c5a55;stroke-width:3px}.plinth{fill:#d9d5cc;stroke:#5c5a55;stroke-width:3px}
+.splash{fill:#f1efea}.open{fill:#f8f6f2;stroke:#5c5a55;stroke-width:3px}.cushion{fill:#c9bfae;stroke:#8a8174;stroke-width:3px}.coat{fill:#ddd7cb;stroke:#8a8174;stroke-width:3px}
+.line{stroke:#5c5a55;stroke-width:3px}.panel{fill:#5c5a55}.knob{fill:#5c5a55}.stone{fill:#5d656c}
+.duct{stroke:#3b5b7a;stroke-width:5px;stroke-dasharray:22 16}.shield{fill:#d9c9a8}.fan{fill:#fff;stroke:#3b5b7a;stroke-width:4px}
+.elbox{fill:#e0a400;stroke:#8a6a1f;stroke-width:3px}.wbox{fill:#fff;stroke:#3f8f3f;stroke-width:5px}
+.s75.bkp .lbl{font-size:135px}.s75.bkp .cab,.s75.bkp .app,.s75.bkp .sink,.s75.bkp .drum,.s75.bkp .oven{stroke-width:11px}
+.s20 .dimt{font-size:46px}.s20 .lbl{font-size:42px}.s20 .lbls{font-size:40px}
+.s40 .lbl{font-size:70px}
+.fade .cab{fill:#f6f4f0;stroke:#bdb9b1}.fade .app{fill:#eef3f7;stroke:#a9b8c8}.fade .tech{fill:#fcf3ea;stroke:#d6b08c}.fade .oven{fill:#f3ede7;stroke:#cdb0a2}
+.fade .mouth{fill:#b9aca4}.fade .newwall{fill:#bdb9b3}.fade .drum{stroke:#a9b8c8}.fade .vat{stroke:#d6b08c}.fade .sink{stroke:#bdb9b1}.fade .hood{stroke:#a9b8c8}
+.b{font-weight:700}
+.lbt{fill:#1d1d1b;font-size:54px}.lbs{fill:#333;font-size:48px}.ld2{stroke:#1d1d1b;stroke-width:3px}
+.duct2{fill:#fff;stroke:#1d1d1b;stroke-width:4px;stroke-dasharray:22 12}
+.s50.cv .lbt{font-size:128px}.s50.cv .lbl{font-size:112px}.s50.cv .dimt{font-size:118px}.s50.cv .unit,.s50.cv .vat{stroke-width:11px}.s50.cv .tech{stroke-width:12px}.s50.cv .dim{stroke-width:8px}.s50.cv .ext{stroke-width:6px}.s50.cv .ghost{stroke-width:12px;stroke-dasharray:60 40}
+.cv .dimt{font-size:54px;fill:#1d1d1b}.cv .lbl{font-size:48px;fill:#1d1d1b}.cv .it{fill:#444}.cv .ghost{stroke:#7a4318;stroke-width:5px}.cv .tech{stroke:#7a4318}.cv .vat{stroke:#1d1d1b}
+.unit{fill:#fff;stroke:#1d1d1b;stroke-width:4px}.sens{fill:#fff;stroke:#1d1d1b;stroke-width:4px}
+.bkp .cab,.bkp .app,.bkp .sink,.bkp .drum,.bkp .oven{stroke-width:8px}.bkp .tech,.bkp .vat{stroke-width:12px}
+.bkp .hair,.bkp .shelfline,.bkp .hood,.bkp .hanger{stroke-width:6px}.bkp .rail{stroke-width:10px}.bkp .pocket{stroke-width:9px}
+.bkp .lbl{font-size:92px;letter-spacing:0;fill:#6f6a61}.bkp .swing{stroke-width:7px}.bkp .thin{stroke-width:10px}
+
+/* /BK-STIJL */
+</style>
+<style>
+ul.chk{list-style:none;margin:0;padding:0}
+ul.chk li{position:relative;padding-left:6mm;margin-bottom:1.5mm}
+ul.chk li::before{content:"";position:absolute;left:0;top:.7mm;width:3.2mm;height:3.2mm;border:.35mm solid var(--ink);background:#fff}
+td.vink{width:6mm}td.vink::before{content:"";display:inline-block;width:3.2mm;height:3.2mm;border:.35mm solid var(--ink);background:#fff;vertical-align:-.6mm}
+.card h3{margin-bottom:2mm}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ BLAD 1 -->
+<section class="sheet">
+  <p class="eyebrow">Eigen werk · op basis van CV-ontwerp rev. W (bladen CV-01, CV-02 en CV-04) · 13-11-2026</p>
+  <h1>CV-installatie loods · zelf regelen</h1>
+  <p class="lead">De loods is helemaal eigen werk: een warmtepomp van 12 kW als hoofdbron (vat op 55 °C), een CV-pelletkachel voor de koude dagen (vat naar ± 75 °C) en één buffervat van 750 L. De bestellijsten staan op blad 2 en 3.</p>
+
+  <div class="grid" style="grid-template-columns:1fr 1fr 1fr;gap:5mm;align-items:start">
+    <div class="card">
+      <h3>1 · Eigen werk</h3>
+      <ul class="chk">
+        <li>Na-isoleren: dak en zijwanden 100 of 150 mm steenwol, het kantoor rondom.</li>
+        <li>Technische ruimte maken: 2600 × 2200 binnenwerks, deur van 800 die naar buiten draait, wand naar het kantoor.</li>
+        <li>Buffervat kaal naar binnen kantelen (2010 hoog) en ter plekke isoleren.</li>
+        <li>Toevoeropening loods → kantoor, min. Ø 150; CO-melder.</li>
+        <li>Kachel plaatsen: 200 mm vrij achter en opzij, 800 mm voor. Pelletafvoer Ø 80 door het dak, verbrandingslucht van buiten.</li>
+        <li>Warmtepomp buiten plaatsen, met vorstbeveiligingskleppen en afvoer voor het dooiwater.</li>
+        <li>Leidingen van kachel en warmtepomp naar het vat; brandwerende doorvoeren door de wand van het kantoor.</li>
+        <li>Verswatermodule samenstellen: vat → mengventiel 60 °C → pomp → platenwisselaar → vat; stromingsschakelaar verticaal in de koudwaterleiding. Douche met thermostaatkraan.</li>
+        <li>Regelaar en voelers aansluiten; vullen, ontluchten, voordruk expansievat 1,0 bar.</li>
+        <li>Grondleiding naar het huis: zie "Zelf regelen" van de woning.</li>
+      </ul>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:4mm">
+      <div class="card">
+        <h3>2 · Besloten</h3>
+        <ul class="chk">
+          <li>Buffervat: EnergyBy, 2010 hoog (kantelmaat ± 2150).</li>
+          <li>Kachel: zelf aanzetten op koude dagen, of met een tijdschema. Watertemperatuur maximaal ± 75 °C (de grondleiding mag continu 80 °C hebben).</li>
+          <li>Pelletafvoer recht omhoog door het dak.</li>
+          <li>Verwarming loods alleen vrij als het vat boven een instelbare temperatuur is (winter ± 60 °C, zomer ± 45 °C): het huis gaat voor.</li>
+          <li>Vervallen: luchtverhitter, mengventiel naar het huis en back-upelement.</li>
+          <li><b>Nog kiezen:</b> radiatoren. Warmtevraag bij −10 °C: kantoor ± 1 kW, voorkamer ± 1,4 kW (± 1,8 kW in gebruik), toilet ± 0,3 kW.</li>
+          <li>Kachel in het kantoor, rechtsachter naast de accuruimte. De afzuiging naar de accuruimte (410 m³/h) voert het overschot af: ± 2 kW bij 22 °C.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>4 · Elektra</h3>
+        <ul class="chk">
+          <li>Warmtepomp: 3-fase 400 V, maximaal 10 A, kabel 5 × 4 mm², automaat D-karakteristiek, aardlek 30 mA (handleiding).</li>
+          <li>Kachel, regelaar, pompen en verswatermodule: 230 V, wandcontactdozen.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <h3>3 · Navragen vóór het bestellen</h3>
+      <ul class="chk">
+        <li><b>Kachel, bij de dealer:</b> maximale druk en watertemperatuur. Niet nagekeken, uit een samenvatting van de handleiding: 2,5 bar, expansievat 6 L, uitschakelen bij ± 81–85 °C.</li>
+        <li><b>Kachel:</b> hoe de buffervatsensor wordt aangesloten, of de watertemperatuur op ± 75 °C kan worden begrensd, en of er tijdschema's zijn.</li>
+        <li><b>Kachel:</b> de handleiding vraagt een mengventiel van 55 °C met Kv ≥ 8 en een zone die altijd open staat. Klopt de aansluitset daarmee?</li>
+        <li><b>Buffervat EnergyBy:</b> maximale temperatuur (minimaal 90 °C), en de maat van de aansluitingen.</li>
+        <li><b>Rookgasafvoer:</b> zes onderdelen waren tijdelijk uitverkocht. Dicht de EPDM-doorvoer af op het profiel van het sandwichpaneel?</li>
+        <li><b>Heizungsdiscount24:</b> levering naar Nederland (pompen, regelaar, voelers, stromingsschakelaar).</li>
+        <li><b>Warmtepomp:</b> meldcode voor de subsidie nagaan en aanvragen.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div><span>Project</span><b>CV-installatie loods · Gasthuisstraat 6-a, Langenboom</b></div>
+    <div><span>Blad</span><b>Zelf regelen: overzicht</b></div>
+    <div><span>Voor</span><b>Julian</b></div>
+    <div><span>Datum · status</span><b>13-11-2026 · concept</b></div>
+    <div><span>Blad</span><b>1 / 3</b></div>
+  </div>
+</section>
+
+<!-- ============================================================ BLAD 2 -->
+<section class="sheet">
+  <h2>Bestellijst 1: hoofdonderdelen met toebehoren</h2>
+  <p class="sub" style="margin-bottom:2.5mm">De winkelnaam is een link naar het product. Prijzen inclusief btw, op 13-11-2026 van de productpagina gelezen; de kachelprijs is die van twee andere dealers.</p>
+  <table class="cat">
+    <thead><tr><th>Code</th><th>Onderdeel</th><th>Merk en type</th><th class="n">Aantal</th><th>Winkel</th><th class="n">Prijs per stuk</th></tr></thead>
+    <tbody>
+      <tr class="hoofd"><td class="c">K1</td><td><b>CV-pelletkachel</b></td><td>Nordic Fire HRV Torsby · 3,3–15 kW, 11,7 kW naar water · 1080 × 500 × 540</td><td class="n">1</td><td><a href="https://tenhovekachels.nl/products/nordic-fire-hrv-torsby">tenhovekachels.nl</a></td><td class="n">± € 5.975,00</td></tr>
+      <tr class="sub"><td></td><td>Aansluitset voor buffervat</td><td>Nordic Fire art. 100861: mengventiel 55 °C en buffervatsensor · via de dealer</td><td class="n">1</td><td><a href="https://nordicfire.nl/images/08-documenten/01-prijslijsten/prijslijst-nl-de.pdf">prijslijst</a></td><td class="n">€ 203,00</td></tr>
+      <tr class="sub"><td></td><td>Rookgasafvoer Ø 80</td><td>13 onderdelen, zie blad 3</td><td class="n">1 set</td><td><a href="https://www.energyby.nl/rookkanalen/">energyby.nl</a></td><td class="n">€ 513,32</td></tr>
+      <tr class="hoofd"><td class="c">WP1</td><td><b>Warmtepomp monoblock</b></td><td>HouseHeating HH-C3-12 · 12 kW, R290, 3-fase 400 V, tot 75 °C, 134 kg</td><td class="n">1</td><td><a href="https://www.hgb-trading.nl/househeating-warmtepomp-monoblock-12-kw-162229888.html">hgb-trading.nl</a></td><td class="n">€ 4.099,00</td></tr>
+      <tr class="sub"><td></td><td>Vorstbeveiligingsklep</td><td>Caleffi iStop 1", 108602 · tot 90 °C</td><td class="n">2</td><td><a href="https://www.technim.nl/p/caleffi-istop-1-vorstbeveiligingsklep-108602/">technim.nl</a></td><td class="n">€ 74,95</td></tr>
+      <tr class="sub"><td></td><td>Vuilafscheider F2</td><td>Caleffi Dirtmag 1", 546306</td><td class="n">1</td><td><a href="https://www.technim.nl/p/caleffi-dirtmag-horizontale-vuilafscheider-1-546306/">technim.nl</a></td><td class="n">€ 125,00</td></tr>
+      <tr class="hoofd"><td class="c">B1</td><td><b>Buffervat 750 L</b></td><td>EnergyBy EBB-0B-750 · Ø 990 met isolatie, 2010 hoog, 3 bar</td><td class="n">1</td><td><a href="https://www.energyby.nl/energyby-buffervat-750-liter-energielabel-b.htm">energyby.nl</a></td><td class="n">€ 1.175,00</td></tr>
+      <tr class="sub"><td></td><td>Ontluchter bovenop</td><td>Caleffi automatische ontluchter ½", 502640</td><td class="n">1</td><td><a href="https://www.technim.nl/p/caleffi-automatische-ontluchter-1-2-502640/">technim.nl</a></td><td class="n">€ 8,94</td></tr>
+      <tr class="sub"><td></td><td>Voelers T1, T2 en T3</td><td>Technische Alternative BFPT1000</td><td class="n">3</td><td><a href="https://www.heizungsdiscount24.de/regelungstechnik/technische-alternative-bfpt1000-speicherfuehler-boilersensor-pt1000-01bfpt1000.html">heizungsdiscount24.de</a></td><td class="n">€ 7,79</td></tr>
+      <tr class="hoofd"><td class="c">X1</td><td><b>Expansievat 200 L</b></td><td>Elbi ERCE 200 · Ø 600 × 1020, 1", voordruk terugzetten naar 1,0 bar</td><td class="n">1</td><td><a href="https://www.energyby.nl/elbi-expansievat-200-liter-1-5-bar-cv-verwarming-1-aansluiting.htm">energyby.nl</a></td><td class="n">€ 299,00</td></tr>
+      <tr class="sub"><td></td><td>Veiligheidsventiel VV1</td><td>Overstortventiel ½", 2,5 bar, OEG-nr. 512240130</td><td class="n">1</td><td><a href="https://www.oeg.net/nl/overstort-overdrukventiel-voor-verwarming-1-2-2-5-bar-512240130">oeg.net</a></td><td class="n">€ 8,59</td></tr>
+      <tr class="hoofd"><td class="c">FWM1</td><td><b>Verswatermodule loods</b></td><td>Zelf samengesteld, voor één douche. Platenwisselaar Nordic Tec Ba-32-40, 1", 1,28 m², RVS 316L</td><td class="n">1</td><td><a href="https://nordictec-store.com/ba-32-serie-0032mplate-1-thread-/77-plate-heat-exchanger-nordic-ba-32-40-1-230kw.html">nordictec-store.com</a></td><td class="n">€ 212,50</td></tr>
+      <tr class="sub"><td></td><td>Mengventiel 60 °C</td><td>Caleffi 520640, 1", 40–60 °C · aan de kant van het vat, vóór de pomp</td><td class="n">1</td><td><a href="https://www.technim.nl/p/thermostatisch-mengventiel-1-40-60-c/">technim.nl</a></td><td class="n">€ 67,16</td></tr>
+      <tr class="sub"><td></td><td>Stromingsschakelaar</td><td>Technische Alternative STST03AC, 5/4" · start de pomp bij tappen</td><td class="n">1</td><td><a href="https://www.heizungsdiscount24.de/regelungstechnik/technische-alternative-stroemungsschalter-durchflusswaechter-54-zoll-230-v-05-a.html">heizungsdiscount24.de</a></td><td class="n">€ 159,80</td></tr>
+      <tr class="hoofd"><td class="c">P2–P4</td><td><b>Circulatiepompen</b></td><td>Wilo Yonos PICO 25/1-6, 180 mm · verswatermodule, radiatoren loods, naar het huis</td><td class="n">3</td><td><a href="https://www.heizungsdiscount24.de/pumpen/wilo-yonos-pico-251-6-umwaelzpumpe-heizungspumpe-rp-1-g-1-12-230v.html">heizungsdiscount24.de</a></td><td class="n">€ 149,80</td></tr>
+      <tr class="sub"><td></td><td>Vuilafscheider F3, huis</td><td>Caleffi Dirtmag 1¼", 546307</td><td class="n">1</td><td><a href="https://www.technim.nl/p/caleffi-dirtmag-horizontale-vuilafscheider-1-1-4-546307/">technim.nl</a></td><td class="n">€ 145,00</td></tr>
+      <tr class="sub"><td></td><td>Vuilafscheider F1, kachel</td><td>Caleffi Dirtmag 1", 546306</td><td class="n">1</td><td><a href="https://www.technim.nl/p/caleffi-dirtmag-horizontale-vuilafscheider-1-546306/">technim.nl</a></td><td class="n">€ 125,00</td></tr>
+      <tr class="hoofd"><td class="c">RK1</td><td><b>Regelaar</b></td><td>Technische Alternative UVR610K · 6 voeleringangen, 10 uitgangen</td><td class="n">1</td><td><a href="https://www.heizungsdiscount24.de/regelungstechnik/technische-alternative-uvr610k-frei-programmierbare-universalregelung-01uvr610k.html">heizungsdiscount24.de</a></td><td class="n">€ 254,90</td></tr>
+      <tr class="sub"><td></td><td>Voelers T5 en T8, huis</td><td>Technische Alternative BFPT1000</td><td class="n">2</td><td><a href="https://www.heizungsdiscount24.de/regelungstechnik/technische-alternative-bfpt1000-speicherfuehler-boilersensor-pt1000-01bfpt1000.html">heizungsdiscount24.de</a></td><td class="n">€ 7,79</td></tr>
+      <tr class="tot"><td></td><td><b>Samen bestellijst 1</b></td><td></td><td></td><td></td><td class="n"><b>€ 14.009,46</b></td></tr>
+    </tbody>
+  </table>
+
+  <div class="foot">
+    <div><span>Project</span><b>CV-installatie loods · Gasthuisstraat 6-a, Langenboom</b></div>
+    <div><span>Blad</span><b>Bestellijst 1: hoofdonderdelen</b></div>
+    <div><span>Voor</span><b>Julian</b></div>
+    <div><span>Datum · status</span><b>13-11-2026 · concept</b></div>
+    <div><span>Blad</span><b>2 / 3</b></div>
+  </div>
+</section>
+
+<!-- ============================================================ BLAD 3 -->
+<section class="sheet">
+  <div class="grid" style="grid-template-columns:1.35fr 1fr;gap:8mm;align-items:start">
+    <div>
+      <h2>Bestellijst 2: rookgasafvoer Ø 80</h2>
+      <p class="sub" style="margin-bottom:2.5mm">Recht omhoog door het dak, ± 3 m: ± 1,5 m enkelwandig binnen en ± 1,5 m dubbelwandig (Ø 80/140) door het dak en buiten. Alles bij EnergyBy.</p>
+      <table class="cat">
+        <thead><tr><th>Onderdeel</th><th>Artikel</th><th class="n">Aantal</th><th>Winkel</th><th class="n">Prijs</th><th></th></tr></thead>
+        <tbody>
+      <tr><td>T-stuk Ø 80, zwart</td><td>WC-TR080/90-CZ1.2P</td><td class="n">1</td><td><a href="https://www.energyby.nl/spkp-pellet-80-pelletkachel-rookkanaal-t-stuk-vrouwelijk-zwart-diameter-o80mm.htm">energyby.nl</a></td><td class="n">€ 39,50</td><td>tijdelijk uitverkocht</td></tr>
+      <tr><td>Condensatiedop Ø 80</td><td>WC-MS080-CZ1.2P</td><td class="n">1</td><td><a href="https://www.energyby.nl/spkp-pellet-80-pelletkachel-rookkanaal-condensatie-dop-diameter-o80mm.htm">energyby.nl</a></td><td class="n">€ 23,45</td><td>tijdelijk uitverkocht</td></tr>
+      <tr><td>Pijp enkelwandig 1000 mm</td><td>WC-RP080/1.0-CZ1.2P</td><td class="n">1</td><td><a href="https://www.energyby.nl/spkp-pellet-80-pelletkachel-rookkanaal-zwart-1000mm-diameter-o80mm.htm">energyby.nl</a></td><td class="n">€ 27,50</td><td>tijdelijk uitverkocht</td></tr>
+      <tr><td>Pijp enkelwandig 500 mm</td><td>WC-RP080/0.50-CZ1.2P</td><td class="n">1</td><td><a href="https://www.energyby.nl/spkp-pellet-80-pelletkachel-rookkanaal-zwart-500mm-diameter-o80mm.htm">energyby.nl</a></td><td class="n">€ 22,50</td><td></td></tr>
+      <tr><td>Muurbeugel, verstelbaar</td><td>WC-OMD-I-080-CZ1.2P</td><td class="n">1</td><td><a href="https://www.energyby.nl/spkp-pellet-80-pelletkachel-rookkanaal-muurbeugel-verstelbaar-diameter-o80mm.htm">energyby.nl</a></td><td class="n">€ 14,75</td><td></td></tr>
+      <tr><td>Verloop enkelwandig naar dubbelwandig</td><td>WP-ZTD080/140-KS-X4-IZ</td><td class="n">1</td><td><a href="https://www.energyby.nl/sks-80-dubbelwandig-rookkanaal-rvs-verloop-naar-enkelwandig-diameter-o80-140mm.htm">energyby.nl</a></td><td class="n">€ 43,13</td><td>tijdelijk uitverkocht</td></tr>
+      <tr><td>Dubbelwandig Ø 80/140, 1000 mm</td><td>WP-RPD080/140/1.0-KS-X4-IZ</td><td class="n">1</td><td><a href="https://www.energyby.nl/sks-80-dubbelwandig-rookkanaal-rvs-1000mm-diameter-o80-140mm.htm">energyby.nl</a></td><td class="n">€ 82,58</td><td>tijdelijk uitverkocht</td></tr>
+      <tr><td>Dubbelwandig Ø 80/140, 500 mm</td><td>WP-RPD080/140/0.50-KS-X4-IZ</td><td class="n">1</td><td><a href="https://www.energyby.nl/sks-80-dubbelwandig-rookkanaal-rvs-500mm-diameter-o80-140mm.htm">energyby.nl</a></td><td class="n">€ 53,00</td><td></td></tr>
+      <tr><td>EPDM-dakdoorvoer 102–178 mm</td><td>KV50</td><td class="n">1</td><td><a href="https://www.energyby.nl/epdm-dakdoorvoer-diameter-102-178mm.htm">energyby.nl</a></td><td class="n">€ 90,91</td><td></td></tr>
+      <tr><td>Stormkraag, extra groot</td><td>WS-KPD140-X/Dm300</td><td class="n">1</td><td><a href="https://www.energyby.nl/sks-80-dubbelwandig-rookkanaal-stormkraag-extra-groot.htm">energyby.nl</a></td><td class="n">€ 28,75</td><td></td></tr>
+      <tr><td>Regenkap RVS, niet trekkend</td><td>WP-DKD080/140-KS-X4-IZ</td><td class="n">1</td><td><a href="https://www.energyby.nl/sks-80-dubbelwandig-rookkanaal-rvs-regenkap-diameter-o80-140mm.htm">energyby.nl</a></td><td class="n">€ 43,13</td><td></td></tr>
+      <tr><td>Dakbevestigingsbeugel</td><td>WS-OMD-III-140-OC</td><td class="n">1</td><td><a href="https://www.energyby.nl/sks-80-dubbelwandig-rookkanaal-dakbevestigingsbeugel-daksteun-140mm.htm">energyby.nl</a></td><td class="n">€ 30,62</td><td></td></tr>
+      <tr><td>Brandseparatieplaat, hellend</td><td>WS-PL/O140-OC5</td><td class="n">1</td><td><a href="https://www.energyby.nl/sks-80-dubbelwandig-rookkanaal-brandseparatieplaat-hellend.htm">energyby.nl</a></td><td class="n">€ 13,50</td><td></td></tr>
+      <tr class="tot"><td><b>Samen</b> (zit al in bestellijst 1)</td><td></td><td></td><td></td><td class="n"><b>€ 513,32</b></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3 style="margin:1mm 0 1mm">Nog te kiezen</h3>
+      <table>
+        <tbody>
+          <tr><td>Radiatoren voorkamer, kantoor en toilet, met thermostaatkranen</td><td class="n">3</td></tr>
+          <tr><td>Kapafsluiter bij het expansievat, terugstroombeveiliging bij het vulpunt, manometer</td><td class="n">–</td></tr>
+          <tr><td>Leidingen, kranen, fittingen en isolatie in de technische ruimte</td><td class="n">–</td></tr>
+          <tr><td>Wandcontactdozen, kabel en de groep voor de warmtepomp</td><td class="n">–</td></tr>
+        </tbody>
+      </table>
+      <div class="card" style="margin-top:5mm">
+        <h3>Totaal loods</h3>
+        <table>
+          <tbody>
+            <tr><td>Bestellijst 1, met de rookgasafvoer</td><td class="n">€ 14.009,46</td></tr>
+            <tr><td>Grondleiding (lijst 3 bij de woning)</td><td class="n">± € 1.100 – 1.900</td></tr>
+            <tr><td><b>Samen</b> · inclusief btw, zonder verzendkosten en zonder wat nog te kiezen is</td><td class="n"><b>± € 15.100 – 15.900</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div><span>Project</span><b>CV-installatie loods · Gasthuisstraat 6-a, Langenboom</b></div>
+    <div><span>Blad</span><b>Bestellijst 2: rookgasafvoer en totaal</b></div>
+    <div><span>Voor</span><b>Julian</b></div>
+    <div><span>Datum · status</span><b>13-11-2026 · concept</b></div>
+    <div><span>Blad</span><b>3 / 3</b></div>
+  </div>
+</section>
+
+</body>
+</html>

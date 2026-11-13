@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Notities CV-systeem</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: technische tekenset — tekeninghoofd, vier bladen op raster, daarna stuklijst, berekeningen en aandachtspunten */
+:root{
+  --paper:#eef1f3; --sheet:#fbfcfc; --ink:#1d2730; --muted:#5d6b77; --rule:#c5ced5; --grid:#e6eaee;
+  --hot:#c8372d; --ret:#2f63b8; --cw:#1b8f8a; --dhw:#c9781a; --ctl:#7a8792; --hatch:#d6dde2; --el:#7b4fb0; --pre:#5f9e2f;
+  --f-display:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+  --f-body:"IBM Plex Sans",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#12181d; --sheet:#182128; --ink:#dfe6ec; --muted:#93a1ad; --rule:#33414c; --grid:#1e2830;
+  --hot:#ef6a5e; --ret:#6b9cf0; --cw:#3cc2bb; --dhw:#f0a24a; --ctl:#8494a1; --hatch:#2a3640; --el:#b48ef0; --pre:#8fcf5c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#12181d; --sheet:#182128; --ink:#dfe6ec; --muted:#93a1ad; --rule:#33414c; --grid:#1e2830;
+  --hot:#ef6a5e; --ret:#6b9cf0; --cw:#3cc2bb; --dhw:#f0a24a; --ctl:#8494a1; --hatch:#2a3640; --el:#b48ef0; --pre:#8fcf5c; color-scheme:dark}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55}
+.wrap{max-width:1240px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:36px}
+header{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end;border-bottom:2px solid var(--ink);padding-bottom:14px}
+h1{font-family:var(--f-display);font-weight:700;font-size:clamp(28px,4.5vw,42px);line-height:1.05;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:6px 0 0;max-width:66ch}
+.tb{border:1px solid var(--ink);font-family:var(--f-mono);font-size:12px;display:grid;grid-template-columns:auto auto;min-width:0}
+.tb div{padding:4px 10px;border-bottom:1px solid var(--rule)}
+.tb div:nth-child(odd){color:var(--muted);text-transform:uppercase;letter-spacing:.06em;border-right:1px solid var(--rule)}
+.tb div:nth-last-child(-n+2){border-bottom:0}
+nav.index{display:flex;flex-wrap:wrap;gap:8px}
+nav.index a{font-family:var(--f-mono);font-size:12px;color:var(--ink);text-decoration:none;border:1px solid var(--rule);padding:4px 10px;background:var(--sheet)}
+nav.index a:hover,nav.index a:focus-visible{border-color:var(--ink);outline:none}
+.blad{display:grid;gap:12px}
+.bladkop{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--rule);padding-bottom:6px}
+.bladkop h2{margin:0}
+.bladnr{font-family:var(--f-mono);font-size:12px;color:var(--muted);letter-spacing:.08em}
+.sheet{background:var(--sheet);border:1px solid var(--rule);overflow-x:auto}
+.sheet svg{display:block;width:100%;height:auto}
+.s-wide svg{min-width:1100px}
+.s-mid svg{min-width:0}
+.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:16px}
+.pair>*{min-width:0}
+.cap{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+h2{font-family:var(--f-display);font-weight:600;font-size:24px;margin:0 0 10px;text-wrap:balance}
+h3{font-family:var(--f-display);font-weight:600;font-size:18px;margin:0 0 8px}
+.eyebrow{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 2px}
+section p{max-width:72ch;margin:0 0 10px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:28px}
+.cols>*{min-width:0}
+.legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px 20px;list-style:none;padding:0;margin:0}
+.legend li{display:flex;gap:10px;align-items:center;font-size:14px}
+.legend svg{flex:none}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500;white-space:nowrap}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--f-mono);font-size:13px;white-space:nowrap}
+tr.grp td{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--paper);padding-top:12px}
+tr.pick td{background:color-mix(in srgb,var(--cw) 12%,transparent)}
+.tag{display:inline-block;font-family:var(--f-mono);font-size:12.5px;border:1px solid var(--ink);padding:0 5px;border-radius:2px;font-weight:500;white-space:nowrap}
+ol.notes{margin:0;padding-left:22px;display:grid;gap:12px;max-width:80ch}
+ol.notes b{font-weight:600}
+.callout{border-left:3px solid var(--dhw);padding:10px 14px;background:color-mix(in srgb,var(--dhw) 9%,transparent);max-width:80ch}
+.callout p{margin:0}
+/* svg */
+.t{font-family:var(--f-display);fill:var(--ink);font-size:13px}
+.tb1{font-family:var(--f-display);fill:var(--ink);font-size:14px;font-weight:600}
+.ts{font-family:var(--f-mono);fill:var(--muted);font-size:10px}
+.tk{font-family:var(--f-mono);fill:var(--ink);font-size:10.5px;font-weight:500}
+.zone{font-family:var(--f-mono);fill:var(--muted);font-size:11px;letter-spacing:.16em}
+.box{fill:var(--sheet);stroke:var(--ink);stroke-width:1.6}
+.wall{fill:url(#hatchW);stroke:var(--ink);stroke-width:1.2}
+.dash{fill:none;stroke:var(--ink);stroke-width:1.2;stroke-dasharray:5 4}
+.p{fill:none;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.ph{stroke:var(--hot)} .pr{stroke:var(--ret)} .pc{stroke:var(--cw);stroke-width:2.2} .pd{stroke:var(--dhw);stroke-width:2.2} .pe{stroke:var(--el);stroke-width:2}
+.ctl{fill:none;stroke:var(--ctl);stroke-width:1.2;stroke-dasharray:4 4}
+.dim{stroke:var(--ink);stroke-width:.9;fill:none}
+.dimt{font-family:var(--f-mono);fill:var(--ink);font-size:10.5px}
+.sens circle{fill:var(--sheet);stroke:var(--ink);stroke-width:1.2}
+.sens text{font-family:var(--f-mono);font-size:9px;fill:var(--ink)}
+.dot{fill:var(--ink)}
+.pp{stroke:var(--pre);stroke-width:2.2}
+.lightsheet{--paper:#eef1f3;--sheet:#fbfcfc;--ink:#1d2730;--muted:#4f5c67;--rule:#c5ced5;--hot:#c8372d;--ret:#2f63b8;--cw:#1b8f8a;--dhw:#c9781a;--el:#7b4fb0;--pre:#4f8a22;color-scheme:light;background:#fbfcfc}
+.s-plan svg{min-width:1050px}
+.pl{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.lab{font-family:var(--f-mono);font-size:3.3px;fill:var(--ink)}
+.labb{font-family:var(--f-display);font-size:4.2px;font-weight:600;fill:var(--ink)}
+.halo{paint-order:stroke;stroke:#fbfcfc;stroke-width:1.1px;stroke-linejoin:round}
+.lead{stroke:var(--ink);stroke-width:.35;fill:none}
+.banner{border:1px dashed var(--ink);padding:10px 14px;max-width:80ch;background:var(--sheet)}
+.banner p{margin:0}
+@media (max-width:640px){header{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="banner"><p><b>Vervallen: dit is rev. C.</b> De actuele versie staat in <a href="../../index.html" style="color:var(--ink)">CV/index.html</a>.</p></div>
+
+<header>
+  <div>
+    <p class="eyebrow">Ontwerpnotities · bij tekenset CV-01 t/m CV-05</p>
+    <h1>Notities en keuzes CV-systeem</h1>
+    <p class="sub">Berekeningen, afwegingen en open punten uit het ontwerpgesprek. De tekeningen staan in de <a href="index.html" style="color:var(--ink)">tekenset</a>.</p>
+  </div>
+  <div class="tb">
+    <div>Bij set</div><div>CV-01 t/m CV-05</div>
+    <div>Status</div><div>Concept rev. C</div>
+    <div>Datum</div><div>12-11-2026</div>
+  </div>
+</header>
+
+<nav class="index" aria-label="Onderwerpen">
+  <a href="index.html">← Tekenset</a>
+  <a href="#uitgangspunten">Uitgangspunten</a>
+  <a href="#warmtebehoefte">Warmtebehoefte woning</a>
+  <a href="#douche">Douchen en WTW</a>
+  <a href="#buffer">Buffergrootte</a>
+  <a href="#warmtepomp">Warmtepompkeuze</a>
+  <a href="#inkoop">Inkoop</a>
+  <a href="#open">Open punten</a>
+</nav>
+
+<section id="uitgangspunten">
+<p class="eyebrow">Uitgangspunten</p>
+<h2>Het systeem in het kort</h2>
+<div class="tbl"><table>
+  <thead><tr><th>Onderdeel</th><th>Keuze</th><th>Plaats</th></tr></thead>
+  <tbody>
+    <tr><td>Houtkachel K1</td><td>CV-houtkachel 30 kW piek, ±6–8 kW naar water, ±5 kW naar ruimte</td><td>Kantoor in loods</td></tr>
+    <tr><td>Warmtepomp WP1</td><td>Lucht/water monoblock, aanvoer 55 °C (vermogen: zie verderop)</td><td>Buiten bij loods</td></tr>
+    <tr><td>Element E1</td><td>3 kW in B1, back-up op 50 °C</td><td>B1</td></tr>
+    <tr><td>Buffer B1</td><td>750 L, WP op de onderste ⅔, kachel over de volle hoogte via laadunit (retour ≥ 65 °C)</td><td>Technische ruimte loods</td></tr>
+    <tr><td>Expansievat X1</td><td>200 L, voordruk 1,0 bar</td><td>Technische ruimte loods</td></tr>
+    <tr><td>Overschotgroep</td><td>P3 naar radiator loods 10 kW + voorkamer, aan bij T1 ≥ 85 °C</td><td>Loods</td></tr>
+    <tr><td>Transport</td><td>Duoleiding 2 × 40 PE-X, ±17,5 m, P4 op ΔT-regeling</td><td>Grond</td></tr>
+    <tr><td>Buffer B2</td><td>100 L, met FWM2, E2 (6 kW doorstromer) en mengstation vloerverwarming</td><td>Techniekkast D2 bijkeuken</td></tr>
+    <tr><td>Douche-WTW</td><td>Horizontaal (goot/bak), naar koude kant douchemengkraan</td><td>Badkamer</td></tr>
+    <tr><td>Stroom</td><td>ESS 100 kWh 3-fase + 100 zonnepanelen; pompgroep op prioriteit</td><td>Loods</td></tr>
+    <tr><td>Overig huis</td><td>Bovenverdieping airco + houtkachel (niet op CV); WTW-ventilatie</td><td>Huis</td></tr>
+  </tbody>
+</table></div>
+</section>
+
+<section id="warmtebehoefte">
+<p class="eyebrow">Warmtebehoefte woning</p>
+<h2>±7–8 kW bij −10 °C</h2>
+<p>Dit is een schatting op basis van VO4 (Lenz, 02-10-2026). De begane grond is 174 m² BVO. Voor de bovenverdieping is ±70 m² aangenomen, want daarvan is geen plattegrond. De isolatie is aangenomen als "goed": vloer Rc 3,7, gevels Rc ±4, plat dak Rc 6 en hellend dak Rc 5. Voor glas met aluminium kozijnen is U 1,3 gerekend, en voor de WTW 80 % rendement.</p>
+<div class="cols">
+<div class="tbl"><table>
+  <thead><tr><th>Onderdeel</th><th class="n">W/K</th></tr></thead>
+  <tbody>
+    <tr><td>Glas + kozijnen (±48 m²)</td><td class="n">62</td></tr>
+    <tr><td>Gevels (±182 m²)</td><td class="n">46</td></tr>
+    <tr><td>Vloer (174 m², factor 0,6)</td><td class="n">27</td></tr>
+    <tr><td>Hellend dak (±125 m²)</td><td class="n">23</td></tr>
+    <tr><td>Plat dak (±75 m²)</td><td class="n">12</td></tr>
+    <tr><td>Koudebruggen (+10 %)</td><td class="n">17</td></tr>
+    <tr><td>Ventilatie + infiltratie</td><td class="n">50</td></tr>
+    <tr class="pick"><td><b>Totaal</b></td><td class="n">±235</td></tr>
+  </tbody>
+</table></div>
+<div class="tbl"><table>
+  <thead><tr><th>Buiten</th><th class="n">Vermogen</th></tr></thead>
+  <tbody>
+    <tr><td>−10 °C (ontwerp)</td><td class="n">7,1 kW (8 kW met opwarmtoeslag)</td></tr>
+    <tr><td>−5 °C</td><td class="n">5,9 kW</td></tr>
+    <tr><td>0 °C</td><td class="n">4,7 kW</td></tr>
+    <tr><td>+5 °C</td><td class="n">3,5 kW</td></tr>
+    <tr><td>Jaarbehoefte ruimteverwarming</td><td class="n">±9.000–13.000 kWh</td></tr>
+  </tbody>
+</table></div>
+</div>
+<p style="margin-top:10px">De begane grond met vloerverwarming vraagt ±5 kW. Glas is de grootste post: met triple glas (U ±0,8) scheelt het ±1 kW bij vorst. Wil je de vloerverwarmingsgroepen indelen, dan is een berekening per vertrek nodig, met de plattegrond van de verdieping en de echte Rc-waarden.</p>
+</section>
+
+<section id="douche">
+<p class="eyebrow">Douchen</p>
+<h2>1 uur per dag op 38 °C</h2>
+<p>Koud water van ±10 °C moet 28 K omhoog. Jaarlijks is dat ±5.700 kWh zonder WTW, ongeveer de helft van de ruimteverwarming.</p>
+<div class="tbl"><table>
+  <thead><tr><th>Douchekop</th><th class="n">Water/uur</th><th class="n">kWh/dag</th><th class="n">Vermogen</th><th class="n">Met WTW (30–50 %)</th></tr></thead>
+  <tbody>
+    <tr><td>Spaar 6 L/min</td><td class="n">360 L</td><td class="n">11,7</td><td class="n">11,7 kW</td><td class="n">6–8 kWh</td></tr>
+    <tr class="pick"><td>Normaal 8 L/min</td><td class="n">480 L</td><td class="n">15,6</td><td class="n">15,6 kW</td><td class="n">8–11 kWh</td></tr>
+    <tr><td>Regen 10 L/min</td><td class="n">600 L</td><td class="n">19,5</td><td class="n">19,5 kW</td><td class="n">10–14 kWh</td></tr>
+  </tbody>
+</table></div>
+<ol class="notes" style="margin-top:12px">
+  <li><b>Het douchevermogen is groter dan de verwarming.</b> B2 (100 L op 65 °C, ±4 kWh) is na ±15–20 minuten leeg. Daarna komt de warmte via de duoleiding uit B1, die met 2 × 40 mm ±20 kW kan leveren. Overweeg ±200 L in huis als dat in D2 past.</li>
+  <li><b>Alleen een horizontale WTW past.</b> Onder de douche zit geen verdieping, dus het wordt een douchegoot- of douchebak-WTW (±30–50 %) en geen pijp-WTW.</li>
+  <li><b>Doorstromer E2 (6 kW).</b> Bij 50 °C inlaat levert hij 8,6 L/min op 60 °C, bij 45 °C nog 5,7 L/min. Dat is voldoende omdat je aan de kraan terugmengt naar 38–40 °C.</li>
+</ol>
+</section>
+
+<section id="buffer">
+<p class="eyebrow">Buffergrootte</p>
+<h2>1 × 750 L met blokkering van de warmtepomp</h2>
+<p>B1 slaat 0,87 kWh per graad op. Hoe lang je kunt stoken met de kachel op 6 kW naar water:</p>
+<div class="tbl"><table>
+  <thead><tr><th>Afname huis tijdens stoken</th><th class="n">Netto</th><th class="n">750 L, 50→85 °C (30 kWh)</th><th class="n">750 L, WP geblokkeerd, 35→85 °C (44 kWh)</th><th class="n">2 × 750 L (61 kWh)</th></tr></thead>
+  <tbody>
+    <tr><td>0 kW</td><td class="n">6 kW</td><td class="n">±5 u</td><td class="n">±7 u</td><td class="n">±10 u</td></tr>
+    <tr><td>2 kW</td><td class="n">4 kW</td><td class="n">±7,5 u</td><td class="n">±11 u</td><td class="n">±15 u</td></tr>
+    <tr><td>3 kW</td><td class="n">3 kW</td><td class="n">±10 u</td><td class="n">±14,5 u</td><td class="n">±20 u</td></tr>
+    <tr><td>4 kW</td><td class="n">2 kW</td><td class="n">±15 u</td><td class="n">±22 u</td><td class="n">±30 u</td></tr>
+  </tbody>
+</table></div>
+<p style="margin-top:10px"><b>Keuze:</b> één vat van 750 L, en de warmtepomp blokkeren zodra de kachel brandt. Dat gaat via het SG-ready- of blokkeercontact: blokkeren bij T6 &gt; 60 °C, vrijgeven bij T1 &lt; ±55 °C. Daarmee win je ±45 % opslag voor de prijs van een relais. Reserveer wel ruimte en T-stukken voor een tweede vat. Komt de overschotgroep na een seizoen vaak in actie, dan zet je het tweede vat er later bij. X1 moet dan naar 250 L.</p>
+</section>
+
+<section id="warmtepomp">
+<p class="eyebrow">Warmtepompkeuze</p>
+<h2>Monoblock van ±8 kW volstaat</h2>
+<ol class="notes">
+  <li><b>12 kW is ruim.</b> Het huis vraagt ±8 kW bij −10 °C. Met de buffer erbij volstaat 8 kW: goedkoper, minder pendelen en een betere COP in deellast. Neem 10–12 kW alleen als de loods of de voorkamer ook op de warmtepomp moet draaien.</li>
+  <li><b>Atlantic Explorer V5 (warmtepompboiler) is geen alternatief.</b> Hij neemt maximaal 700 W op, dus ±2 kW thermisch en geen 6 kW. Het is een tapwaterboiler zonder CV-aansluiting en kan B1 of de vloerverwarming niet voeden. Hij is hooguit bruikbaar als tapwaterboiler in de loods, met koeling en ontvochtiging van de kantoor- of accuruimte als bijeffect (±1,3 kW, 390 m³/h).</li>
+  <li><b>Vorst.</b> Een monoblock buiten krijgt vorstbeveiligingskleppen, of glycol met een scheidingswisselaar.</li>
+</ol>
+</section>
+
+<section id="inkoop">
+<p class="eyebrow">Inkoop</p>
+<h2>Waar de kleine onderdelen te koop zijn</h2>
+<div class="tbl"><table>
+  <thead><tr><th>Winkel</th><th>Voor</th><th>Let op</th></tr></thead>
+  <tbody>
+    <tr><td><a href="https://www.energyby.nl/installatiemateriaal/beveiligingen" style="color:var(--ink)">EnergyBy</a> (Stadskanaal)</td><td>Ketelveiligheidsgroep, thermische afloopbeveiliging, laadventielen, expansievaten, pompen, mengkranen, fittingen</td><td>Geen verswatermodule of complete laadunit gevonden</td></tr>
+    <tr><td><a href="https://www.oeg.net/en/laddomat-11-30-for-return-flow-boost-516003331" style="color:var(--ink)">OEG</a> (Duits, NL-taal)</td><td>Laddomat 11-30 met 66 °C-patroon, verdelers, pompen</td><td>Levering aan particulieren in NL niet bevestigd</td></tr>
+    <tr><td><a href="https://nl.gemashop.de/products/laddomat-11-30-thermische-rucklaufanhebung" style="color:var(--ink)">Gemashop</a></td><td>Laddomat ter vergelijking</td><td>Duitse winkel</td></tr>
+    <tr><td><a href="https://www.technim.nl/c/verwarming/page/6" style="color:var(--ink)">Technim</a></td><td>Flamco, vloerverwarmingsverdelers</td><td></td></tr>
+    <tr><td>Oventrop Regumaq X-80 / Solarfocus FWM</td><td>Verswatermodules</td><td>Via groothandel, dealer of de leverancier van de buffervaten</td></tr>
+    <tr><td>Watts Microflex Duo / Uponor Ecoflex</td><td>Duoleiding 2 × 40</td><td>Vaak via groothandel</td></tr>
+  </tbody>
+</table></div>
+<p style="margin-top:10px">Hout-CV-sets "tot 25 kW" (Houtstookenzo, HGB Trading, Buurs) zijn te klein voor 30 kW en openen vaak al op 55 °C.</p>
+</section>
+
+<section id="open">
+<p class="eyebrow">Open punten</p>
+<h2>Nog te beslissen of te controleren</h2>
+<ol class="notes">
+  <li>Passen B2, FWM2, E2, het mengstation, X2 en VV2 samen in D2 (632 × 600)? Of komt er een grotere B2?</li>
+  <li>De plek van de verdeler vloerverwarming. Voorstel: de trapkast.</li>
+  <li>De positie van de meterkast en de tappunten inmeten. In CV-05 zijn die aangenomen.</li>
+  <li>De streep-stippellijn op het tracé: perceel- of bestemmingsgrens?</li>
+  <li>Het tracé langs de boom: handmatig graven, of de leiding iets noordelijker leggen.</li>
+  <li>De wachttijd voor warm water in de badkamer (±25–30 s). Accepteren, of een circulatieleiding?</li>
+  <li>De definitieve maat van de warmtepomp (8 of 12 kW) en het blokkeercontact.</li>
+  <li>Tmax van de kachel bevestigen. De instelling van 85 °C voor P3 gaat uit van 90 °C.</li>
+  <li>Maten van vaten en modules controleren tegen de datasheets van het gekozen merk.</li>
+</ol>
+<p style="margin-top:14px;color:var(--muted)">Dit zijn ontwerpberekeningen en schattingen. Laat dimensionering en veiligheidsvoorzieningen controleren door een erkend installateur.</p>
+</section>
+</div>
+
+</body>
+</html>

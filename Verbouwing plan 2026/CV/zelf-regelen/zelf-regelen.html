@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>CV-installatie woning · zelf regelen · Gasthuisstraat 6-a</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* A4 liggend. Alles moet leesbaar zijn op een A4 in zwart-wit:
+   lopende tekst >= 9 pt, tekst in tekeningen >= 7 pt, leidingen verschillen in lijnsoort en dikte, niet alleen in kleur. */
+@page{size:297mm 210mm;margin:0}
+:root{
+  --ink:#1b1b1b; --muted:#444; --rule:#bdb9b0; --card:#f6f4ef; --cardrule:#8f8b82;
+  --koud:#143d80; --warm:#8f1a14; --cv:#8f3608; --gas:#4d3b00; --wtw:#07504c; --el:#1b1b1b;
+  --tech:#f9e1cd; --techrule:#7a4318;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:Inter,"Helvetica Neue",Arial,sans-serif;color:var(--ink);font-size:9.6pt;line-height:1.4;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.sheet{width:297mm;height:210mm;padding:8mm 10mm 0;position:relative;page-break-after:always;overflow:hidden}
+.sheet:last-child{page-break-after:auto}
+.eyebrow{font-size:7.4pt;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 1.5mm}
+h1{font-size:21pt;line-height:1.1;font-weight:700;margin:0 0 2.2mm;letter-spacing:-.01em}
+h2{font-size:15pt;line-height:1.15;font-weight:700;margin:0 0 1mm}
+h3{font-size:10.6pt;font-weight:700;margin:0 0 1.6mm}
+p{margin:0 0 2mm}
+.lead{font-size:10.8pt;line-height:1.4;margin-bottom:3.5mm}
+.sub{color:var(--muted);font-size:8.8pt;margin:0}
+.card{background:var(--card);border:.3mm solid var(--cardrule);border-radius:1.4mm;padding:3.2mm 4mm}
+.card ol,.card ul{margin:0;padding-left:5mm}
+.card li{margin-bottom:1.1mm}
+.card li:last-child{margin-bottom:0}
+.card.klein{font-size:9pt;padding:2.8mm 3.4mm}
+table.vv{font-size:8.4pt}table.vv td{padding:.75mm 1.6mm .75mm 0}table.vv td.n,table.vv th:nth-child(n+3){text-align:right;white-space:nowrap}table.vv tr.tot td{border-bottom:0;border-top:.35mm solid var(--ink)}
+.hoh{display:flex;gap:3mm;font-size:8.6pt;margin-top:2.5mm;align-items:center}.hoh span{display:flex;align-items:center;gap:1.2mm;white-space:nowrap}.hoh svg{width:8.5mm;height:3.9mm}.card.klein ul{padding-left:4.2mm}
+table{border-collapse:collapse;width:100%;font-size:9pt}
+th{font-size:7.2pt;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;text-align:left;padding:0 2mm 1mm 0;border-bottom:.4mm solid var(--ink);white-space:nowrap}
+td{padding:1.1mm 2mm 1.1mm 0;border-bottom:.2mm solid var(--rule);vertical-align:top}
+td.c{font-weight:700;white-space:nowrap}
+.wie td{font-size:10pt;padding:1.7mm 3mm 1.7mm 0}
+.wie tr:last-child td{border-bottom:0}
+.grid{display:grid;gap:6mm}
+.foot{position:absolute;left:10mm;right:10mm;bottom:5.5mm;border-top:.35mm solid var(--ink);display:grid;grid-template-columns:3.1fr 2.5fr 1.2fr 1.7fr .8fr;font-size:8pt}
+.foot div{padding:1.3mm 2.5mm 0 2.5mm;border-left:.2mm solid var(--rule);min-height:8.5mm}
+.foot div:first-child{border-left:0;padding-left:0}
+.foot span{display:block;font-size:6.6pt;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.3mm}
+.foot b{font-weight:600}
+table.cat{font-size:9pt}table.cat td{padding:.95mm 3mm .95mm 0}table.cat tr.hoofd td{border-top:.35mm solid var(--ink);padding-top:1.4mm}table.cat tr.sub td{border-bottom:0;color:#222}table.cat tr.sub td:nth-child(2){padding-left:4.5mm}table.cat tr.sub td:nth-child(2)::before{content:"– "}.open{font-style:italic}table.cat.totaal td{padding:1.2mm 3mm 1.2mm 0;font-size:9.6pt}table.cat th.n,table.cat td.n,td.n{text-align:right;white-space:nowrap}table.cat tr.tot td{border-bottom:0;border-top:.35mm solid var(--ink)}
+a{color:var(--ink);text-decoration:underline;text-underline-offset:.5mm}
+.key{display:grid;grid-template-columns:repeat(4,auto);gap:1mm 5mm;font-size:8.8pt;align-items:center;justify-content:end}
+.key span{display:flex;align-items:center;gap:1.8mm;white-space:nowrap}
+.key svg{width:13mm;height:3mm;flex:none}
+.cap{font-size:8.8pt;margin:1.2mm 0 0}
+.cap b{font-weight:700}
+.cap span{color:var(--muted)}
+svg{display:block}
+/* leidingplan (eenheid = punt van blad 9 van VO4; op A4 is 1 eenheid 0,4704 mm = schaal 1:75) */
+.lb{font-family:Inter,Arial,sans-serif;font-size:5.3px;fill:var(--ink);paint-order:stroke;stroke:#fff;stroke-width:1.5px;stroke-linejoin:round}
+.lbb{font-weight:700;font-size:5.6px}
+.rm{font-family:Inter,Arial,sans-serif;font-size:4.4px;letter-spacing:.4px;fill:#333;font-weight:600;paint-order:stroke;stroke:#fff;stroke-width:1.3px;stroke-linejoin:round}
+.case{fill:none;stroke:#fff;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.pp{fill:none;stroke-linejoin:round}
+.cva{stroke:var(--cv);stroke-width:1.3;stroke-linecap:round}
+.cvr{stroke:var(--cv);stroke-width:1.3;stroke-dasharray:3.4 1.9}
+.ww{stroke:var(--warm);stroke-width:.75;stroke-linecap:round}
+.kw{stroke:var(--koud);stroke-width:.75;stroke-dasharray:1.7 1.1}
+.vk1{fill:none;stroke:#333;stroke-width:2.7}.vk2{fill:none;stroke:#fff;stroke-width:1.5}
+.af{fill:none;stroke:#6b5a3c;stroke-width:2.2;stroke-dasharray:6 1.5;stroke-linejoin:round}
+.wt{stroke:var(--wtw);stroke-width:.75;stroke-dasharray:2.4 1 .01 1;stroke-linecap:round}
+.ld{fill:none;stroke:var(--ink);stroke-width:.35}
+.tap{fill:#fff;stroke:var(--ink);stroke-width:.5}
+/* BK-STIJL */
+/* tekenstijl: gelijk aan de detaillering van 29-10-2026 (dunne lijnen, kleine tekst) */
+.wall{fill:#1d1d1b}.newwall{fill:#6f6a62}.floor{fill:#fff}
+.cab{fill:#efece5;stroke:#5c5a55;stroke-width:4px}.app{fill:#e2e9f1;stroke:#3b5b7a;stroke-width:4px}.tech{fill:#f9e8d9;stroke:#a2602b;stroke-width:5px}
+.oven{fill:#e9ddd2;stroke:#8a4a2a;stroke-width:5px}.mouth{fill:#5a3a2a}.niche{fill:url(#hatchN);stroke:#1d1d1b;stroke-width:4px}.nbg{fill:#fff}.nln{stroke:#a9a9a9;stroke-width:5px}
+.glass{fill:#eef3f6;stroke:#1d1d1b;stroke-width:4px}.thin{fill:none;stroke:#1d1d1b;stroke-width:7px}.hair{fill:none;stroke:#5c5a55;stroke-width:3px}
+.pocket{fill:none;stroke:#fff;stroke-width:5px;stroke-dasharray:30 22}.arcwall{fill:none;stroke:#1d1d1b;stroke-width:100px}
+.swing{fill:none;stroke:#8a8a8a;stroke-width:4px;stroke-dasharray:26 20}.hood{fill:none;stroke:#3b5b7a;stroke-width:5px;stroke-dasharray:36 20}
+.shelfline{fill:none;stroke:#8a8174;stroke-width:4px;stroke-dasharray:30 22}.drum{fill:#fff;stroke:#3b5b7a;stroke-width:4px}.vat{fill:#fff;stroke:#a2602b;stroke-width:5px}
+.sink{fill:#fff;stroke:#5c5a55;stroke-width:4px}.hanger{stroke:#b3aca0;stroke-width:5px}.rail{stroke:#8a8174;stroke-width:8px}
+.dim{fill:none;stroke:#3a3a3a;stroke-width:3px}.ext{fill:none;stroke:#8a8a8a;stroke-width:2.5px}
+.dimt{fill:#333;font-size:56px;text-anchor:middle;letter-spacing:1.5px}
+.lbl{fill:#333;font-size:50px;text-anchor:middle;letter-spacing:1px}.lbls{fill:#5a3a1c;font-size:46px;text-anchor:middle}.it{fill:#777;font-style:italic}
+.bdg{font-weight:700;text-anchor:middle;dominant-baseline:central;fill:#1d1d1b}
+.dott{fill:#fff;font-weight:700;text-anchor:middle;dominant-baseline:central}
+.wallbg{fill:#fbfaf7;stroke:#1d1d1b;stroke-width:7px}.floorline{stroke:#1d1d1b;stroke-width:8px}
+.cabhatch{fill:#e4dfd5;stroke:#5c5a55;stroke-width:4px}
+.grill{fill:#f4f2ee;stroke:#5c5a55;stroke-width:3px;stroke-dasharray:10 8}.door{fill:#fff;stroke:#1d1d1b;stroke-width:8px}.pane{fill:#eef3f6;stroke:#8aa0b2;stroke-width:4px}
+.ghost{fill:none;stroke:#a2602b;stroke-width:4px;stroke-dasharray:26 18}.top{fill:#cfc9bd;stroke:#5c5a55;stroke-width:3px}.plinth{fill:#d9d5cc;stroke:#5c5a55;stroke-width:3px}
+.splash{fill:#f1efea}.open{fill:#f8f6f2;stroke:#5c5a55;stroke-width:3px}.cushion{fill:#c9bfae;stroke:#8a8174;stroke-width:3px}.coat{fill:#ddd7cb;stroke:#8a8174;stroke-width:3px}
+.line{stroke:#5c5a55;stroke-width:3px}.panel{fill:#5c5a55}.knob{fill:#5c5a55}.stone{fill:#5d656c}
+.duct{stroke:#3b5b7a;stroke-width:5px;stroke-dasharray:22 16}.shield{fill:#d9c9a8}.fan{fill:#fff;stroke:#3b5b7a;stroke-width:4px}
+.elbox{fill:#e0a400;stroke:#8a6a1f;stroke-width:3px}.wbox{fill:#fff;stroke:#3f8f3f;stroke-width:5px}
+.s75.bkp .lbl{font-size:135px}.s75.bkp .cab,.s75.bkp .app,.s75.bkp .sink,.s75.bkp .drum,.s75.bkp .oven{stroke-width:11px}
+.s20 .dimt{font-size:46px}.s20 .lbl{font-size:42px}.s20 .lbls{font-size:40px}
+.s40 .lbl{font-size:70px}
+.fade .cab{fill:#f6f4f0;stroke:#bdb9b1}.fade .app{fill:#eef3f7;stroke:#a9b8c8}.fade .tech{fill:#fcf3ea;stroke:#d6b08c}.fade .oven{fill:#f3ede7;stroke:#cdb0a2}
+.fade .mouth{fill:#b9aca4}.fade .newwall{fill:#bdb9b3}.fade .drum{stroke:#a9b8c8}.fade .vat{stroke:#d6b08c}.fade .sink{stroke:#bdb9b1}.fade .hood{stroke:#a9b8c8}
+.b{font-weight:700}
+.lbt{fill:#1d1d1b;font-size:54px}.lbs{fill:#333;font-size:48px}.ld2{stroke:#1d1d1b;stroke-width:3px}
+.duct2{fill:#fff;stroke:#1d1d1b;stroke-width:4px;stroke-dasharray:22 12}
+.s50.cv .lbt{font-size:128px}.s50.cv .lbl{font-size:112px}.s50.cv .dimt{font-size:118px}.s50.cv .unit,.s50.cv .vat{stroke-width:11px}.s50.cv .tech{stroke-width:12px}.s50.cv .dim{stroke-width:8px}.s50.cv .ext{stroke-width:6px}.s50.cv .ghost{stroke-width:12px;stroke-dasharray:60 40}
+.cv .dimt{font-size:54px;fill:#1d1d1b}.cv .lbl{font-size:48px;fill:#1d1d1b}.cv .it{fill:#444}.cv .ghost{stroke:#7a4318;stroke-width:5px}.cv .tech{stroke:#7a4318}.cv .vat{stroke:#1d1d1b}
+.unit{fill:#fff;stroke:#1d1d1b;stroke-width:4px}.sens{fill:#fff;stroke:#1d1d1b;stroke-width:4px}
+.bkp .cab,.bkp .app,.bkp .sink,.bkp .drum,.bkp .oven{stroke-width:8px}.bkp .tech,.bkp .vat{stroke-width:12px}
+.bkp .hair,.bkp .shelfline,.bkp .hood,.bkp .hanger{stroke-width:6px}.bkp .rail{stroke-width:10px}.bkp .pocket{stroke-width:9px}
+.bkp .lbl{font-size:92px;letter-spacing:0;fill:#6f6a61}.bkp .swing{stroke-width:7px}.bkp .thin{stroke-width:10px}
+
+/* /BK-STIJL */
+</style>
+<style>
+ul.chk{list-style:none;margin:0;padding:0}
+ul.chk li{position:relative;padding-left:6mm;margin-bottom:1.5mm}
+ul.chk li::before{content:"";position:absolute;left:0;top:.7mm;width:3.2mm;height:3.2mm;border:.35mm solid var(--ink);background:#fff}
+td.vink{width:6mm}td.vink::before{content:"";display:inline-block;width:3.2mm;height:3.2mm;border:.35mm solid var(--ink);background:#fff;vertical-align:-.6mm}
+.card h3{margin-bottom:2mm}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ BLAD 1 -->
+<section class="sheet">
+  <p class="eyebrow">Hoort bij de detaillering CV-installatie woning · op basis van CV-ontwerp rev. W · 13-11-2026</p>
+  <h1>CV-installatie woning · zelf regelen</h1>
+  <p class="lead">Wat dit project van mij vraagt: eigen werk, keuzes, navragen, bestellen en afstemmen. De detaillering voor aannemer en loodgieter beschrijft hun werk, met de regeling; dit stuk sluit daarop aan. De stroomvoorziening staat op blad 2, navragen en bestellen op blad 3.</p>
+
+  <div class="grid" style="grid-template-columns:1fr 1fr 1fr;gap:5mm;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:4mm">
+    <div class="card">
+      <h3>1 · Eigen werk</h3>
+      <ul class="chk">
+        <li>Sleuf graven van de loods naar de linkergevel, in de lijn van de buitendeur van de eetkamer (± 15 m).</li>
+        <li>Duoleiding 2 × 40 in mantel 160 leggen, tot en met de muurdoorvoer in de gevel. Muurdoorvoersets aan beide kanten.</li>
+        <li>In dezelfde sleuf twee mantelbuizen Ø 50 met trekdraad voor de voelerkabels (één is reserve).</li>
+        <li>De loods levert warmte vóór het gas wordt afgesloten (eigen project: tekenset CV-01, CV-02 en CV-04).</li>
+        <li>Stroomvoorziening in de kast (blad 2).</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="margin-bottom:1mm">Bestellijst 3: grondleiding</h3>
+      <table class="cat">
+        <tbody>
+          <tr><td>Duoleiding Terrendis Heat Duo 2 × 40 in mantel 160 · ± 15 m tot de gevel, of ± 27 m als hij doorloopt tot de kast</td><td><a href="https://benem.nl/buizen/terrendis.html">benem.nl</a></td><td class="n">€ 67 per m</td></tr>
+          <tr><td>Mantelbuis flex met trekdraad Ø 50, rol 50 m · voor twee buizen van ± 15 m</td><td><a href="https://www.technim.nl/p/mantelbuis-flex-trekdraad-50mm-50m/">technim.nl</a></td><td class="n">€ 96,90</td></tr>
+          <tr><td>Muurdoorvoersets (2) en overgangskoppelingen 40 mm (4)</td><td><i>prijs opvragen</i></td><td class="n"></td></tr>
+        </tbody>
+      </table>
+      <p class="sub" style="margin-top:1.5mm">Prijs duoleiding van 12-11-2026. Samen ± € 1.100 bij 15 m en ± € 1.900 bij 27 m, zonder doorvoeren en koppelingen.</p>
+    </div>
+    </div>
+    <div class="card">
+      <h3>2 · Beslissen</h3>
+      <ul class="chk">
+        <li>Wie legt de leiding in de vloer van de gevel naar de techniekkast (± 11,5 m)? Loopt de voorgeïsoleerde leiding door tot de kast?</li>
+        <li>Route van buitenlucht en afvoerlucht van de WTW-unit. Daarna: linker of rechter uitvoering (advies: rechter).</li>
+        <li>Route van het afzuigkanaal naar de badkamer.</li>
+        <li>Verswatermodule: de gewone FRISTAR3 (getekend) of de uitvoering voor warmtepompen (810 hoog, vraagt een andere indeling).</li>
+        <li>Handdoekradiator in de badkamer, en een weersafhankelijke regeling van de vloer (voorstellen).</li>
+        
+      </ul>
+    </div>
+    <div class="card">
+      <h3>3 · Afstemmen</h3>
+      <ul class="chk">
+        <li><b>Loodgieter:</b> de detaillering doornemen. Wie levert buis, noppenplaat en fittingen? Een derde voelerhuls op het vat voor de thermostaat van het element. Hij maakt het legplan en regelt in. Wie sluit de zoneregeling aan en stelt haar in? Dat gaat met de Resideo Pro-app (account nodig).</li>
+        <li><b>Aannemer:</b> de hele vloer gaat eruit. Vloeropbouw met ruimte voor de leidingen in de isolatielaag. Doorvoer in de linkergevel. De wand achter het vat draagt ± 100 kg.</li>
+        <li><b>Interieurbouwer:</b> hoekkast 700 × 1400, minimaal 2400 hoog, deuren aan de kopse kant en opzij. De kast ernaast: alleen de bovenste kast 450 diep, voor het ventilatiekanaal erachter; de rest volle diepte.</li>
+        <li><b>Lenz:</b> techniekkast, standleiding en afvoeren in de tekening zetten. De badkamer boven komt langs die wand naar beneden. Ventilatieroutes; het plafond zakt maar 2 cm.</li>
+        <li><b>Netbeheerder:</b> de gasaansluiting laten verwijderen. Pas doen als de loods warmte levert: daarna werkt de ketel niet meer.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div><span>Project</span><b>CV-installatie woning · Gasthuisstraat 6-a, Langenboom</b></div>
+    <div><span>Blad</span><b>Zelf regelen: overzicht</b></div>
+    <div><span>Voor</span><b>Julian</b></div>
+    <div><span>Datum · status</span><b>13-11-2026 · concept</b></div>
+    <div><span>Blad</span><b>1 / 3</b></div>
+  </div>
+</section>
+
+<!-- ============================================================ BLAD 2 -->
+<section class="sheet">
+  <h2>4 · Stroomvoorziening</h2>
+  <p class="sub" style="margin-bottom:3mm">Welke voeding elk onderdeel van de CV in huis nodig heeft. De onderdelen zelf staan in de detaillering, ook de regeling. Indicatief: de elektricien bepaalt groepen en bedrading.</p>
+  <div class="grid" style="grid-template-columns:1.25fr 1fr;gap:8mm;align-items:start">
+    <div>
+      <h3 style="margin-bottom:1mm">Voeding in de techniekkast</h3>
+      <table>
+        <thead><tr><th></th><th>Onderdeel</th><th>Wat</th><th>Voeding</th></tr></thead>
+        <tbody>
+          <tr><td class="vink"></td><td class="c">Element E2</td><td>Eigen groep met een schakelaar in de kast, via de thermostaat met begrenzer. Normaal uit</td><td>1 × 16 A · 3 kW</td></tr>
+          <tr><td class="vink"></td><td class="c">Zoneregelaar</td><td>Vaste aansluiting bij de verdeler. De regelaar voedt de 14 motoren en de pomp van de verdeler</td><td>230 V</td></tr>
+          <tr><td class="vink"></td><td class="c">Verdeler met pomp</td><td>Via de pompuitgang van de zoneregelaar (maximaal 1 A), met de maximaalthermostaat ertussen. Geen eigen wandcontactdoos</td><td>230 V</td></tr>
+          <tr><td class="vink"></td><td class="c">Pompgroep radiatoren</td><td>Wandcontactdoos; geschakeld door de thermostaat van de verdieping</td><td>230 V</td></tr>
+          <tr><td class="vink"></td><td class="c">Verswatermodule</td><td>Wandcontactdoos voor regelaar en pomp</td><td>230 V</td></tr>
+          <tr><td class="vink"></td><td class="c">WTW-unit</td><td>Wandcontactdoos bovenin de kast</td><td>230 V · max 145 W</td></tr>
+          <tr><td class="vink"></td><td class="c">Voelers T5 en T8</td><td>Kabel door de mantelbuis in de sleuf naar de regelaar in de loods</td><td>laagspanning</td></tr>
+        </tbody>
+      </table>
+      <h3 style="margin:4mm 0 1mm">Voeding buiten de kast</h3>
+      <table>
+        <tbody>
+          <tr><td class="vink"></td><td class="c">Bedieningspaneel</td><td>Inbouwdoos met 230 V voor de muurplaat, op de plek van het paneel. De acht thermostaten werken op batterijen</td><td>230 V</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3 style="margin-bottom:1mm">Nog te kiezen</h3>
+      <table>
+        <tbody>
+          <tr><td>Schakelaar voor E2 in de kast</td><td class="n">1</td></tr>
+          <tr><td>Wandcontactdozen in de kast</td><td class="n">± 4</td></tr>
+          <tr><td>Inbouwdoos voor het bedieningspaneel</td><td class="n">1</td></tr>
+          <tr><td>Voelerkabel naar de loods</td><td class="n">2 × ± 30 m</td></tr>
+        </tbody>
+      </table>
+      <div class="card" style="margin-top:5mm">
+        <h3>Staat in de detaillering</h3>
+        <p style="margin:0">De regeling zelf gaat mee naar de aannemers, met prijzen (bestellijst 1, blad 6): de thermostaat van E2, de 14 thermische motoren, de zoneregelaar met acht thermostaten en het bedieningspaneel.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div><span>Project</span><b>CV-installatie woning · Gasthuisstraat 6-a, Langenboom</b></div>
+    <div><span>Blad</span><b>Stroomvoorziening</b></div>
+    <div><span>Voor</span><b>Julian</b></div>
+    <div><span>Datum · status</span><b>13-11-2026 · concept</b></div>
+    <div><span>Blad</span><b>2 / 3</b></div>
+  </div>
+</section>
+
+<!-- ============================================================ BLAD 3 -->
+<section class="sheet">
+  <h2>Navragen en bestellen</h2>
+  <div class="grid" style="grid-template-columns:1.25fr 1fr;gap:8mm;align-items:start;margin-top:3mm">
+    <div class="card">
+      <h3>5 · Navragen vóór het bestellen</h3>
+      <ul class="chk">
+        <li>Technim of Inventum: mag het element verticaal van onderaf gemonteerd worden?</li>
+        <li>Technim of VTE: kan de verdeler continu tegen 75 °C aanvoer, en is ¾" genoeg voor 14 groepen?</li>
+        <li>Buurs of Metalac: maximale temperatuur van het vat (minimaal 90 °C).</li>
+        <li>Technische Alternative: capaciteit van de FRISTAR3 bij een buffer van 55 °C.</li>
+        <li>Heizungsdiscount24: levering naar Nederland. EnergyBy: pompgroep radiatoren weer op voorraad?</li>
+        <li>Technim of Resideo: zijn de HCC100 en de DT4R-thermostaten uit de set de R3-uitvoering? Het Evohome-paneel ATC938G werkt volgens de installatiegids niet met draadloze onderdelen van vóór juli 2025.</li>
+        <li>Technim of VTE: passen de motoren MT4-HCC (sluitmaat 10,5 mm) op de ventielen van de verdeler?</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>6 · Bestellen</h3>
+      <table>
+        <tbody>
+          <tr><td class="vink"></td><td>Bestellijst 1: hoofdonderdelen, met de zoneregeling (detaillering, blad 6)</td><td class="n">€ 6.184,85</td></tr>
+          <tr><td class="vink"></td><td>Bestellijst 2: vloerverwarming en klein materiaal (blad 7). Eerst met de loodgieter afstemmen wie buis en noppenplaat levert</td><td class="n">€ 3.514,69</td></tr>
+            <tr><td class="vink"></td><td>Bestellijst 3: grondleiding, eigen werk (blad 1)</td><td class="n">± € 1.100 – 1.900</td></tr>
+          <tr><td></td><td><b>Totaal lijst 1 en 2</b> · inclusief btw, zonder verzendkosten</td><td class="n"><b>€ 9.699,54</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div><span>Project</span><b>CV-installatie woning · Gasthuisstraat 6-a, Langenboom</b></div>
+    <div><span>Blad</span><b>Navragen en bestellen</b></div>
+    <div><span>Voor</span><b>Julian</b></div>
+    <div><span>Datum · status</span><b>13-11-2026 · concept</b></div>
+    <div><span>Blad</span><b>3 / 3</b></div>
+  </div>
+</section>
+
+</body>
+</html>

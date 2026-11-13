@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Notities CV-systeem</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: technische tekenset — tekeninghoofd, vier bladen op raster, daarna stuklijst, berekeningen en aandachtspunten */
+:root{
+  --paper:#eef1f3; --sheet:#fbfcfc; --ink:#1d2730; --muted:#5d6b77; --rule:#c5ced5; --grid:#e6eaee;
+  --hot:#c8372d; --ret:#2f63b8; --cw:#1b8f8a; --dhw:#c9781a; --ctl:#7a8792; --hatch:#d6dde2; --el:#7b4fb0; --pre:#5f9e2f;
+  --f-display:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+  --f-body:"IBM Plex Sans",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#12181d; --sheet:#182128; --ink:#dfe6ec; --muted:#93a1ad; --rule:#33414c; --grid:#1e2830;
+  --hot:#ef6a5e; --ret:#6b9cf0; --cw:#3cc2bb; --dhw:#f0a24a; --ctl:#8494a1; --hatch:#2a3640; --el:#b48ef0; --pre:#8fcf5c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#12181d; --sheet:#182128; --ink:#dfe6ec; --muted:#93a1ad; --rule:#33414c; --grid:#1e2830;
+  --hot:#ef6a5e; --ret:#6b9cf0; --cw:#3cc2bb; --dhw:#f0a24a; --ctl:#8494a1; --hatch:#2a3640; --el:#b48ef0; --pre:#8fcf5c; color-scheme:dark}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55}
+.wrap{max-width:1240px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:36px}
+header{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end;border-bottom:2px solid var(--ink);padding-bottom:14px}
+h1{font-family:var(--f-display);font-weight:700;font-size:clamp(28px,4.5vw,42px);line-height:1.05;margin:0;text-wrap:balance;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:6px 0 0;max-width:66ch}
+.tb{border:1px solid var(--ink);font-family:var(--f-mono);font-size:12px;display:grid;grid-template-columns:auto auto;min-width:0}
+.tb div{padding:4px 10px;border-bottom:1px solid var(--rule)}
+.tb div:nth-child(odd){color:var(--muted);text-transform:uppercase;letter-spacing:.06em;border-right:1px solid var(--rule)}
+.tb div:nth-last-child(-n+2){border-bottom:0}
+nav.index{display:flex;flex-wrap:wrap;gap:8px}
+nav.index a{font-family:var(--f-mono);font-size:12px;color:var(--ink);text-decoration:none;border:1px solid var(--rule);padding:4px 10px;background:var(--sheet)}
+nav.index a:hover,nav.index a:focus-visible{border-color:var(--ink);outline:none}
+.blad{display:grid;gap:12px}
+.bladkop{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--rule);padding-bottom:6px}
+.bladkop h2{margin:0}
+.bladnr{font-family:var(--f-mono);font-size:12px;color:var(--muted);letter-spacing:.08em}
+.sheet{background:var(--sheet);border:1px solid var(--rule);overflow-x:auto}
+.sheet svg{display:block;width:100%;height:auto}
+.s-wide svg{min-width:1100px}
+.s-mid svg{min-width:0}
+.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:16px}
+.pair>*{min-width:0}
+.cap{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+h2{font-family:var(--f-display);font-weight:600;font-size:24px;margin:0 0 10px;text-wrap:balance}
+h3{font-family:var(--f-display);font-weight:600;font-size:18px;margin:0 0 8px}
+.eyebrow{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 2px}
+section p{max-width:72ch;margin:0 0 10px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:28px}
+.cols>*{min-width:0}
+.legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px 20px;list-style:none;padding:0;margin:0}
+.legend li{display:flex;gap:10px;align-items:center;font-size:14px}
+.legend svg{flex:none}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500;white-space:nowrap}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--f-mono);font-size:13px;white-space:nowrap}
+tr.grp td{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--paper);padding-top:12px}
+tr.pick td{background:color-mix(in srgb,var(--cw) 12%,transparent)}
+.tag{display:inline-block;font-family:var(--f-mono);font-size:12.5px;border:1px solid var(--ink);padding:0 5px;border-radius:2px;font-weight:500;white-space:nowrap}
+ol.notes{margin:0;padding-left:22px;display:grid;gap:12px;max-width:80ch}
+ol.notes b{font-weight:600}
+.callout{border-left:3px solid var(--dhw);padding:10px 14px;background:color-mix(in srgb,var(--dhw) 9%,transparent);max-width:80ch}
+.callout p{margin:0}
+/* svg */
+.t{font-family:var(--f-display);fill:var(--ink);font-size:13px}
+.tb1{font-family:var(--f-display);fill:var(--ink);font-size:14px;font-weight:600}
+.ts{font-family:var(--f-mono);fill:var(--muted);font-size:10px}
+.tk{font-family:var(--f-mono);fill:var(--ink);font-size:10.5px;font-weight:500}
+.zone{font-family:var(--f-mono);fill:var(--muted);font-size:11px;letter-spacing:.16em}
+.box{fill:var(--sheet);stroke:var(--ink);stroke-width:1.6}
+.wall{fill:url(#hatchW);stroke:var(--ink);stroke-width:1.2}
+.dash{fill:none;stroke:var(--ink);stroke-width:1.2;stroke-dasharray:5 4}
+.p{fill:none;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.ph{stroke:var(--hot)} .pr{stroke:var(--ret)} .pc{stroke:var(--cw);stroke-width:2.2} .pd{stroke:var(--dhw);stroke-width:2.2} .pe{stroke:var(--el);stroke-width:2}
+.ctl{fill:none;stroke:var(--ctl);stroke-width:1.2;stroke-dasharray:4 4}
+.dim{stroke:var(--ink);stroke-width:.9;fill:none}
+.dimt{font-family:var(--f-mono);fill:var(--ink);font-size:10.5px}
+.sens circle{fill:var(--sheet);stroke:var(--ink);stroke-width:1.2}
+.sens text{font-family:var(--f-mono);font-size:9px;fill:var(--ink)}
+.dot{fill:var(--ink)}
+.pp{stroke:var(--pre);stroke-width:2.2}
+.lightsheet{--paper:#eef1f3;--sheet:#fbfcfc;--ink:#1d2730;--muted:#4f5c67;--rule:#c5ced5;--hot:#c8372d;--ret:#2f63b8;--cw:#1b8f8a;--dhw:#c9781a;--el:#7b4fb0;--pre:#4f8a22;color-scheme:light;background:#fbfcfc}
+.s-plan svg{min-width:1050px}
+.pl{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.lab{font-family:var(--f-mono);font-size:3.3px;fill:var(--ink)}
+.labb{font-family:var(--f-display);font-size:4.2px;font-weight:600;fill:var(--ink)}
+.halo{paint-order:stroke;stroke:#fbfcfc;stroke-width:1.1px;stroke-linejoin:round}
+.lead{stroke:var(--ink);stroke-width:.35;fill:none}
+.banner{border:1px dashed var(--ink);padding:10px 14px;max-width:80ch;background:var(--sheet)}
+.banner p{margin:0}
+@media (max-width:640px){header{grid-template-columns:1fr}}
+.stack{display:grid;gap:26px}
+.stack>*{min-width:0}
+.note{color:var(--muted);font-size:13.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="banner"><p><b>Vervallen: dit is rev. F.</b> De actuele versie staat in <a href="../../index.html" style="color:var(--ink)">CV/index.html</a>.</p></div>
+
+<header>
+  <div>
+    <p class="eyebrow">Notities en onderbouwing · bij tekenset CV-01 t/m CV-05</p>
+    <h1>Notities en keuzes CV-systeem</h1>
+    <p class="sub">Berekeningen en afwegingen achter de tekenset. De tekeningen, de stuklijst en de open punten staan in de <a href="index.html" style="color:var(--ink)">tekenset</a>.</p>
+  </div>
+  <div class="tb">
+    <div>Bij set</div><div>CV-01 t/m CV-05</div>
+    <div>Status</div><div>Concept rev. F</div>
+    <div>Vervangt</div><div>rev. E</div>
+    <div>Datum</div><div>12-11-2026</div>
+  </div>
+</header>
+
+<nav class="index" aria-label="Onderwerpen">
+  <a href="index.html">← Tekenset</a>
+  <a href="#uitgangspunten">Uitgangspunten</a>
+  <a href="#warmtebehoefte">Warmtebehoefte</a>
+  <a href="#douche">Douchen en WTW</a>
+  <a href="#warmtepomp">Warmtepomp</a>
+  <a href="#buffer">Buffer B1</a>
+  <a href="#leiding">Grondleiding</a>
+  <a href="#tapwater">Tapwater en B2</a>
+  <a href="#gas">Gasketel</a>
+  <a href="#wachttijd">Wachttijd</a>
+  <a href="#kast">Techniekkast D2</a>
+  <a href="#inkoop">Inkoop</a>
+</nav>
+
+<section id="uitgangspunten">
+<p class="eyebrow">Uitgangspunten</p>
+<h2>Het systeem in het kort</h2>
+<div class="tbl"><table>
+  <thead><tr><th>Onderdeel</th><th>Keuze</th><th>Plaats</th></tr></thead>
+  <tbody>
+    <tr><td>Houtkachel K1</td><td>CV-houtkachel, 6–8 kW naar water (datasheet volgt), ±5 kW naar de ruimte</td><td>Kantoor in loods</td></tr>
+    <tr><td>Warmtepomp WP1</td><td>Lucht/water monoblock 8 kW, winterstand 45 °C, zomerstand 55 °C, geblokkeerd als de kachel brandt</td><td>Buiten bij loods</td></tr>
+    <tr><td>Element E1</td><td>3 kW in B1, alleen back-up bij storing</td><td>B1</td></tr>
+    <tr><td>Buffer B1</td><td>750 L, kachel via laadunit (retour ≥ 65 °C)</td><td>Technische ruimte loods</td></tr>
+    <tr><td>Expansievat X1</td><td>200 L, voordruk 1,0 bar (300 L als de kachel maar 2 bar mag hebben)</td><td>Technische ruimte loods</td></tr>
+    <tr><td>Overschotgroep</td><td>P3 naar radiator loods 10 kW + voorkamer, aan als B1 onderin ≥ 75 °C is</td><td>Loods</td></tr>
+    <tr><td>Transport</td><td>Duoleiding 2 × 40 in mantel 160, ±17,5 m, P4 op ΔT-regeling, mantelbuis voor voelerkabels</td><td>Grond</td></tr>
+    <tr><td>Buffer B2</td><td>100 L, met FWM2, mengstation en verdeler VD1</td><td>Techniekkast D2 bijkeuken</td></tr>
+    <tr><td>Element E2</td><td>Tot 6 kW, hoog in B2, 52 °C</td><td>B2</td></tr>
+    <tr><td>Tapwater</td><td>FWM2 op 50 °C. Geen circulatie: de badkamer wacht ±25–30 s op warm water</td><td>Huis</td></tr>
+    <tr><td>Vloerverwarming</td><td>Mengstation en VD1 in D2, VD2 als inbouwverdeler in de kastenwand van de garderobe</td><td>Huis</td></tr>
+    <tr><td>Douche-WTW</td><td>Horizontaal (goot/bak), naar de koude kant van de douchemengkraan</td><td>Badkamer</td></tr>
+    <tr><td>Stroom</td><td>ESS 100 kWh / 30 kVA, 3-fase, met 100 zonnepanelen. Pompgroep op prioriteit</td><td>Loods</td></tr>
+    <tr><td>Overig huis</td><td>Bovenverdieping airco + houtkachel (niet op CV), WTW-ventilatie</td><td>Huis</td></tr>
+    <tr><td>Gas</td><td>Niet in gebruik. Twee afgedopte reserve-aansluitingen op B2 en een afgedopte gasleiding in D2</td><td>Techniekkast D2</td></tr>
+  </tbody>
+</table></div>
+</section>
+
+<section id="warmtebehoefte">
+<p class="eyebrow">Warmtebehoefte woning</p>
+<h2>±7–8 kW bij −10 °C</h2>
+<p>Dit is een schatting op basis van VO4 (Lenz, 02-10-2026). De begane grond is 174 m² BVO. Voor de bovenverdieping is ±70 m² aangenomen, want daarvan is geen plattegrond. De isolatie is aangenomen als "goed": vloer Rc 3,7, gevels Rc ±4, plat dak Rc 6 en hellend dak Rc 5. Voor glas met aluminium kozijnen is U 1,3 gerekend, en voor de WTW 80 % rendement.</p>
+<div class="cols">
+<div class="tbl"><table>
+  <thead><tr><th>Onderdeel</th><th class="n">W/K</th></tr></thead>
+  <tbody>
+    <tr><td>Glas + kozijnen (±48 m²)</td><td class="n">62</td></tr>
+    <tr><td>Gevels (±182 m²)</td><td class="n">46</td></tr>
+    <tr><td>Vloer (174 m², factor 0,6)</td><td class="n">27</td></tr>
+    <tr><td>Hellend dak (±125 m²)</td><td class="n">23</td></tr>
+    <tr><td>Plat dak (±75 m²)</td><td class="n">12</td></tr>
+    <tr><td>Koudebruggen (+10 %)</td><td class="n">17</td></tr>
+    <tr><td>Ventilatie + infiltratie</td><td class="n">50</td></tr>
+    <tr class="pick"><td><b>Totaal</b></td><td class="n">±235</td></tr>
+  </tbody>
+</table></div>
+<div class="tbl"><table>
+  <thead><tr><th>Buiten</th><th class="n">Vermogen</th></tr></thead>
+  <tbody>
+    <tr><td>−10 °C (ontwerp)</td><td class="n">7,1 kW (8 kW met opwarmtoeslag)</td></tr>
+    <tr><td>−5 °C</td><td class="n">5,9 kW</td></tr>
+    <tr><td>0 °C</td><td class="n">4,7 kW</td></tr>
+    <tr><td>+5 °C</td><td class="n">3,5 kW</td></tr>
+    <tr><td>Jaarbehoefte ruimteverwarming</td><td class="n">±9.000–13.000 kWh</td></tr>
+  </tbody>
+</table></div>
+</div>
+<p style="margin-top:10px">De begane grond met vloerverwarming vraagt ±5 kW. Glas is de grootste post: met triple glas (U ±0,8) scheelt het ±1 kW bij vorst. Wil je de vloerverwarmingsgroepen indelen, dan is een berekening per vertrek nodig, met de plattegrond van de verdieping en de echte Rc-waarden.</p>
+</section>
+
+<section id="douche">
+<p class="eyebrow">Douchen</p>
+<h2>1 uur per dag op 38 °C</h2>
+<p>Koud water van ±10 °C moet 28 K omhoog. Jaarlijks is dat ±5.700 kWh zonder WTW, ongeveer de helft van de ruimteverwarming.</p>
+<div class="tbl"><table>
+  <thead><tr><th>Douchekop</th><th class="n">Water/uur</th><th class="n">kWh/dag</th><th class="n">Vermogen</th><th class="n">Met WTW (30–50 %)</th></tr></thead>
+  <tbody>
+    <tr><td>Spaar 6 L/min</td><td class="n">360 L</td><td class="n">11,7</td><td class="n">11,7 kW</td><td class="n">6–8 kWh</td></tr>
+    <tr class="pick"><td>Normaal 8 L/min</td><td class="n">480 L</td><td class="n">15,6</td><td class="n">15,6 kW</td><td class="n">8–11 kWh</td></tr>
+    <tr><td>Regen 10 L/min</td><td class="n">600 L</td><td class="n">19,5</td><td class="n">19,5 kW</td><td class="n">10–14 kWh</td></tr>
+  </tbody>
+</table></div>
+<ol class="notes" style="margin-top:12px">
+  <li><b>Het douchevermogen is groter dan de verwarming.</b> B2 overbrugt alleen de start. Daarna komt de warmte via de duoleiding uit B1, die ±20–25 kW kan leveren.</li>
+  <li><b>Alleen een horizontale WTW past.</b> Onder de douche zit geen verdieping, dus het wordt een douchegoot- of douchebak-WTW (±30–50 %) en geen pijp-WTW.</li>
+  <li><b>De WTW werkt het best met heet tapwater.</b> Hij verwarmt alleen het koude water voor dat de douchekraan bijmengt. Bij tapwater van 42 °C is dat bijna niets, bij 50 °C ruim een kwart van de stroom. Ook daarom houdt E2 de top van B2 op 52 °C.</li>
+</ol>
+</section>
+
+<section id="warmtepomp" class="stack">
+<div>
+<p class="eyebrow">Warmtepomp</p>
+<h2>8 kW met een winter- en een zomerstand</h2>
+<p>Voor de kachel is warmte warmte: een blok hout levert evenveel kWh, of het water nu 40 of 85 °C wordt. Voor een warmtepomp geldt dat niet. Hoe heter het water dat hij maakt, hoe meer stroom hij per kWh warmte gebruikt.</p>
+</div>
+<div class="tbl"><table>
+  <thead><tr><th>Water uit de warmtepomp</th><th class="n">COP bij 7 °C buiten</th><th class="n">Stroom per kWh warmte</th></tr></thead>
+  <tbody>
+    <tr><td>35 °C (wat de vloer vraagt)</td><td class="n">±4,6</td><td class="n">0,22 kWh</td></tr>
+    <tr class="pick"><td>45 °C (winterstand)</td><td class="n">±3,6</td><td class="n">0,28 kWh</td></tr>
+    <tr><td>55 °C (zomerstand)</td><td class="n">±2,9</td><td class="n">0,34 kWh</td></tr>
+  </tbody>
+</table></div>
+<div>
+<p>In de winter stook je toch, dus de warmtepomp hoeft het vat dan maar op 45 °C te houden. De kachel begint zo met een kouder vat en kan 35 kWh kwijt in plaats van 30. In de zomer draait de warmtepomp op zonnestroom en mag hij naar 55 °C voor het tapwater.</p>
+<div class="tbl"><table>
+  <thead><tr><th>Variant</th><th class="n">Besparing t.o.v. vast 55 °C</th><th>Extra onderdelen</th></tr></thead>
+  <tbody>
+    <tr class="pick"><td><b>Seizoensstand</b> (gekozen)</td><td class="n">±150–250 kWh per jaar</td><td>Geen</td></tr>
+    <tr><td>Twee zones in B1 met tapwatervoorrang</td><td class="n">±500–600 kWh per jaar</td><td>Twee motorkleppen en een uitgebreidere regeling</td></tr>
+  </tbody>
+</table></div>
+<p style="margin-top:10px">Het verschil is ongeveer €100 per jaar. De seizoensstand is daarom gekozen. Op B1 blijven twee aansluitingen vrij, zodat de tweede variant later nog kan. Ook daarbij blijven er twee leidingen naar het huis.</p>
+<p class="note">Aannames: de kachel dekt ±75 % van december tot februari. De warmtepomp levert dan ±4.000 kWh vloerwarmte en ±3.300 kWh tapwaterwarmte per jaar. COP-waarden zijn gangbaar voor een monoblock, geen fabrieksopgave.</p>
+</div>
+<ol class="notes">
+  <li><b>8 kW volstaat.</b> De begane grond vraagt ±5 kW bij −10 °C. Met de buffer erbij is 8 kW genoeg: goedkoper, minder pendelen en een betere COP in deellast.</li>
+  <li><b>Atlantic Explorer V5 (warmtepompboiler) is geen alternatief.</b> Hij neemt maximaal 700 W op, dus ±2 kW thermisch. Het is een tapwaterboiler zonder CV-aansluiting.</li>
+  <li><b>Vorst.</b> Een monoblock buiten krijgt vorstbeveiligingskleppen, of glycol met een scheidingswisselaar.</li>
+</ol>
+</section>
+
+<section id="buffer">
+<p class="eyebrow">Buffer B1</p>
+<h2>1 × 750 L is genoeg</h2>
+<p>B1 slaat 0,87 kWh per graad op. Hoe lang je kunt stoken met de kachel op 6 kW naar water, vanaf de winterstand van 45 °C:</p>
+<div class="tbl"><table>
+  <thead><tr><th>Afname huis tijdens stoken</th><th class="n">Netto naar het vat</th><th class="n">750 L, 45→85 °C (35 kWh)</th><th class="n">2 × 750 L (70 kWh)</th></tr></thead>
+  <tbody>
+    <tr><td>0 kW</td><td class="n">6 kW</td><td class="n">±6 u</td><td class="n">±12 u</td></tr>
+    <tr><td>2 kW</td><td class="n">4 kW</td><td class="n">±9 u</td><td class="n">±17 u</td></tr>
+    <tr><td>3 kW</td><td class="n">3 kW</td><td class="n">±12 u</td><td class="n">±23 u</td></tr>
+    <tr><td>4 kW</td><td class="n">2 kW</td><td class="n">±17 u</td><td class="n">±35 u</td></tr>
+  </tbody>
+</table></div>
+<p style="margin-top:10px">Op een koude dag neemt het huis 3–4 kW af. Dan kun je 12 uur of langer stoken voordat het vat vol is. Reserveer wel ruimte en T-stukken voor een tweede vat. Komt de overschotgroep na een seizoen vaak in actie, dan zet je het tweede vat er later bij. X1 moet dan naar 250–300 L.</p>
+</section>
+
+<section id="leiding" class="stack">
+<div>
+<p class="eyebrow">Grondleiding</p>
+<h2>Duo 2 × 40 in een mantel van 160 mm</h2>
+<p>Het huis vraagt hooguit ±20 kW tegelijk: 15 kW douchen plus 5 kW vloer. Drukverlies over de hele lus van 2 × 17,5 m, met 30 % toeslag voor appendages:</p>
+</div>
+<div class="tbl"><table>
+  <thead><tr><th>Buis</th><th class="n">20 kW, ΔT 20 K</th><th class="n">20 kW, ΔT 10 K</th><th class="n">Maximum bij 150 Pa/m</th><th class="n">Waterinhoud per leiding</th></tr></thead>
+  <tbody>
+    <tr><td>32 × 2,9</td><td class="n">0,45 m/s · 4,5 kPa</td><td class="n">0,90 m/s · 15,6 kPa</td><td class="n">25 kW</td><td class="n">9 L</td></tr>
+    <tr class="pick"><td><b>40 × 3,7</b></td><td class="n">0,29 m/s · 1,6 kPa</td><td class="n">0,58 m/s · 5,4 kPa</td><td class="n">45 kW</td><td class="n">15 L</td></tr>
+    <tr><td>50 × 4,6</td><td class="n">0,19 m/s · 0,5 kPa</td><td class="n">0,37 m/s · 1,8 kPa</td><td class="n">83 kW</td><td class="n">23 L</td></tr>
+  </tbody>
+</table></div>
+<p>32 mm kan het net. 40 mm heeft ruime marge, ook bij het kleine temperatuurverschil van de winterstand. 50 mm heeft meer waterinhoud, dus een grotere koude prop bij de start, meer warmteverlies en een hogere prijs.</p>
+<div>
+<h3>Welk type</h3>
+<p>De webshop en de site van de fabrikant geven geen isolatiewaarde op. Gerekend is met λ = 0,040 W/mK, gangbaar voor flexibel PE-schuim, op 0,8 m diepte in vochtig zand.</p>
+<div class="tbl"><table>
+  <thead><tr><th>Type</th><th class="n">Prijs 17,5 m</th><th class="n">Isolatie rond de buizen</th><th class="n">Verlies op WP / op kachel</th><th class="n">Verlies per jaar</th></tr></thead>
+  <tbody>
+    <tr class="pick"><td><b>Duo 40 / 160</b></td><td class="n">€1.172</td><td class="n">28 mm</td><td class="n">8 / 13 W/m</td><td class="n">±1.010 kWh</td></tr>
+    <tr><td>Duo 50 / 200</td><td class="n">€1.732</td><td class="n">36 mm</td><td class="n">8 / 13 W/m</td><td class="n">±1.020 kWh</td></tr>
+    <tr><td>Duo 50 / 160</td><td class="n">€1.365</td><td class="n">18 mm</td><td class="n">10 / 16 W/m</td><td class="n">±1.310 kWh</td></tr>
+    <tr><td>Duo 40 / 140</td><td class="n">€998</td><td class="n">20 mm</td><td class="n">9 / 15 W/m</td><td class="n">±1.160 kWh</td></tr>
+    <tr><td>Duo 32 / 160</td><td class="n">€1.032</td><td class="n">36 mm</td><td class="n">7 / 10 W/m</td><td class="n">±830 kWh</td></tr>
+    <tr><td>2 × Uno 50 / 140</td><td class="n">€1.785</td><td class="n">41 mm</td><td class="n">14 / 22 W/m</td><td class="n">±1.730 kWh</td></tr>
+  </tbody>
+</table></div>
+<p class="note" style="margin-top:8px">Prijzen benem.nl, 12-11-2026, incl. btw. De prijs van Duo 40/140 is niet op de productpagina gecontroleerd. Bedrijfsuren: 2.700 uur op de warmtepomp (45/28 °C), 1.800 uur op de kachel (75/32 °C) en 2.000 uur tapwater in de zomer (55/22 °C).</p>
+</div>
+<ol class="notes">
+  <li><b>Een duoleiding werkt een beetje als warmtewisselaar.</b> Er lekt 3–9 W/m van aanvoer naar retour, dus 50–150 W over de hele lengte. De aanvoer koelt daardoor ±0,1 °C af. Die warmte gaat via de retour terug naar het vat en is geen verlies.</li>
+  <li><b>Twee losse leidingen verliezen meer.</b> Samen hebben ze meer buitenoppervlak naar de grond dan één duoleiding. Ze zijn ook duurder en vragen een bredere sleuf.</li>
+  <li><b>Extra isolatie verdient zich traag terug.</b> Bij Duo 50 bespaart de mantel van 200 mm ±290 kWh per jaar voor €367 extra. Bij €0,08 per kWh warmte is dat ±16 jaar. Een dunnere buis in dezelfde mantel is de betere keuze: Duo 40/160.</li>
+  <li><b>Het verlies is niet minimaal.</b> ±1.000 kWh per jaar is ongeveer 8 % van wat er door de leiding gaat. De leiding staat een groot deel van het stookseizoen warm, omdat P4 doorloopt zolang de vloer warmte vraagt.</li>
+</ol>
+</section>
+
+<section id="tapwater" class="stack">
+<div>
+<p class="eyebrow">Tapwater en B2</p>
+<h2>100 L met een elektrisch element erin</h2>
+<p>B2 hoeft maar twee dingen te doen: de eerste minuut overbruggen tot P4 warm water uit de loods aanvoert, en pieken afvlakken. De duoleiding levert daarna ±20–25 kW continu. Daar is 100 L genoeg voor. De 200 L uit rev. D was ruimer dan nodig. Een groter vat laat P4 alleen minder vaak starten.</p>
+</div>
+<div>
+<h3>Waarom een element in het vat in plaats van een doorstromer</h3>
+<p>Zonder kachel staat het vat in de winter op 45 °C en komt er ±42 °C uit de kraan. Dat is warm genoeg, maar dan gaat bijna al het douchewater door de warme leiding en door FWM2. De straal wordt dan zwakker, zoals je zelf al merkte. Een element hoog in B2 houdt de top op 52 °C, zodat FWM2 ±48–50 °C levert en de kraan weer koud bijmengt.</p>
+<div class="tbl"><table>
+  <thead><tr><th></th><th>Doorstromer na FWM2</th><th>Element E2 in B2</th></tr></thead>
+  <tbody>
+    <tr><td>Drukverlies in het tapwater</td><td>Ja, al het warme water gaat erdoor</td><td>Geen</td></tr>
+    <tr><td>Bad vullen</td><td>Geknepen</td><td>Uit de voorraad in de top van B2</td></tr>
+    <tr><td>Plaats</td><td>Eigen toestel in de kast</td><td>In het vat</td></tr>
+    <tr><td>Noodtapwater zonder de loods</td><td>Alleen lauw, bij koud vat</td><td>Ja, de top van B2 op 52 °C</td></tr>
+    <tr><td>Aansluiting</td><td>6 kW: 1 × 32 A</td><td>6 kW: 3 × 16 A, of 3 kW: 1 × 16 A</td></tr>
+  </tbody>
+</table></div>
+</div>
+<ol class="notes">
+  <li><b>E2 zit hoog en verwarmt alleen tapwater.</b> Het zit boven de aanvoer uit de loods en boven de aftakking naar de vloer. Zat het lager, dan zou het bij een lauw vat ook de vloer verwarmen, direct elektrisch en dus drie tot vier keer zo duur als via de warmtepomp.</li>
+  <li><b>E2 is dus geen noodverwarming voor de vloer.</b> Valt de loods of de transportleiding uit, dan verwarm je met de haard en de airco. Wil je ook de vloer elektrisch kunnen verwarmen, dan kan er een tweede element onderin B2, alleen op een handschakelaar.</li>
+  <li><b>Het vermogen hangt af van het vat.</b> Een element van 6 kW is ±40–50 cm lang. Een vat van 100 L is binnen vaak maar ±40 cm breed, en laat dan 3 tot 4,5 kW toe. 3 kW houdt een douche bijna bij, 6 kW ook het bad. Vraag de loodgieter welk vat van 100 L een element van 6 kW aankan.</li>
+  <li><b>Instelling.</b> E2 op 52 °C, FWM2 op 50 °C. Brandt de kachel, of staat de warmtepomp in de zomerstand, dan is de top van B2 al warmer en blijft E2 uit.</li>
+  <li><b>Drukverlies naar de badkamer.</b> Bij 9 L/min door 14,5 m van 16 × 2 verlies je ±0,35 bar, door 20 × 2 nog ±0,1 bar. Zonder circulatie verlengt 20 × 2 de wachttijd naar ±35–40 s, dus de toevoer blijft 16 × 2. Met E2 op 52 °C gaat er bij een regendouche nog ±6,5 L/min door de warme leiding en is het verlies ±0,2 bar.</li>
+</ol>
+</section>
+
+<section id="gas">
+<p class="eyebrow">Gasketel</p>
+<h2>Niet opnemen, wel voorbereiden</h2>
+<ol class="notes">
+  <li><b>Er zijn al genoeg bronnen.</b> De kachel, de warmtepomp en E1 in de loods, E2 in huis, en de haard en de airco die los staan van de CV.</li>
+  <li><b>Gas houden kost elk jaar geld.</b> Netbeheer en vastrecht zijn samen naar schatting ±€300 per jaar, ook als je niets verbruikt. Daar komt het onderhoud van de ketel bij.</li>
+  <li><b>D2 is er niet geschikt voor.</b> De kast zit in de kastenwand aan de voorgevel. Een ketel vraagt daar een gasleiding en een rookgasafvoer door de gevel of het dak.</li>
+  <li><b>De optie blijft open.</b> B2 krijgt twee afgedopte T-stukken met afsluiter. Daar kan later een ketel of een andere bron op, zonder het leidingwerk om te gooien. Er komt ook een afgedopte gasleiding van de meterkast naar D2 (±8,5 m), gelegd terwijl de vloer open ligt.</li>
+  <li><b>De rookgasafvoer bepaalt of de optie bruikbaar is.</b> Leg met Lenz een route vast door het dak of de gevel boven D2. Zonder die route heb je niets aan de gasleiding.</li>
+  <li><b>Tijdelijk kan het wel zinvol zijn.</b> Is het huis eerder bewoonbaar dan de installatie in de loods klaar is, laat de ketel dan zolang op zijn huidige plek en sluit hem aan op die twee aansluitingen. Waar de ketel nu hangt, weet ik niet.</li>
+</ol>
+</section>
+
+<section id="wachttijd" class="stack">
+<div>
+<p class="eyebrow">Wachttijd op warm water</p>
+<h2>De badkamer wacht ±25–30 seconden</h2>
+<p>Keuken en bijkeuken liggen op 4–5 m van D2 en hebben na ±10 seconden warm water. De badkamer ligt op 14,5 m. Alle oplossingen daarvoor zijn afgewogen en vervallen.</p>
+</div>
+<div class="tbl"><table>
+  <thead><tr><th>Oplossing voor de badkamer</th><th>Wachttijd</th><th>Wat erbij komt</th><th>Besluit</th></tr></thead>
+  <tbody>
+    <tr class="pick"><td><b>Niets doen</b> (gekozen)</td><td>25–30 s</td><td>—</td><td>Eenvoudig, geen extra onderdelen</td></tr>
+    <tr><td>Circulatie op aanvraag of met zelflerende pomp</td><td>±5 s</td><td>Retourleiding ±14,5 m, pomp, FWM2 met circulatie-aansluiting</td><td>Vervallen: te veel complexiteit</td></tr>
+    <tr><td>Circulatie continu of op klok</td><td>Direct</td><td>Zelfde onderdelen</td><td>Vervallen: warme retour verstoort B2, temperatuureis voor circulatie</td></tr>
+    <tr><td>Doorstromer bij de badkamer</td><td>Wastafel direct, douche lauw</td><td>Toestel in de badkamer</td><td>Vervallen: geen techniek in de badkamer</td></tr>
+  </tbody>
+</table></div>
+<p>De toevoer naar de badkamer blijft 16 × 2. Een dikkere leiding geeft minder drukverlies, maar verlengt de wachttijd.</p>
+</section>
+
+<section id="kast" class="stack">
+<div>
+<p class="eyebrow">Techniekkast D2</p>
+<h2>In de kastenwand van de bijkeuken</h2>
+<p>Volgens de detaillering van de bijkeuken (29-10-2026) zit D2 in de kastenwand langs de voorgevel: 632 breed, 600 diep, 2600 hoog, binnenbreedte 596. De ±1300 × 700 uit rev. D past daar niet en is vervallen.</p>
+</div>
+<div class="tbl"><table>
+  <thead><tr><th>Variant</th><th>D2</th><th>Kapstok D1</th><th>Wat erin past</th></tr></thead>
+  <tbody>
+    <tr class="pick"><td><b>Breder</b> (getekend op CV-03)</td><td>832 × 600</td><td>700</td><td>B2 100 L, VD1, mengstation, FWM2, X2, stijgleidingen</td></tr>
+    <tr><td>Zoals nu</td><td>632 × 600</td><td>900</td><td>B2 100 L, mengstation, FWM2, X2. VD1 moet elders, bijvoorbeeld in de voet van zitbank D3</td></tr>
+  </tbody>
+</table></div>
+<div>
+<h3>Wat er in de detaillering van de bijkeuken moet veranderen</h3>
+<ol class="notes">
+  <li><b>De geiser vervalt.</b> Aansluiting E9 en groep 7 worden de groep voor element E2: 3 × 16 A bij 6 kW, of 1 × 16 A bij 3 kW.</li>
+  <li><b>WW2 "na geiser"</b> wordt warm water direct uit FWM2.</li>
+  <li><b>Breedte D2 en D1</b> aanpassen als je voor de brede variant kiest.</li>
+  <li><b>Verdeler VD1</b> komt in D2. De open vraag "locatie vloerverwarmingsverdeler" is daarmee beantwoord.</li>
+  <li><b>Gasleiding</b> komt afgedopt in D2 uit, vanaf de meterkast.</li>
+  <li><b>Het opbergvak 2150–2600</b> in D2 vervalt in de brede variant: FWM2 en X2 hangen tot ±2200.</li>
+</ol>
+</div>
+<div>
+<h3>Twee verdelers</h3>
+<p>174 m² vloer vraagt ±13–16 groepen. VD1 in D2 bedient de linkerhelft: eetkamer, woonkamer, keuken en bijkeuken. VD2 is een vlakke inbouwverdeler in de kastenwand van de garderobe en bedient de rechterhelft. Onder de trap komt niets. De plek van VD2 is een voorstel.</p>
+</div>
+</section>
+
+<section id="inkoop">
+<p class="eyebrow">Inkoop</p>
+<h2>Waar de kleine onderdelen te koop zijn</h2>
+<div class="tbl"><table>
+  <thead><tr><th>Winkel</th><th>Voor</th><th>Let op</th></tr></thead>
+  <tbody>
+    <tr><td><a href="https://www.energyby.nl/installatiemateriaal/beveiligingen" style="color:var(--ink)">EnergyBy</a> (Stadskanaal)</td><td>Ketelveiligheidsgroep, thermische afloopbeveiliging, laadventielen, expansievaten, pompen, mengkranen, fittingen</td><td>Geen verswatermodule of complete laadunit gevonden</td></tr>
+    <tr><td><a href="https://www.oeg.net/en/laddomat-11-30-for-return-flow-boost-516003331" style="color:var(--ink)">OEG</a> (Duits, NL-taal)</td><td>Laddomat 11-30 met 66 °C-patroon, verdelers, pompen</td><td>Levering aan particulieren in NL niet bevestigd</td></tr>
+    <tr><td><a href="https://nl.gemashop.de/products/laddomat-11-30-thermische-rucklaufanhebung" style="color:var(--ink)">Gemashop</a></td><td>Laddomat ter vergelijking</td><td>Duitse winkel</td></tr>
+    <tr><td><a href="https://www.technim.nl/c/verwarming/page/6" style="color:var(--ink)">Technim</a></td><td>Flamco, vloerverwarmingsverdelers</td><td></td></tr>
+    <tr><td>Oventrop Regumaq X-80 / Solarfocus FWM</td><td>Verswatermodules</td><td>Via groothandel, dealer of de leverancier van de buffervaten</td></tr>
+    <tr><td><a href="https://benem.nl/buizen/terrendis.html" style="color:var(--ink)">Benem</a></td><td>Terrendis Heat Duo 40/160, €67 per meter (12-11-2026)</td><td>Catalogus met warmteverliezen opvragen</td></tr>
+    <tr><td>Watts Microflex Duo / Uponor Ecoflex</td><td>Duoleiding 2 × 40, ter vergelijking</td><td>Vaak via groothandel</td></tr>
+  </tbody>
+</table></div>
+<p style="margin-top:10px">Hout-CV-sets "tot 25 kW" (Houtstookenzo, HGB Trading, Buurs) zijn te klein voor 30 kW en openen vaak al op 55 °C.</p>
+</section>
+
+<section>
+<p style="color:var(--muted)">De open punten staan in de <a href="index.html#open" style="color:var(--ink)">tekenset</a>. Dit zijn ontwerpberekeningen en schattingen. Laat dimensionering en veiligheidsvoorzieningen controleren door een erkend installateur.</p>
+</section>
+</div>
+
+</body>
+</html>
