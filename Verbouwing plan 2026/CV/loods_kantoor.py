@@ -11,18 +11,20 @@ sys.dont_write_bytecode = True
 import tekening as t
 
 B = 4150                    # sandwichpaneel tot binnenwand
-L = 6550                    # kantoor lang: wand naar de slaapkamer 1,60 m opgeschoven (Julian koos plek A, 14-11-2026)
+OUD = 4950                  # de oude wand tussen kantoor en berging
+L = 6550                    # kantoor lang: wand naar de slaapkamer 1,60 m opgeschoven
 VZ = 225                    # isolatie en voorzetwand langs de rechtergevel
 KD = 600                    # diepte van de hoge kasten
 RG = 155                    # regelwerk met glaswol tussen de spanten; de hoge kasten staan daar direct tegenaan (geen voorzetwand)
 FR = RG + KD                # voorkant van de kastenwand: 755, dus 53 cm vóór de voorzetwand
 PDP = FR - VZ               # diepte van de plank en de lage kast: 530
 RAAM = (1600, 2600)         # raam: 160 cm uit de achterwand, 1 m breed
-DEUR = (3400, 4300)         # deur naar de loods: draait naar buiten, scharnier aan de kant van de kachel (Julian); plek van de loodsplattegrond
+DEUR = (OUD - 120 - 900, OUD - 120)   # deur naar de loods: 12 cm van de oude wand, draait naar buiten, scharnier aan de kant van de kachel (Julian); breedte 90 aangenomen
 KX = RAAM[1] + 200          # de hoge kasten beginnen 20 cm rechts van het raam (Julian)
 NIS = 800                   # diepte van de nis van de kachel
 AB = 2100                   # achterwand tot hier langs de accuruimte; daarna de nis
-AX = DEUR[1] + 50           # voorkant van het bureau
+ST = 1200                   # ruimte voor de stoel, tussen de kasten en het blad
+BX = L - 2000               # bureau: korte eind tegen de wand van de slaapkamer
 # ---- hoogtes
 PT, PD, PL = 710, 30, 80    # plank: bovenkant (Julian), dikte en plint (aangenomen)
 H0 = 1900                   # plafond bij de voorzetwand (aangenomen; wandhoogte van de loods)
@@ -61,7 +63,7 @@ STIJL = '''<style>
 .kp .blad{fill:none;stroke:#1d1d1b}.kp .zw{fill:none;stroke:#555}.kp .snl{fill:none;stroke:#1d1d1b}
 .kp .pijl{fill:none;stroke:#1d1d1b;marker-end:url(#kpkop)}.kp .pijl2{fill:none;stroke:#1d1d1b;marker-end:url(#kpkop);marker-start:url(#kpkop)}
 .kp .vloer{fill:none;stroke:#1d1d1b}.kp .plaf{fill:none;stroke:#1d1d1b}
-''' + stijl(50, 1) + stijl(25, .5) + '''
+''' + stijl(50, 1) + stijl(25, .5) + stijl(100, 2) + '''
 </style>'''
 KOP = '<defs><marker id="kpkop" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#1d1d1b"/></marker></defs>'
 
@@ -71,8 +73,9 @@ def tx(x, y, s, c="tx"): return f'<text class="{c}" x="{x}" y="{y}">{s}</text>'
 def txr(x, y, s, c="tx"): return f'<text class="{c}" x="{x}" y="{y}" transform="rotate(-90 {x} {y})">{s}</text>'
 def poly(pts, c): return f'<polygon class="{c}" points="' + " ".join(f"{a:.0f},{-b:.0f}" for a, b in pts) + '"/>'
 
-def plattegrond():
-    o = [STIJL, KOP]
+def kamer():
+    """Wanden, raam, deur, kachel en kastenwand, zonder tekst."""
+    o = []
     # ---- rechtergevel: sandwichpaneel, isolatie en voorzetwand; het raam blijft zichtbaar
     o.append(r(-1000, -90, L + 1200, 90, "iso") + r(0, 0, L, RG, "iso") + r(0, RG - 5, KX, VZ - RG + 5, "iso"))   # voorzetwand alleen tot de hoge kasten
     o.append(r(RAAM[0], -90, 1000, VZ + 90, "raam") + f'<path class="schuif" d="M{RAAM[0]} -45 H{RAAM[1]}"/>')
@@ -82,45 +85,65 @@ def plattegrond():
     o.append(r(0, B, L + 100, 160, "iso") + r(L, 0, 100, B, "iso"))
     o.append(r(DEUR[0], B - 8, 900, 180, "gat"))
     o.append(f'<path class="blad" d="M{DEUR[0]} {B+160} v900"/><path class="zw" d="M{DEUR[0]} {B+1060} A900 900 0 0 0 {DEUR[1]} {B+160}"/>')
-    # ---- kachel in de nis, met de vrije ruimte ervoor
-    o.append(r(-740, 2875, 540, 500, "app") + tx(-470, 3175, "K1", "nm") + tx(-400, 2420, "nis"))
+    # ---- kachel in de nis
+    o.append(r(-740, 2875, 540, 500, "app"))
+    # ---- langs de gevel: plank met schuifdeuren eronder tot het raam, daarna hoge kasten
+    o.append(r(0, VZ, KX, PDP, "plank") + f'<path class="schuif" d="M0 {FR-40} H{KX}"/>')
+    o.append(r(KX, RG, L - KX, KD, "kast") + f'<path class="schuif" d="M{KX} {FR-40} H{L}"/>')
+    return o
+
+def bureau(y0, hoek_y0):
+    """Blad 200 x 100 met het korte eind tegen de wand van de slaapkamer (y0 = kant van de gevel), hoekstuk 60 x 120 langs die wand."""
+    o = r(BX, y0, 2000, 1000, "bur") + r(L - 600, hoek_y0, 600, 1200, "bur")
+    yn = y0 if hoek_y0 < y0 else y0 + 1000                                     # naad tussen blad en hoekstuk weg
+    return o + f'<path d="M{L-588} {yn} H{L-12}" stroke="#fff" stroke-width="30"/>'
+
+def plattegrond():
+    o = [STIJL, KOP] + kamer()
+    o.append(tx(-470, 3175, "K1", "nm") + tx(-400, 2420, "nis"))
     o.append(r(-200, 2775, 800, 700, "aan") + tx(660, 3170, "80 vrij", "tl"))
     # ---- airco en afzuiging op de achterwand (plek aangenomen)
     o.append(r(20, 1050, 210, 800, "aan") + tx(300, 1400, "airco,", "tl") + tx(300, 1570, "afzuiging", "tl"))
     o.append(tx(-560, 1050, "accu-") + tx(-560, 1220, "ruimte"))
-    # ---- langs de gevel: plank met schuifdeuren eronder tot het raam, daarna hoge kasten
-    o.append(r(0, VZ, KX, PDP, "plank") + f'<path class="schuif" d="M0 {FR-40} H{KX}"/>')
     o.append(tx(1000, VZ + 230, "plank op 71 hoog, 53 diep") + tx(1000, VZ + 400, "schuifdeuren eronder"))
-    o.append(r(KX, RG, L - KX, KD, "kast") + f'<path class="schuif" d="M{KX} {FR-40} H{L}"/>')
     o.append(tx((KX + L)/2, RG + 270, "hoge kasten, 60 diep, 7 cm in de wand") + tx((KX + L)/2, RG + 450, "schuifdeuren · aanzicht op blad 8"))
-    # ---- bureau: rug naar de wand van de slaapkamer, hoekstuk in de hoek tegen de binnenwand
-    o.append(r(AX, B - 2000, 1000, 2000, "bur") + r(AX + 1000, B - 600, L - AX - 1000, 600, "bur"))
-    o.append(f'<path d="M{AX+1000} {B-588} V{B-12}" stroke="#fff" stroke-width="30"/>')          # naad tussen blad en hoekstuk weg
-    o.append(tx(AX + 500, 3050, "bureau", "nm") + tx(AX + 500, 3240, "200 × 100"))
-    o.append(tx((AX + 1000 + L)/2, B - 250, "hoekstuk 120 × 60"))
-    o.append(f'<circle class="app" cx="{L-600}" cy="2780" r="230"/><path class="pijl" d="M{L-850} 2780 H{AX+1060}"/>')
+    # ---- bureau A: rug naar de kasten, zicht op de deur; hoekstuk langs de wand van de slaapkamer
+    y0 = FR + ST
+    o.append(bureau(y0, FR))
+    o.append(tx(BX + 850, y0 + 470, "bureau", "nm") + tx(BX + 850, y0 + 660, "200 × 100"))
+    o.append(txr(L - 250, FR + 600, "hoekstuk 120 × 60"))
+    o.append(f'<circle class="app" cx="{BX+800}" cy="{FR+560}" r="230"/><path class="pijl" d="M{BX+800} {FR+810} V{y0-60}"/>')
     t.TK = 45
-    o.append(t.chain_h([AX + 1000, L], 3330, ["1200"]))
-    o.append(t.chain_v([FR, B - 2000], AX + 500, ["1395"]))
-    o.append(t.chain_h([DEUR[1], AX], B - 2150, [""]) + tx(AX - 25, B - 2210, "50", "tr"))
-    # ---- doorsnede C (blad 3): over het raam, gezien naar de slaapkamer
+    o.append(t.chain_v([FR, y0], BX + 200, ["1200"]))
+    o.append(t.chain_v([y0 + 1000, B], BX + 200, [str(B - y0 - 1000)]))
+    # ---- doorsnede C (blad 9): over het raam, gezien naar de slaapkamer
     o.append(f'<path class="snl" d="M2250 -300 V{B+380}"/>' + tx(2140, B + 380, "C", "nm") + tx(2140, -180, "C", "nm"))
     o.append(f'<path class="pijl" d="M2250 {B+330} h300"/><path class="pijl" d="M2250 -235 h300"/>')
     # ---- namen
-    o.append(tx(3500, 1500, "Kantoor", "nm") + tx(3500, 1680, "655 × 392 netto"))
+    o.append(tx(3000, 1700, "Kantoor", "nm") + tx(3000, 1880, "655 × 392 netto"))
     o.append(tx(1200, B + 420, "loods", "ti"))
     o.append(txr(L + 330, 2300, "slaapkamer", "ti"))
     o.append(tx(0, -700, "rechtergevel · het raam van 1 m blijft zichtbaar, de plank loopt eronder door", "tl"))
     # ---- maten
     t.TK = 55
     o.append(t.chain_h([0, RAAM[0], RAAM[1], KX, L], -420, ["1600", "1000", "", "3750"], frm=-140) + tx((RAAM[1] + KX)/2 + 40, -500, "200", "tl"))
-    o.append(t.chain_h([0, DEUR[0], DEUR[1], L], B + 1380, ["3400", "900 · deur", "2250"], frm=B + 1130))
-    o.append(t.chain_h([0, L], B + 1710, ["6550 · wand naar de slaapkamer 1,60 m opgeschoven"], frm=B + 1440))
-    o.append(tx(DEUR[0] + 520, B + 700, "deur draait", "tl") + tx(DEUR[0] + 520, B + 870, "naar buiten", "tl"))
+    o.append(t.chain_h([0, DEUR[0], DEUR[1], L], B + 1380, [str(DEUR[0]), "900 · deur", str(L - DEUR[1])], frm=B + 1130))
+    o.append(t.chain_h([0, OUD, L], B + 1710, ["4950 · tot de oude wand", "1600 opgeschoven"], frm=B + 1440))
+    o.append(tx(DEUR[0] - 80, B + 700, "deur draait", "tr") + tx(DEUR[0] - 80, B + 870, "naar buiten", "tr"))
     o.append(t.chain_v([0, AB, B], -1400, ["2100", "2050 · nis"], frm=-960))
     o.append(t.chain_v([0, RG, FR, B], L + 650, ["", "600", "3395"], frm=L + 160) + tx(L + 400, 125, "155"))
     t.TK = 26
     return t.svg(f"-1650 -880 {L+2500} 6820", 50, "".join(o), cls="kp")
+
+def variant_b():
+    """Variant B, klein op 1:100: zelfde hoek, gespiegeld. Rug naar de binnenwand, zicht op de kasten."""
+    o = kamer()
+    y0 = FR + 1100
+    o.append(bureau(y0, y0 + 1000))
+    o.append(tx(BX + 850, y0 + 590, "B", "gr"))
+    o.append(f'<circle class="app" cx="{BX+800}" cy="{y0+1640}" r="230"/><path class="pijl" d="M{BX+800} {y0+1390} V{y0+1060}"/>')
+    o.append(tx(-470, 3215, "K1", "tx") + tx(2700, 2400, "1,1 m langs de kasten", "tx") + tx(2700, 2740, "1,3 m achter het blad", "tx"))
+    return t.svg(f"-1000 -150 {L+1200} {B+1300}", 100, "".join(o), cls="kp")
 
 def aanzicht():
     """Kastenwand langs de rechtergevel, gezien vanuit het kantoor. Horizontaal x, verticaal z."""
@@ -171,19 +194,19 @@ def doorsnede():
     o.append(f'<path class="schuif" d="M{FR-45} {-PL} V{-(PT-PD)} M{FR-22} {-PL} V{-(PT-PD)}"/>')
     o.append(tx(VZ + PDP/2 - 30, -420, "lage kast") + tx(VZ + PDP/2 - 30, -330, "schuifdeuren"))
     # ---- bureau erachter
-    o.append(R(B - 2000, BH - 30, 2000, 30, "top") + R(B - 1960, 0, 40, BH - 30, "zicht") + R(B - 60, 0, 40, BH - 30, "zicht"))
-    o.append(tx(B - 1000, -(BH + 60), "bureau, erachter"))
+    o.append(R(FR + ST, BH - 30, 1000, 30, "top") + R(FR + ST + 40, 0, 40, BH - 30, "zicht") + R(FR + ST + 920, 0, 40, BH - 30, "zicht"))
+    o.append(tx(FR + ST + 500, -(BH + 60), "bureau, erachter"))
     o.append(f'<path class="vloer" d="M-650 0 H{B+500}"/>')
-    o.append(tx(2400, -1500, "Kantoor", "nm") + txr(B + 330, -1300, "loods", "ti"))
+    o.append(tx(3500, -1500, "Kantoor", "nm") + txr(B + 330, -1300, "loods", "ti"))
     # ---- maten
     t.TK = 28
-    o.append(t.chain_h([0, VZ, FR, B - 2000, B], 250, ["225", "530", "1395", "2000 · bureau"], frm=30))
+    o.append(t.chain_h([0, VZ, FR, FR + ST, FR + ST + 1000, B], 250, ["225", "530", "1200 · stoel", "1000 · bureau", str(B - FR - ST - 1000)], frm=30))
     o.append(t.chain_h([0, B], 450, ["4150 · sandwichpaneel tot binnenwand"], frm=280))
     o.append(t.chain_v([-RZ1, -RZ0, 0], -330, ["1000 · raam", "710"], frm=-110))
     o.append(t.chain_v([-H0, 0], -540, ["± 1900 · plafond bij de gevel"], frm=-360))
-    o.append(t.chain_v([-PT, 0], 1080, ["710"], frm=FR + 20))
-    o.append(t.chain_v([-HK, 0], 1330, ["± 1880 · hoge kasten"], frm=FR + 20))
-    o.append(t.chain_v([-BH, 0], B - 2130, ["± 750"]))
+    o.append(t.chain_v([-PT, 0], 960, ["710"], frm=FR + 20))
+    o.append(t.chain_v([-HK, 0], 1160, ["± 1880 · hoge kasten"], frm=FR + 20))
+    o.append(t.chain_v([-BH, 0], FR + ST + 1130, ["± 750"]))
     o.append(t.chain_v([-plafond(B), 0], B + 620, [f"± {round(plafond(B), -1):.0f}"], frm=B + 190))
     t.TK = 26
     return t.svg(f"-700 -3330 {B+1450} 3880", 25, "".join(o), cls="kp")
@@ -205,35 +228,29 @@ BLADEN = """<!-- ============================================================ BL
   <div style="display:grid;grid-template-columns:181mm 1fr;gap:5mm;margin-top:2mm;align-items:start">
     <div>
 %(plan)s
-      <div class="card klein" style="margin-top:2mm"><h3>Nog opmeten (op blad 8 en 9 aangenomen, met ±)</h3>
+      <div class="card klein" style="margin-top:2mm"><h3>Nog opmeten of kiezen (op blad 8 en 9 aangenomen, met ±)</h3>
         <ul class="chk" style="columns:2;column-gap:7mm;padding-left:0">
           <li>Plafondhoogte bij de gevel en bij de binnenwand.</li>
           <li>Hoge kasten: tot het plafond? Hoeveel deuren?</li>
           <li>Hoogte van het bureaublad (de plank ligt op 71).</li>
+          <li>Wand naar de slaapkamer: 1,60 m hoeft voor deze opstelling niet meer; 1,50 m kan ook.</li>
         </ul></div>
     </div>
     <div style="display:flex;flex-direction:column;gap:3mm">
-      <div class="card klein"><h3>Bureau</h3>
+      <div class="card klein"><h3>Bureau · A (advies): zicht op de deur</h3>
         <ul>
-          <li>Blad 200 × 100 met hoekstuk 120 × 60, achterin het kantoor: rug naar de wand van de slaapkamer, hoekstuk in de hoek tegen de binnenwand.</li>
-          <li>Voorkant van het blad 5 cm naast de deurpost; achter het blad 120 voor de stoel.</li>
-          <li>Tussen de kasten en het bureau 1,4 m loopruimte.</li>
+          <li>Blad 200 × 100 met het korte eind tegen de wand van de slaapkamer. Je zit met de rug naar de kasten en kijkt naar de deur.</li>
+          <li>Achter het blad 1,2 m voor de stoel; tussen het blad en de binnenwand 1,2 m om binnen te komen.</li>
+          <li>Hoekstuk 120 × 60 langs de wand van de slaapkamer, links van de stoel. Het staat vóór de laatste 60 cm van de hoge kasten.</li>
         </ul></div>
-      <div class="card klein"><h3>Wand naar de slaapkamer</h3>
-        <ul>
-          <li>1,60 m opgeschoven (was 1,50 m): bureau 100 + hoekstuk 120 vragen 2,2 m tussen deurpost en wand.</li>
-          <li>Kantoor 655 lang, slaapkamer 335 lang.</li>
-        </ul></div>
-      <div class="card klein"><h3>Kastenwand langs de rechtergevel</h3>
-        <ul>
-          <li>Van de achterwand tot 20 cm voorbij het raam: plank op 71 hoog, 53 diep, met schuifdeuren eronder.</li>
-          <li>Daarna tot de slaapkamerwand: hoge kasten van 60 diep, 7 cm in de wand (daar geen voorzetwand).</li>
-          <li>Het front loopt in één lijn, 53 cm de ruimte in. Het raam blijft zichtbaar.</li>
+      <div class="card klein"><h3>B · gespiegeld: zicht op de kasten · 1:100</h3>
+%(variantb)s
+        <ul style="margin-top:1.5mm">
+          <li>Rug naar de binnenwand, hoekstuk rechts in de hoek. Alle kasten vrij, maar de deur zit vlak naast je linkerschouder.</li>
         </ul></div>
       <div class="card klein"><h3>Aangenomen, graag nalopen</h3>
         <ul class="chk" style="padding-left:0">
-          <li>Hoekstuk: haaks aan de zitkant, links van de stoel.</li>
-          <li>Deur: 3,40 m uit de achterwand.</li>
+          <li>Deur: 90 breed, 12 cm van de oude wand.</li>
           <li>Spanten: ± 1,5 cm vóór het regelwerk; kasten daar uitsparen.</li>
         </ul></div>
     </div>
@@ -284,9 +301,9 @@ BLADEN = """<!-- ============================================================ BL
         <ul>
           <li>Links de rechtergevel met het raam, rechts de binnenwand naar de loods.</li>
           <li>In de snede: de plank op 71 met de lage kast, 53 diep; het raam begint op dezelfde hoogte.</li>
-          <li>Erachter: de hoge kasten (7 cm dieper, in de wand) en het bureau.</li>
-          <li>Tussen kasten en bureau 1,4 m loopruimte.</li>
-          <li>Boven het bureau is het plafond ± 2,45 tot 2,80 m.</li>
+          <li>Erachter: de hoge kasten (7 cm dieper, in de wand) en het bureau; het hoekstuk is niet getekend.</li>
+          <li>Tussen kasten en blad 1,2 m voor de stoel; tussen blad en binnenwand 1,2 m.</li>
+          <li>Boven het bureau is het plafond ± 2,40 tot 2,70 m.</li>
         </ul></div>
       <div class="card klein"><h3>Aangenomen (±)</h3>
         <ul class="chk" style="padding-left:0">
@@ -309,6 +326,6 @@ def vul(pad, naam, inhoud_):
 
 if __name__ == "__main__":
     vul(os.path.join(HERE, "zelf-regelen", "zelf-regelen-loods.html"), "kantoor", BLADEN % {
-        "plan": plattegrond(), "aanzicht": aanzicht(), "doorsnede": doorsnede(),
+        "plan": plattegrond(), "variantb": variant_b(), "aanzicht": aanzicht(), "doorsnede": doorsnede(),
         "voet7": voet("Kantoor: plattegrond 1:50", 7),
         "voet8": voet("Kantoor: aanzicht kastenwand 1:25", 8), "voet9": voet("Kantoor: doorsnede C 1:25", 9)})
