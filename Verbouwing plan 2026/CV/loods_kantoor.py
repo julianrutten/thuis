@@ -26,9 +26,9 @@ DEUR = (3100, 4000)         # deur: 83 cm naar links geschoven, direct achter de
 BANK = (2050, 3300, 5)           # 75 x 125, bij de binnenwand, gericht op de kachel
 TAFEL = (1080, 3100, -4)         # 58 x 95, op 80 cm van de voorkant van de kachel
 STOELEN = ((2350, 1900, -28), (3000, 2400, -12))   # verder de kamer in, langs de bank naar het vuur gericht
-# racecockpit (Julian): 170 lang; 120 breed bij het stuur (70 lang), de stoel 70 breed (100 lang). Stuur tegen de achterwand,
-# tussen de plank en de schouw; de stoel aan de kant van de schouw, zodat er 55 cm langs de plank vrij blijft
-COCKPIT = ((60, 800, 700, 1200), (760, 1300, 1000, 700))
+# racecockpit (Julian): 170 lang; 120 breed bij het scherm (70 lang), de stoel 70 breed (100 lang) in het midden daarvan.
+# Scherm tegen de achterwand, tussen de plank en de schouw
+COCKPIT = ((60, 800, 700, 1200), (760, 1050, 1000, 700))
 SNEDE = 1810                # doorsnede C: over het raam, tussen de cockpit en de stoelen door; snijdt de bank
 BANK_Y = (2660, 3940)       # waar de snede de bank raakt
 KX = RAAM[1] + 200          # de hoge kasten beginnen 20 cm rechts van het raam (Julian)
@@ -145,13 +145,13 @@ def plattegrond():
     o.append(tx(DEUR[0] + 400, B - 230, "nieuwe deur"))
     # ---- zitplek bij de kachel (voorstel): stoel voor de plank bij het raam, buiten de looproute
     (ax, ay, aw, ah), (zx, zy, zw, zh) = COCKPIT
-    o.append(f'<path class="plank" d="M{ax} {ay} h{aw} v{zy-ay} h{zw} v{zh} h{-zw-aw} Z"/>')
-    o.append(tx(ax + aw/2, ay + 420, "stuur") + tx(ax + aw/2, ay + 590, "120 breed") + tx(zx + zw/2 - 60, zy + 310, "racecockpit", "nm") + tx(zx + zw/2 - 60, zy + 490, "stoel 70 breed"))
+    o.append(f'<path class="plank" d="M{ax} {ay} h{aw} v{zy-ay} h{zw} v{zh} h{-zw} v{ay+ah-zy-zh} h{-aw} Z"/>')
+    o.append(tx(ax + aw/2, ay + ah/2 - 20, "scherm") + tx(ax + aw/2, ay + ah/2 + 150, "120 breed") + tx(zx + zw/2 - 60, zy + 320, "racecockpit", "nm") + tx(zx + zw/2 - 60, zy + 500, "stoel 70 breed"))
     t.TK = 45
     o.append(t.chain_v([FR, zy], zx + zw - 80, [str(zy - FR)]))
     # airco: links van het raam tegen de buitengevel (Julian); afzuiging: alleen een rooster in de achterwand, boven de cockpit
     o.append(r(60, VZ + 10, 800, 200, "aan") + tx(460, VZ + 155, "airco"))
-    o.append(r(-70, 1300, 70, 300, "raam") + tx(820, 960, "rooster", "tl") + tx(820, 1130, "afzuiging", "tl"))
+    o.append(r(-70, 1300, 70, 300, "raam") + tx(-560, 1560, "rooster") + tx(-560, 1730, "afzuiging"))
     bx, by, bh = BANK
     o.append(f'<rect class="plank" x="{bx-375}" y="{by-625}" width="750" height="1250" rx="90" transform="rotate({bh} {bx} {by})"/>' + tx(bx, by - 20, "bank") + tx(bx, by + 150, "125 × 75"))
     tx_, ty_, th = TAFEL
@@ -270,7 +270,7 @@ BLADEN = """<!-- ============================================================ BL
       <div class="card klein"><h3>Zithoek bij de kachel</h3>
         <ul>
           <li>Los rond de kachel: salontafel 95 × 58 op 80 cm, bank 125 × 75 erachter bij de binnenwand, de twee stoelen 70 × 70 verder de kamer in, langs de bank naar het vuur gericht.</li>
-          <li>Racecockpit (170 lang): het stuur (120 breed) tegen de achterwand tussen plank en schouw, de stoel (70 breed) aan de kant van de schouw. Langs de stoel blijft 55 cm vrij voor de schuifdeuren onder de plank.</li>
+          <li>Racecockpit (170 lang): het scherm (120 breed) tegen de achterwand tussen plank en schouw, de stoel (70 breed) in het midden. Langs de stoel blijft ± 30 cm tot de plank: de schuifdeuren eronder zijn daar alleen van opzij bereikbaar.</li>
         </ul></div>
       <div class="card klein"><h3>Schouw voor de kachel (voorstel)</h3>
         <ul>
