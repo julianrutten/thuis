@@ -10,6 +10,7 @@ sys.path.insert(0, os.path.join(HERE, "..", "Bijkeuken"))
 sys.dont_write_bytecode = True
 import tekening as t
 import loods_kantoor as k          # de inrichting van het kantoor (blad 7) komt hier op 1:100 terug
+import loods_keuken as kk          # de keuken van de voorkamer (blad 10)
 
 B = 4150                                   # binnenmaat van de rechtergevel tot de binnenwand
 K0, K1x = 0, 6550                          # kantoor: wand naar de slaapkamer 1,60 m opgeschoven (was 4950), voor het bureau
@@ -120,18 +121,20 @@ def inhoud():
     # vrije ruimte rond het bed: voeteneind tot de wand van de voorkamer, zijkant tot de binnenwand en tot de ledikanten
     o.append(t.chain_h([G0 + 2100, G1], 2900, [str(G1 - G0 - 2100)]))
     o.append(t.chain_v([3325, B], G0 + 1050, [str(B - 3325)]) + t.chain_v([VZ + 700, 1525], G0 + 400, [str(1525 - VZ - 700)]))
-    o.append(r(15700, VZ + 40, 1600, 110, "rad") + tx(16500, VZ + 480, "R2"))
+    o.append(r(kk.R2[0], VZ + 40, kk.R2[1], 110, "rad") + tx(kk.R2[0] + kk.R2[1]/2, VZ + 480, "R2"))
+    # keuken (blad 10): hoekblad tegen de binnenwand met de spoelbak in de nis, aanrecht met kookplaat tegen de rechtergevel
+    o.append(r(*kk.NIS_BLAD, "meub") + r(*kk.HOEK_BLAD, "meub") + f'<path d="M{kk.NIS_BLAD[0]} {kk.HOEK_BLAD[1]+12} V{B-12}" stroke="#fff" stroke-width="30"/>')
+    o.append(r(*kk.SPOELBAK, "app") + r(*kk.AANRECHT, "meub") + r(*kk.KOOKPLAAT, "app"))
     o.append(tx(14040, 2150, "Voorkamer", "nm"))
     # ---- duoleiding: boven het vlakke plafond langs de binnenwand naar voren, bij de hal dwars naar de rechtergevel en omlaag (A)
     o.append(f'<path class="duo" d="M{-NIS-100} 3950 H{V1-100} V{VZ+130}"/><circle cx="{V1-100}" cy="{VZ+130}" r="110" fill="#1d1d1b"/>')
     o.append(tx(V1 - 340, 800, "A", "nm"))
-    o.append(tx(V1 - 420, 3500, "keukentje", "tr") + f'<rect class="aan" x="{H0+60}" y="{T0+60}" width="{TX0-100-H0-120}" height="{B-T0-120}"/>')
     o.append(tx(18800, 620, "Hal", "nm"))
     o.append(tx((TX0 + H1)/2, 3250, "Toilet", "nm") + r(TX0 + 60, T1 - 150, 400, 90, "rad"))
-    o.append(tx(18200, B + 1050, "R4 toilet: 18–19 °C · ± 0,3 kW"))
+    o.append(tx(18400, B + 1050, "R4 toilet: 18–19 °C · ± 0,3 kW"))
     o.append(tx(H1 + 350, 1000, "buitendeur", "tl") + tx(H1 + 350, 1330, "voorgevel", "tl"))
     # ---- loods en maten
-    o.append(tx(12800, B + 1050, "loods · de airco houdt 10–12 °C aan", "ti"))
+    o.append(tx(10000, B + 1050, "loods · de airco houdt 10–12 °C aan", "ti"))
     t.TK = 100
     o.append(t.chain_h([-AL, K0, K1x, G0, G1, V0, V1, H0, H1], B + 2000, ["± 4000", "6550", "", "3350", "", "7880", "", "1970"], frm=B + 1450))
     o.append(t.chain_v([0, B], H1 + 2300, ["4150"], frm=H1 + 320))

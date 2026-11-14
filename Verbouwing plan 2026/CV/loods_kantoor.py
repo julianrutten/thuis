@@ -236,7 +236,7 @@ def voet(blad, nr):
     <div><span>Blad</span><b>{blad}</b></div>
     <div><span>Voor</span><b>Julian</b></div>
     <div><span>Datum · status</span><b>14-11-2026 · concept</b></div>
-    <div><span>Blad</span><b>{nr} / 9</b></div>
+    <div><span>Blad</span><b>{nr} / 10</b></div>
   </div>"""
 
 BLADEN = """<!-- ============================================================ BLAD 7 -->
