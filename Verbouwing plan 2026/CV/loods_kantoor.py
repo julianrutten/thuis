@@ -20,7 +20,7 @@ FR = RG + KD                # voorkant van de kastenwand: 755, dus 53 cm vóór 
 PDP = FR - VZ               # diepte van de plank en de lage kast: 530
 RAAM = (1600, 2600)         # raam: 160 cm uit de achterwand, 1 m breed
 DEUR_OUD = (OUD - 120 - 900, OUD - 120)   # bestaande deur naar de loods: 12 cm van de oude wand (Julian); wordt dichtgezet
-DEUR = (800, 1700)          # nieuwe deur: 80 cm uit de nis van de kachel (Julian), draait naar buiten; breedte 90 aangenomen
+DEUR = (800, 1700)          # nieuwe deur: 80 cm uit de nis van de kachel, draait naar binnen naar de kant van het bureau (Julian); breedte 90 aangenomen
 KX = RAAM[1] + 200          # de hoge kasten beginnen 20 cm rechts van het raam (Julian)
 NIS = 800                   # diepte van de nis van de kachel
 AB = 2100                   # achterwand tot hier langs de accuruimte; daarna de nis
@@ -85,7 +85,7 @@ def kamer():
     o.append(r(-NIS - 100, AB, 100, B - AB, "kaal") + r(-NIS - 100, B, NIS + 100, 100, "kaal"))
     o.append(r(0, B, L + 100, 160, "iso") + r(L, 0, 100, B, "iso"))
     o.append(r(DEUR[0], B - 8, 900, 180, "gat"))
-    o.append(f'<path class="blad" d="M{DEUR[0]} {B+160} v900"/><path class="zw" d="M{DEUR[0]} {B+1060} A900 900 0 0 0 {DEUR[1]} {B+160}"/>')
+    o.append(f'<path class="blad" d="M{DEUR[1]} {B} v-900"/><path class="zw" d="M{DEUR[1]} {B-900} A900 900 0 0 0 {DEUR[0]} {B}"/>')
     # ---- kachel in de nis
     o.append(r(-740, 2875, 540, 500, "app"))
     # ---- langs de gevel: plank met schuifdeuren eronder tot het raam, daarna hoge kasten
@@ -119,19 +119,21 @@ def plattegrond():
     o.append(f'<path class="pijl" d="M2250 {B+330} h300"/><path class="pijl" d="M2250 -235 h300"/>')
     # ---- namen
     o.append(tx(3000, 1700, "Kantoor", "nm") + tx(3000, 1880, "655 × 392 netto"))
-    o.append(tx(3050, B + 420, "loods", "ti"))
+    o.append(tx(1200, B + 420, "loods", "ti"))
     o.append(txr(L + 330, 2300, "slaapkamer", "ti"))
     o.append(tx(0, -700, "rechtergevel · het raam van 1 m blijft zichtbaar, de plank loopt eronder door", "tl"))
     # ---- maten
     t.TK = 55
     o.append(t.chain_h([0, RAAM[0], RAAM[1], KX, L], -420, ["1600", "1000", "", "3750"], frm=-140) + tx((RAAM[1] + KX)/2 + 40, -500, "200", "tl"))
-    o.append(t.chain_h([0, DEUR[0], DEUR[1], L], B + 1380, [str(DEUR[0]), "900 · deur", str(L - DEUR[1])], frm=B + 1130))
-    o.append(t.chain_h([0, OUD, L], B + 1710, ["4950 · tot de oude wand", "1600 opgeschoven"], frm=B + 1440))
-    o.append(tx(DEUR[1] + 130, B + 760, "nieuwe deur,", "tl") + tx(DEUR[1] + 130, B + 930, "draait naar buiten", "tl"))
+    o.append(t.chain_h([0, DEUR[0], DEUR[1], L], B + 800, [str(DEUR[0]), "900 · deur", str(L - DEUR[1])], frm=B + 230))
+    o.append(t.chain_h([0, OUD, L], B + 1130, ["4950 · tot de oude wand", "1600 opgeschoven"], frm=B + 860))
+    o.append(tx(DEUR[0] + 400, B - 230, "nieuwe deur"))
+    # ---- zitplek bij de kachel (voorstel): stoel voor de plank bij het raam, buiten de looproute
+    o.append('<rect class="aan" x="1300" y="820" width="800" height="800" rx="120"/>' + tx(1700, 1190, "stoel") + tx(1700, 1360, "(voorstel)"))
     o.append(t.chain_v([0, AB, B], -1400, ["2100", "2050 · nis"], frm=-960))
     o.append(t.chain_v([0, RG, FR, B], L + 650, ["", "600", "3395"], frm=L + 160) + tx(L + 400, 125, "155"))
     t.TK = 26
-    return t.svg(f"-1650 -880 {L+2500} 6820", 50, "".join(o), cls="kp")
+    return t.svg(f"-1650 -880 {L+2500} 6240", 50, "".join(o), cls="kp")
 
 def aanzicht():
     """Kastenwand langs de rechtergevel, gezien vanuit het kantoor. Horizontaal x, verticaal z."""
@@ -233,14 +235,15 @@ BLADEN = """<!-- ============================================================ BL
         </ul></div>
       <div class="card klein"><h3>Deur verplaatsen</h3>
         <ul>
-          <li>Nieuwe deur 80 cm uit de nis van de kachel: 0,80 tot 1,70 m uit de achterwand. Draait naar buiten.</li>
+          <li>Nieuwe deur 80 cm uit de nis van de kachel: 0,80 tot 1,70 m uit de achterwand. Draait naar binnen, naar de kant van het bureau; open ligt het blad tegen de binnenwand.</li>
           <li>De oude opening (3,93 tot 4,83 m) dichtzetten, met 100 mm glaswol zoals de rest van die wand.</li>
           <li>Rechts van de deur is het kantoor één doorlopende ruimte van 4,85 m.</li>
           <li>Je komt binnen op ± 1 m van de voorkant van de kachel.</li>
+          <li>Zitplek bij de kachel (voorstel, gestreept): een stoel vóór de plank bij het raam, ± 2,5 m van de kachel en buiten de looproute.</li>
         </ul></div>
       <div class="card klein"><h3>Aangenomen, graag nalopen</h3>
         <ul class="chk" style="padding-left:0">
-          <li>Deur: 90 breed, scharnier aan de kant van de kachel.</li>
+          <li>Deur: 90 breed, scharnier aan de kant van het bureau.</li>
           <li>Hoekstuk: haaks aan de zitkant, links van de stoel.</li>
           <li>Spanten: ± 1,5 cm vóór het regelwerk; kasten daar uitsparen.</li>
         </ul></div>

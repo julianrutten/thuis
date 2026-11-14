@@ -72,13 +72,13 @@ def inhoud():
     # ---- nis met de kachel: 80 cm diep, 2 m breed, opening naar achteren
     o.append(r(-740, 2875, 540, 500, "app") + tx(-470, 3225, "K1", "nm"))
     o.append(r(-NIS - 110, 3500, 120, 500, "gat") + f'<path class="pijl" d="M-250 3750 H-1250"/>')
-    o.append(tx(200, 3050, "kachel K1 in een nis:", "tl") + tx(200, 3380, "80 cm diep, 2 m breed", "tl"))
+    o.append(tx(200, 2620, "kachel K1 in een nis:", "tl") + tx(200, 2950, "80 cm diep, 2 m breed", "tl"))
     # ---- hal, toilet en keukentje tegen de voorgevel
     o.append(r(H0, HB, H1 - H0, 100, "kaal"))                                       # hal | toilet en keukentje
     o.append(r(TX0 - 100, T0, 100, B - T0, "kaal"))                                 # keukentje | toilet
     o.append(r(TX0, T1, H1 - TX0, B - T1, "kaal"))                                  # rest tot de binnenwand
     # ---- deuren
-    o.append(r(800, B - 10, 900, 190, "gat") + deur_h(800, B + 160, 900, omlaag=True))          # kantoor - loods: nieuwe deur 80 cm uit de nis van de kachel, draait naar buiten (Julian); de oude deur (3930-4830) gaat dicht
+    o.append(r(800, B - 10, 900, 190, "gat") + f'<path class="blad" d="M1700 {B} v-900"/><path class="zw" d="M1700 {B-900} A900 900 0 0 0 800 {B}"/>')   # kantoor - loods: nieuwe deur 80 cm uit de nis van de kachel, draait naar binnen naar de kant van het bureau (Julian); de oude deur (3930-4830) gaat dicht
     o.append(r(G1 - 1100, B - 10, 900, 120, "gat") + deur_h(G1 - 1100, B, 900, omlaag=False))   # berging - loods, 20 cm uit de hoek
     o.append(r(G1 - 10, 1625, 120, 900, "gat") + deur_v(G1, 1625, 900, rechts=False))           # berging - voorkamer, in het midden
     o.append(r(V1 - 10, 1050, 120, 900, "gat") + deur_v(V1, 1050, 900, rechts=False))           # voorkamer - hal, in lijn met de buitendeur
