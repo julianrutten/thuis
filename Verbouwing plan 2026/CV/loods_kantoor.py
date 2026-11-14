@@ -115,7 +115,7 @@ def plattegrond():
     o.append(f'<path class="schuif" d="M{-NIS-290} {KY+320} V{B+330}"/>' + tx(-1800, B + 480, "rookgasafvoer Ø 80:", "tl") + tx(-1800, B + 650, "achteruit, in de technische", "tl") + tx(-1800, B + 820, "ruimte door het dak", "tl"))
     # ---- airco en afzuiging op de achterwand (plek aangenomen)
     o.append(tx(-560, 1050, "accu-") + tx(-560, 1220, "ruimte"))
-    o.append(tx(1000, VZ + 230, "plank op 71 hoog, 53 diep") + tx(1000, VZ + 400, "schuifdeuren eronder"))
+    o.append(tx(1780, VZ + 230, "plank op 71 hoog, 53 diep") + tx(1780, VZ + 400, "schuifdeuren eronder"))
     o.append(tx((KX + L)/2, RG + 270, "hoge kasten, 60 diep, 7 cm in de wand") + tx((KX + L)/2, RG + 450, "schuifdeuren · aanzicht op blad 8"))
     # ---- bureau: rug naar de wand van de slaapkamer, hoekstuk in de hoek tegen de binnenwand
     o.append(r(AX, B - 2000, 1000, 2000, "bur") + r(AX + 1000, B - 600, ST, 600, "bur"))
@@ -130,7 +130,7 @@ def plattegrond():
     o.append(f'<path d="M{DEUR_OUD[0]} {B} v160 M{DEUR_OUD[1]} {B} v160" stroke="#fff" stroke-width="14"/>')
     o.append(tx(sum(DEUR_OUD)/2, B + 420, "oude deur: dichtzetten", "ti"))
     # ---- doorsnede C (blad 9): over het raam, gezien naar de slaapkamer
-    o.append(f'<path class="snl" d="M{SNEDE} -300 V{B+380}"/>' + tx(SNEDE - 110, B + 380, "C", "nm") + tx(SNEDE - 110, -180, "C", "nm"))
+    o.append(f'<path class="snl" d="M{SNEDE} -300 V120 M{SNEDE} {B-120} V{B+380}"/>' + tx(SNEDE - 110, B + 380, "C", "nm") + tx(SNEDE - 110, -180, "C", "nm"))
     o.append(f'<path class="pijl" d="M{SNEDE} {B+330} h300"/><path class="pijl" d="M{SNEDE} -235 h300"/>')
     # ---- namen
     o.append(tx(3450, 1250, "Kantoor", "nm") + tx(3450, 1430, "655 × 392 netto"))
@@ -149,7 +149,9 @@ def plattegrond():
     o.append(tx(ax + aw/2, ay + 420, "stuur") + tx(ax + aw/2, ay + 590, "120 breed") + tx(zx + zw/2 - 60, zy + 310, "racecockpit", "nm") + tx(zx + zw/2 - 60, zy + 490, "stoel 70 breed"))
     t.TK = 45
     o.append(t.chain_v([FR, zy], zx + zw - 80, [str(zy - FR)]))
-    o.append(r(20, 1050, 210, 800, "aan") + tx(820, 960, "airco,", "tl") + tx(820, 1130, "afzuiging", "tl"))
+    # airco: links van het raam tegen de buitengevel (Julian); afzuiging: alleen een rooster in de achterwand, boven de cockpit
+    o.append(r(60, VZ + 10, 800, 200, "aan") + tx(460, VZ + 155, "airco"))
+    o.append(r(-70, 1300, 70, 300, "raam") + tx(820, 960, "rooster", "tl") + tx(820, 1130, "afzuiging", "tl"))
     bx, by, bh = BANK
     o.append(f'<rect class="plank" x="{bx-375}" y="{by-625}" width="750" height="1250" rx="90" transform="rotate({bh} {bx} {by})"/>' + tx(bx, by - 20, "bank") + tx(bx, by + 150, "125 × 75"))
     tx_, ty_, th = TAFEL
