@@ -80,7 +80,7 @@ def inhoud():
     o.append(r(TX0 - 100, T0, 100, B - T0, "kaal"))                                 # keukentje | toilet
     o.append(r(TX0, T1, H1 - TX0, B - T1, "kaal"))                                  # rest tot de binnenwand
     # ---- deuren
-    o.append(r(2000, B - 10, 900, 190, "gat") + f'<path class="blad" d="M2900 {B} v-900"/><path class="zw" d="M2900 {B-900} A900 900 0 0 0 2000 {B}"/>')   # kantoor - loods: nieuwe deur 2 m uit de nis van de kachel, draait naar binnen naar de kant van het bureau (Julian); de oude deur (3930-4830) gaat dicht
+    o.append(r(3100, B - 10, 900, 190, "gat") + f'<path class="blad" d="M4000 {B} v-900"/><path class="zw" d="M4000 {B-900} A900 900 0 0 0 3100 {B}"/>')   # kantoor - loods: deur op 3,10-4,00 m (83 cm naar links geschoven), achter de bank van de zithoek, draait naar binnen naar de kant van het bureau (Julian); de oude deur (3930-4830) gaat dicht
     o.append(r(G1 - 1100, B - 10, 900, 120, "gat") + deur_h(G1 - 1100, B, 900, omlaag=False))   # berging - loods, 20 cm uit de hoek
     o.append(r(G1 - 10, 1625, 120, 900, "gat") + deur_v(G1, 1625, 900, rechts=False))           # berging - voorkamer, in het midden
     o.append(r(V1 - 10, 1050, 120, 900, "gat") + deur_v(V1, 1050, 900, rechts=False))           # voorkamer - hal, in lijn met de buitendeur
