@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Detaillering van het kantoor in de loods: plattegrond 1:50, aanzicht van de kastenwand 1:25 en doorsnede 1:25.
-Schrijft detaillering-kantoor.html; daarna de PDF maken (zie CLAUDE.md).
+"""Inrichting van het kantoor in de loods: plattegrond 1:50, aanzicht van de kastenwand 1:25 en doorsnede 1:25.
+Zet blad 7, 8 en 9 in "Zelf regelen CV-installatie loods" (zelf-regelen/zelf-regelen-loods.html); daarna de PDF opnieuw maken.
 Maten in mm, zelfde assen als CV/loods_plattegrond.py. x: van de achterwand (0) naar de wand van de slaapkamer.
 y: van het sandwichpaneel van de rechtergevel (0) naar de binnenwand (4150). z: hoogte boven de vloer.
 Wat met ± is aangegeven, is aangenomen en moet nog worden opgemeten."""
-import math, os, sys
+import math, os, re, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "Bijkeuken"))
 sys.dont_write_bytecode = True
@@ -45,7 +45,7 @@ def stijl(k, f):
 
 STIJL = '''<style>
 .kp text{font-family:Inter,Arial,sans-serif}
-.kp .dim{fill:none;stroke:#1d1d1b}.kp .ext{fill:none;stroke:#777}.kp .dimt{fill:#1d1d1b;text-anchor:middle}
+.kp .dim{fill:none;stroke:#1d1d1b}.kp .ext{fill:none;stroke:#777}.kp .dimt{fill:#1d1d1b;text-anchor:middle;letter-spacing:0}
 .kp .nm{font-weight:700;fill:#1d1d1b;text-anchor:middle}.kp .gr{font-weight:700;fill:#1d1d1b;text-anchor:middle}
 .kp .tx{fill:#1d1d1b;text-anchor:middle}.kp .tl{fill:#1d1d1b}.kp .tr{fill:#1d1d1b;text-anchor:end}.kp .ti{fill:#333;font-style:italic;text-anchor:middle}
 .kp .iso,.kp .dak{fill:#6f6a62;stroke:#1d1d1b}.kp .kaal{fill:#fff;stroke:#1d1d1b}.kp .gat{fill:#fff;stroke:none}
@@ -89,7 +89,7 @@ def plattegrond():
     o.append(r(0, VZ, KX, KD, "plank") + f'<path class="schuif" d="M0 {VZ+KD-40} H{KX}"/>')
     o.append(tx(1000, VZ + 270, "plank op 71 hoog, 60 diep") + tx(1000, VZ + 450, "schuifdeuren eronder"))
     o.append(r(KX, VZ, L - KX, KD, "kast") + f'<path class="schuif" d="M{KX} {VZ+KD-40} H{L}"/>')
-    o.append(tx((KX + L)/2, VZ + 270, "hoge kasten, 60 diep, met schuifdeuren") + tx((KX + L)/2, VZ + 450, "aanzicht op blad 2"))
+    o.append(tx((KX + L)/2, VZ + 270, "hoge kasten, 60 diep, met schuifdeuren") + tx((KX + L)/2, VZ + 450, "aanzicht op blad 8"))
     # ---- bureau: rug naar de wand van de slaapkamer, hoekstuk in de hoek tegen de binnenwand
     o.append(r(AX, B - 2000, 1000, 2000, "bur") + r(AX + 1000, B - 600, L - AX - 1000, 600, "bur"))
     o.append(f'<path d="M{AX+1000} {B-588} V{B-12}" stroke="#fff" stroke-width="30"/>')          # naad tussen blad en hoekstuk weg
@@ -186,60 +186,24 @@ def doorsnede():
     return t.svg(f"-700 -3330 {B+1450} 3880", 25, "".join(o), cls="kp")
 
 def voet(blad, nr):
-    return f'''  <div class="foot">
-    <div><span>Project</span><b>Kantoor loods · Gasthuisstraat 6-a, Langenboom</b></div>
+    return f"""  <div class="foot">
+    <div><span>Project</span><b>CV-installatie loods · Gasthuisstraat 6-a, Langenboom</b></div>
     <div><span>Blad</span><b>{blad}</b></div>
     <div><span>Voor</span><b>Julian</b></div>
     <div><span>Datum · status</span><b>14-11-2026 · concept</b></div>
-    <div><span>Blad</span><b>{nr} / 3</b></div>
-  </div>'''
+    <div><span>Blad</span><b>{nr} / 9</b></div>
+  </div>"""
 
-PAGINA = '''<!DOCTYPE html>
-<html lang="nl">
-<head>
-<meta charset="utf-8">
-<title>Detaillering kantoor loods · Gasthuisstraat 6-a</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-<style>
-/* A4 liggend, leesbaar in zwart-wit: lopende tekst >= 9 pt, tekst in tekeningen >= 7 pt. */
-@page{size:297mm 210mm;margin:0}
-:root{--ink:#1b1b1b;--muted:#444;--rule:#bdb9b0;--card:#f6f4ef;--cardrule:#8f8b82}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{font-family:Inter,"Helvetica Neue",Arial,sans-serif;color:var(--ink);font-size:9.4pt;line-height:1.38;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.sheet{width:297mm;height:210mm;padding:8mm 10mm 0;position:relative;page-break-after:always;overflow:hidden}
-.sheet:last-child{page-break-after:auto}
-.eyebrow{font-size:7.4pt;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 1.5mm}
-h2{font-size:15pt;line-height:1.15;font-weight:700;margin:0 0 1mm}
-h3{font-size:10.4pt;font-weight:700;margin:0 0 1.6mm}
-p{margin:0 0 2mm}
-.sub{color:var(--muted);font-size:8.8pt;margin:0}
-.card{background:var(--card);border:.3mm solid var(--cardrule);border-radius:1.4mm;padding:2.8mm 3.6mm}
-ul.chk{list-style:none;margin:0;padding:0}
-ul.chk li{position:relative;padding-left:5.4mm;margin-bottom:1.2mm}
-ul.chk li:last-child{margin-bottom:0}
-ul.chk li::before{content:"";position:absolute;left:0;top:.7mm;width:3mm;height:3mm;border:.35mm solid var(--ink);background:#fff}
-ul.punt{margin:0;padding-left:4.4mm}ul.punt li{margin-bottom:1.1mm}ul.punt li:last-child{margin-bottom:0}
-.foot{position:absolute;left:10mm;right:10mm;bottom:5.5mm;border-top:.35mm solid var(--ink);display:grid;grid-template-columns:3.1fr 2.5fr 1.2fr 1.7fr .8fr;font-size:8pt}
-.foot div{padding:1.3mm 2.5mm 0 2.5mm;border-left:.2mm solid var(--rule);min-height:8.5mm}
-.foot div:first-child{border-left:0;padding-left:0}
-.foot span{display:block;font-size:6.6pt;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.3mm}
-.foot b{font-weight:600}
-svg{display:block}
-</style>
-</head>
-<body>
-<!-- ============================================================ BLAD 1 -->
+BLADEN = """<!-- ============================================================ BLAD 7 -->
 <section class="sheet">
-  <p class="eyebrow">Eigen werk · kantoor in de loods · 14-11-2026</p>
-  <h2>Kantoor loods · plattegrond 1:50</h2>
-  <p class="sub">Maten in mm, volgens de plattegrond van de loods. Streeplijn = aangenomen. C = doorsnede op blad 3; de kastenwand staat op blad 2.</p>
+  <p class="eyebrow">Eigen werk · inrichting van het kantoor · 14-11-2026</p>
+  <h2>Kantoor · plattegrond 1:50</h2>
+  <p class="sub">Maten in mm, volgens de plattegrond op blad 2. Streeplijn = aangenomen. C = doorsnede op blad 9; de kastenwand staat op blad 8.</p>
   <div style="display:grid;grid-template-columns:181mm 1fr;gap:5mm;margin-top:2mm;align-items:start">
     <div>
 %(plan)s
-      <div class="card" style="margin-top:2mm"><h3>Nog opmeten (op blad 2 en 3 aangenomen, met ±)</h3>
-        <ul class="chk" style="columns:2;column-gap:7mm">
+      <div class="card klein" style="margin-top:2mm"><h3>Nog opmeten (op blad 8 en 9 aangenomen, met ±)</h3>
+        <ul class="chk" style="columns:2;column-gap:7mm;padding-left:0">
           <li>Raam: onderkant en bovenkant boven de vloer.</li>
           <li>Plafondhoogte bij de gevel en bij de binnenwand.</li>
           <li>Hoge kasten: tot het plafond? Hoeveel deuren?</li>
@@ -247,84 +211,84 @@ svg{display:block}
         </ul></div>
     </div>
     <div style="display:flex;flex-direction:column;gap:3mm">
-      <div class="card"><h3>Bureau</h3>
-        <ul class="punt">
+      <div class="card klein"><h3>Bureau</h3>
+        <ul>
           <li>Blad 200 × 100 met hoekstuk 120 × 60, achterin het kantoor: rug naar de wand van de slaapkamer, hoekstuk in de hoek tegen de binnenwand.</li>
           <li>Voorkant van het blad 5 cm naast de deurpost; achter het blad 120 voor de stoel.</li>
           <li>Tussen de kasten en het bureau 1,3 m loopruimte.</li>
         </ul></div>
-      <div class="card"><h3>Wand naar de slaapkamer</h3>
-        <ul class="punt">
+      <div class="card klein"><h3>Wand naar de slaapkamer</h3>
+        <ul>
           <li>1,60 m opgeschoven (was 1,50 m): bureau 100 + hoekstuk 120 vragen 2,2 m tussen deurpost en wand.</li>
           <li>Kantoor 655 lang, slaapkamer 335 lang.</li>
         </ul></div>
-      <div class="card"><h3>Kastenwand langs de rechtergevel</h3>
-        <ul class="punt">
+      <div class="card klein"><h3>Kastenwand langs de rechtergevel</h3>
+        <ul>
           <li>Van de achterwand tot 20 cm voorbij het raam: plank op 71 hoog, 60 diep, met schuifdeuren eronder.</li>
           <li>Daarna tot de wand van de slaapkamer: hoge kasten van 60 diep met schuifdeuren.</li>
           <li>Het raam blijft zichtbaar.</li>
         </ul></div>
-      <div class="card"><h3>Aangenomen, graag nalopen</h3>
-        <ul class="chk">
+      <div class="card klein"><h3>Aangenomen, graag nalopen</h3>
+        <ul class="chk" style="padding-left:0">
           <li>Hoekstuk: haaks aan de zitkant, links van de stoel.</li>
           <li>Deur: 3,40 m uit de achterwand.</li>
           <li>Plek van airco en afzuiging.</li>
         </ul></div>
     </div>
   </div>
-%(voet1)s
+%(voet7)s
 </section>
-<!-- ============================================================ BLAD 2 -->
+<!-- ============================================================ BLAD 8 -->
 <section class="sheet">
-  <p class="eyebrow">Eigen werk · kantoor in de loods · 14-11-2026</p>
-  <h2>Kastenwand langs de rechtergevel · aanzicht 1:25</h2>
+  <p class="eyebrow">Eigen werk · inrichting van het kantoor · 14-11-2026</p>
+  <h2>Kantoor · kastenwand langs de rechtergevel · aanzicht 1:25</h2>
   <p class="sub">Gezien vanuit het kantoor. Maten in mm; ± = aangenomen, nog opmeten. Streeplijn = hoogte van het raam aangenomen.</p>
   <div style="margin-top:2mm">
 %(aanzicht)s
   </div>
   <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm;margin-top:2.5mm;align-items:start">
-    <div class="card"><h3>Plank en lage kast</h3>
-      <ul class="punt">
+    <div class="card klein"><h3>Plank en lage kast</h3>
+      <ul>
         <li>Plank 60 diep met de bovenkant op 71, van de achterwand tot 20 cm voorbij het raam: 2800 lang.</li>
         <li>Eronder een lage kast met twee schuifdeuren van 140, zoals nu.</li>
         <li>Het raam blijft vrij; de voorzetwand krijgt daar een opening met dagkanten.</li>
       </ul></div>
-    <div class="card"><h3>Hoge kasten</h3>
-      <ul class="punt">
+    <div class="card klein"><h3>Hoge kasten</h3>
+      <ul>
         <li>Vanaf 20 cm rechts van het raam tot de wand van de slaapkamer: 3750 lang, 60 diep.</li>
         <li>Vier schuifdeuren van ± 94 op twee rails.</li>
         <li>± 190 hoog, recht onder het laagste punt van het plafond; de wig erboven (0 tot ± 17 cm) dicht met een passtrook.</li>
       </ul></div>
-    <div class="card"><h3>Aangenomen (±), nog opmeten</h3>
-      <ul class="chk">
+    <div class="card klein"><h3>Aangenomen (±), nog opmeten</h3>
+      <ul class="chk" style="padding-left:0">
         <li>Plafond bij de gevel: 190.</li>
         <li>Raam: onderkant 95, bovenkant 170.</li>
         <li>Plint 8, plank 3 dik.</li>
         <li>Aantal en breedte van de schuifdeuren.</li>
       </ul></div>
   </div>
-%(voet2)s
+%(voet8)s
 </section>
-<!-- ============================================================ BLAD 3 -->
+<!-- ============================================================ BLAD 9 -->
 <section class="sheet">
-  <p class="eyebrow">Eigen werk · kantoor in de loods · 14-11-2026</p>
-  <h2>Doorsnede C over het raam · 1:25</h2>
-  <p class="sub">Gezien naar de slaapkamer; de plek van de snede staat op blad 1. Maten in mm; ± = aangenomen, nog opmeten.</p>
+  <p class="eyebrow">Eigen werk · inrichting van het kantoor · 14-11-2026</p>
+  <h2>Kantoor · doorsnede C over het raam · 1:25</h2>
+  <p class="sub">Gezien naar de slaapkamer; de plek van de snede staat op blad 7. Maten in mm; ± = aangenomen, nog opmeten.</p>
   <div style="display:grid;grid-template-columns:224mm 1fr;gap:4mm;margin-top:2mm;align-items:start">
     <div>
 %(doorsnede)s
     </div>
     <div style="display:flex;flex-direction:column;gap:3mm">
-      <div class="card"><h3>Op de doorsnede</h3>
-        <ul class="punt">
+      <div class="card klein"><h3>Op de doorsnede</h3>
+        <ul>
           <li>Links de rechtergevel met het raam, rechts de binnenwand naar de loods.</li>
           <li>In de snede: de plank op 71 met de lage kast.</li>
           <li>Erachter: de zijkant van de hoge kasten en het bureau.</li>
           <li>Tussen kasten en bureau 1,3 m loopruimte.</li>
           <li>Boven het bureau is het plafond ± 2,45 tot 2,80 m.</li>
         </ul></div>
-      <div class="card"><h3>Aangenomen (±)</h3>
-        <ul class="chk">
+      <div class="card klein"><h3>Aangenomen (±)</h3>
+        <ul class="chk" style="padding-left:0">
           <li>Plafond 190 bij de gevel, stijgt 16°.</li>
           <li>Vlak op ± 280 in de laatste 80 cm.</li>
           <li>Bureaublad op 75.</li>
@@ -332,16 +296,19 @@ svg{display:block}
         </ul></div>
     </div>
   </div>
-%(voet3)s
-</section>
-</body>
-</html>
-'''
+%(voet9)s
+</section>"""
+
+def vul(pad, naam, inhoud_):
+    html = open(pad, encoding="utf-8").read()
+    pat = re.compile(r"(<!-- BK:%s -->).*?(<!-- /BK:%s -->)" % (naam, naam), re.S)
+    html, n = pat.subn(lambda m: m.group(1) + "\n" + inhoud_ + "\n" + m.group(2), html)
+    assert n == 1, (pad, naam)
+    open(pad, "w", encoding="utf-8").write(html)
+    print("bijgewerkt:", os.path.relpath(pad, HERE), "·", naam)
 
 if __name__ == "__main__":
-    pad = os.path.join(HERE, "detaillering-kantoor.html")
-    open(pad, "w", encoding="utf-8").write(PAGINA % {
+    vul(os.path.join(HERE, "zelf-regelen", "zelf-regelen-loods.html"), "kantoor", BLADEN % {
         "plan": plattegrond(), "aanzicht": aanzicht(), "doorsnede": doorsnede(),
-        "voet1": voet("Plattegrond 1:50", 1),
-        "voet2": voet("Aanzicht kastenwand 1:25", 2), "voet3": voet("Doorsnede C 1:25", 3)})
-    print("geschreven:", os.path.relpath(pad, HERE))
+        "voet7": voet("Kantoor: plattegrond 1:50", 7),
+        "voet8": voet("Kantoor: aanzicht kastenwand 1:25", 8), "voet9": voet("Kantoor: doorsnede C 1:25", 9)})
