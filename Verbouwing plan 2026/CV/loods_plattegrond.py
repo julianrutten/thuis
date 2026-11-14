@@ -56,7 +56,7 @@ def inhoud():
     o.append(r(0, 0, K1x, VZ, "iso") + r(G0, 0, G1 - G0, VZ, "iso") + r(V0, 0, V1 - V0, VZ, "iso"))   # isolatie en voorzetwand, niet in de hal
     # ---- kantoor: achterwand naar de accuruimte, wand naar de slaapkamer; de wand naar de loods is kaal
     o.append(r(-160, 0, 160, AB + 100, "iso") + r(K1x, 0, 100, B, "iso"))
-    o.append(r(-NIS - 100, B, K1x + NIS + 200, 100, "kaal"))                       # binnenwand kantoor, loopt door langs de nis
+    o.append(r(-NIS - 100, B, NIS + 100, 100, "kaal") + r(0, B, K1x + 100, 160, "iso"))     # binnenwand: langs de nis kaal, langs het kantoor 100 mm glaswol
     o.append(r(-NIS - 100, AB + 100, 100, B - AB - 100, "kaal"))                    # achterwand van de nis
     o.append(r(G0, B, H1 - G0, 100, "kaal"))                                        # binnenwand berging en voorkamer
     o.append(r(G1, 0, 100, B, "kaal") + r(V1, 0, 100, HB + 100, "kaal"))            # dwarswanden
@@ -77,7 +77,7 @@ def inhoud():
     o.append(r(TX0 - 100, T0, 100, B - T0, "kaal"))                                 # keukentje | toilet
     o.append(r(TX0, T1, H1 - TX0, B - T1, "kaal"))                                  # rest tot de binnenwand
     # ---- deuren
-    o.append(r(3400, B - 10, 900, 120, "gat") + deur_h(3400, B, 900, omlaag=False))             # kantoor - loods
+    o.append(r(3400, B - 10, 900, 190, "gat") + deur_h(3400, B, 900, omlaag=False))             # kantoor - loods
     o.append(r(G1 - 1100, B - 10, 900, 120, "gat") + deur_h(G1 - 1100, B, 900, omlaag=False))   # berging - loods, 20 cm uit de hoek
     o.append(r(G1 - 10, 1625, 120, 900, "gat") + deur_v(G1, 1625, 900, rechts=False))           # berging - voorkamer, in het midden
     o.append(r(V1 - 10, 800, 120, 900, "gat") + deur_v(V1, 800, 900, rechts=False))             # voorkamer - hal
@@ -85,14 +85,14 @@ def inhoud():
     o.append(r(TX0 + 200, HB - 10, 750, 120, "gat") + f'<path class="blad" d="M{TX0+150} {HB+130} h800"/>')   # schuifdeur toilet
     # ---- kantoor
     o.append(r(1600, -90, 1000, 90, "raam") + tx(2100, -180, "raam, 1 m", "tx"))                # 160 cm van de achterwand; komt achter de voorzetwand
-    o.append(r(2900, VZ + 40, 1500, 110, "rad") + tx(3650, VZ + 480, "R3 · ± 1,3 kW"))
-    o.append(blok(2700, 1300, ["Kantoor", "415 × 495 · netto 392 breed", "21–22 °C · wand naar de loods kaal", "± 1,3 kW bij −10 °C"]))
+    o.append(r(2900, VZ + 40, 1500, 110, "rad") + tx(3650, VZ + 480, "R3 · ± 1 kW"))
+    o.append(blok(2700, 1300, ["Kantoor", "415 × 495 · netto 392 breed", "21–22 °C · rondom geïsoleerd", "± 1 kW bij −10 °C"]))
     o.append('<path class="pijl" d="M500 600 H-700"/>' + tx(250, 860, "bestaande afzuiging", "tl"))
     # ---- buiten
     o.append(r(-2500, -1050, 1300, 450, "app") + tx(-1850, -720, "WP1", "nm"))
     o.append('<rect class="aan" x="-950" y="-1000" width="800" height="350"/>')
     o.append(tx(-AL - 100, -1300, "buiten: warmtepomp WP1 naast de buitenunit van de airco (blijft)", "tl"))
-    o.append(tx(4300, -480, "rechtergevel: sandwichpaneel, regelwerk 155 mm met glaswol en 70 mm voorzetwand = 225 mm", "tl"))
+    o.append(tx(4300, -480, "rechtergevel: sandwichpaneel, 150 mm glaswol in het regelwerk en 70 mm voorzetwand = 225 mm", "tl"))
     # ---- berging, voorkamer, hal, toilet
     o.append(r(6800, VZ + 40, 1500, 110, "rad") + tx(7550, VZ + 480, "R6 · ± 1 kW"))
     o.append(blok(7400, 1300, ["Berging", "415 × 495 · netto 392 breed", "wordt slaapkamer en", "deel kantoor · 18 °C", "± 1 kW bij −10 °C"]))
