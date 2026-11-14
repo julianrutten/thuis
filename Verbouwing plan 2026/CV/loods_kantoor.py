@@ -23,11 +23,11 @@ DEUR_OUD = (OUD - 120 - 900, OUD - 120)   # bestaande deur naar de loods: 12 cm 
 DEUR = (3100, 4000)         # deur: 83 cm naar links geschoven, direct achter de bank van de zithoek; draait naar binnen naar de kant van het bureau (Julian); breedte 90 aangenomen
 # zithoek bij de kachel (maten Julian): bank 125 x 75, salontafel 95 x 58 (ovaal), twee stoelen 70 x 70
 # losse opstelling (Julian: "het mag wel wat speelser"): midden x, midden y, draaiing in graden
-BANK = (2380, 2900, 12)          # 75 x 125, schuin tegenover de kachel
-TAFEL = (1350, 2900, -10)        # 58 x 95, een kwartslag gedraaid: de lange kant langs de bank
-STOELEN = ((820, 1930, -18), (1900, 1650, 14))   # aan de kant van het raam, naar de tafel gedraaid
+BANK = (2300, 3200, 5)           # 75 x 125, dichter bij de binnenwand, gericht op de kachel
+TAFEL = (1300, 3100, -4)         # 58 x 95, een kwartslag gedraaid: de lange kant langs de bank
+STOELEN = ((650, 1950, -45), (1800, 1900, -28))   # aan de kant van het raam, allebei naar de kachel gedraaid
 SNEDE = 2450                # doorsnede C: over het raam, rechts van de stoelen; snijdt de bank
-BANK_Y = (2240, 3560)       # waar de snede de bank raakt
+BANK_Y = (2560, 3840)       # waar de snede de bank raakt
 KX = RAAM[1] + 200          # de hoge kasten beginnen 20 cm rechts van het raam (Julian)
 NIS = 800                   # schouw van de kachel: 80 cm in de wand
 UIT = 240                   # en 24 cm ervoor (wangen en kap, betegeld): samen 104 diep, kachel van 54 in het midden
@@ -259,8 +259,8 @@ BLADEN = """<!-- ============================================================ BL
         </ul></div>
       <div class="card klein"><h3>Zithoek bij de kachel</h3>
         <ul>
-          <li>Los opgesteld: bank 125 × 75 schuin tegenover de kachel, salontafel 95 × 58 dwars ervoor, twee stoelen 70 × 70 aan de kant van het raam.</li>
-          <li>Tafel op ± 1 m van de kachel (eis: 80 cm vrij), bank op ± 2 m; ± 55 cm vrij langs de binnenwand.</li>
+          <li>Los opgesteld rond de kachel: bank 125 × 75 ertegenover, salontafel 95 × 58 dwars ervoor, twee stoelen 70 × 70 aan de kant van het raam, alles naar de kachel gedraaid.</li>
+          <li>Tafel op ± 1 m van de kachel (eis: 80 cm vrij), bank op ± 1,9 m en ± 30 cm van de binnenwand; naar de kachel loop je langs de stoelen.</li>
         </ul></div>
       <div class="card klein"><h3>Schouw voor de kachel (voorstel)</h3>
         <ul>
