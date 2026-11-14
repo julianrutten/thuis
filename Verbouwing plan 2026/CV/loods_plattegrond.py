@@ -11,8 +11,8 @@ sys.dont_write_bytecode = True
 import tekening as t
 
 B = 4150                                   # binnenmaat van de rechtergevel tot de binnenwand
-K0, K1x = 0, 4950                          # kantoor
-G0, G1 = 5050, 10000                       # berging (wordt slaapkamer en deel kantoor)
+K0, K1x = 0, 6450                          # kantoor: wand naar de slaapkamer 1,5 m opgeschoven (was 4950)
+G0, G1 = 6550, 10000                       # slaapkamer (was berging), 3450 lang
 V0, V1 = 10100, 17980                      # voorkamer
 H0, H1 = 18080, 20050                      # hal en toilet (197 diep), tegen de voorgevel
 HB = 2450                                  # hal breed
@@ -30,6 +30,7 @@ STIJL = '''<style>
 .lp .gat{fill:#fff;stroke:none}.lp .blad{fill:none;stroke:#1d1d1b;stroke-width:14px}
 .lp .zw{fill:none;stroke:#555;stroke-width:9px;stroke-dasharray:70 50}
 .lp .aan{fill:none;stroke:#1d1d1b;stroke-width:12px;stroke-dasharray:110 70}
+.lp .meub{fill:#fff;stroke:#1d1d1b;stroke-width:10px}
 .lp .schuin{fill:none;stroke:#1d1d1b;stroke-width:60px;stroke-dasharray:260 90}
 .lp .duo{fill:none;stroke:#1d1d1b;stroke-width:34px;stroke-dasharray:320 90 50 90}
 .lp .app{fill:#fff;stroke:#1d1d1b;stroke-width:18px}.lp .rad{fill:#1d1d1b}.lp .raam{fill:#fff;stroke:#1d1d1b;stroke-width:10px}
@@ -85,7 +86,7 @@ def inhoud():
     o.append(r(TX0 + 200, HB - 10, 750, 120, "gat") + f'<path class="blad" d="M{TX0+150} {HB+130} h800"/>')   # schuifdeur toilet
     # ---- kantoor
     o.append(r(1600, -90, 1000, 90, "raam") + tx(2100, -180, "raam, 1 m", "tx"))                # 160 cm van de achterwand; komt achter de voorzetwand
-    o.append(blok(2700, 1300, ["Kantoor", "415 × 495 · netto 392 breed", "21–22 °C · rondom geïsoleerd", "kachel en airco, geen radiator"]))
+    o.append(blok(3300, 1300, ["Kantoor", "415 × 645 · netto 392 breed", "21–22 °C · rondom geïsoleerd", "kachel en airco, geen radiator"]))
     o.append('<path class="pijl" d="M500 600 H-700"/>' + tx(250, 860, "bestaande afzuiging", "tl"))
     # ---- buiten
     o.append(r(-2500, -1050, 1300, 450, "app") + tx(-1850, -720, "WP1", "nm"))
@@ -93,14 +94,17 @@ def inhoud():
     o.append(tx(-AL - 100, -1300, "buiten: warmtepomp WP1 naast de buitenunit van de airco (blijft)", "tl"))
     o.append(tx(4300, -480, "rechtergevel: sandwichpaneel, 150 mm glaswol in het regelwerk en 70 mm voorzetwand = 225 mm", "tl"))
     # ---- berging, voorkamer, hal, toilet
-    o.append(r(7000, VZ + 40, 1000, 110, "rad") + tx(7500, VZ + 480, "R6 · 600 × 1000"))
-    o.append(blok(7400, 1300, ["Berging", "415 × 495 · netto 392 breed", "wordt slaapkamer en", "deel kantoor · 18 °C", "± 1 kW bij −10 °C"]))
-    o.append(r(11500, VZ + 40, 2000, 110, "rad") + tx(12500, VZ + 480, "R2 · 600 × 2000"))
+    o.append(r(7300, B - 150, 1000, 110, "rad") + tx(7800, B - 480, "R6 · 600 × 1000"))            # op de binnenwand: langs de gevel staan de ledikanten
+    # slaapkamer: bed 2100 x 1800 met het hoofdeind tegen de wand van het kantoor, twee ledikanten 1400 x 700 langs de gevel
+    o.append(r(G0, 1525, 2100, 1800, "meub") + f'<path class="ld" d="M{G0+450} 1525 v1800"/>')
+    o.append(r(7200, VZ, 1400, 700, "meub") + r(8600, VZ, 1400, 700, "meub") + tx(7900, VZ + 440, "70 × 140") + tx(9300, VZ + 440, "70 × 140"))
+    o.append(blok(G0 + 1050, 2050, ["Slaapkamer", "345 × 392", "18 °C", "bed 180 × 210"]))
+    o.append(r(15300, VZ + 40, 2000, 110, "rad") + tx(16300, VZ + 480, "R2 · 600 × 2000"))
     o.append(blok(14040, 1750, ["Voorkamer", "415 × 788 · netto 392 breed", "15–16 °C · ± 50 uur per seizoen in gebruik", "± 1,4 kW bij −10 °C · ± 1,8 kW in gebruik"]))
     # ---- duoleiding: boven het vlakke plafond langs de binnenwand naar voren, bij de hal dwars naar de rechtergevel en omlaag (A)
     o.append(f'<path class="duo" d="M{-NIS-100} 3950 H{V1-100} V{VZ+130}"/><circle cx="{V1-100}" cy="{VZ+130}" r="110" fill="#1d1d1b"/>')
     o.append(tx(11400, 3800, "duoleiding boven het plafond, langs de binnenwand", "ti"))
-    o.append(tx(V1 - 1050, 900, "A · omlaag in een koof,", "tr") + tx(V1 - 1050, 1230, "onder de fundering door naar het huis", "tr"))
+    o.append(tx(V1 - 340, 800, "A", "nm") + tx(15000, 900, "A · omlaag in een koof,", "tr") + tx(15000, 1230, "onder de fundering door naar het huis", "tr"))
     o.append(tx(V1 - 420, 3500, "keukentje", "tr") + f'<rect class="aan" x="{H0+60}" y="{T0+60}" width="{TX0-100-H0-120}" height="{B-T0-120}"/>')
     o.append(blok(18800, 420, ["Hal", "245 × 197"]))
     o.append(blok((TX0 + H1)/2, 3150, ["Toilet", "117 × 142"]) + r(TX0 + 60, T1 - 150, 400, 90, "rad"))
@@ -109,7 +113,7 @@ def inhoud():
     # ---- loods en maten
     o.append(tx(9300, B + 1050, "loods · de airco houdt 10–12 °C aan", "ti"))
     t.TK = 100
-    o.append(t.chain_h([-AL, K0, K1x, G0, G1, V0, V1, H0, H1], B + 2000, ["± 4000", "4950", "", "4950", "", "7880", "", "1970"], frm=B + 1450))
+    o.append(t.chain_h([-AL, K0, K1x, G0, G1, V0, V1, H0, H1], B + 2000, ["± 4000", "6450", "", "3450", "", "7880", "", "1970"], frm=B + 1450))
     o.append(t.chain_v([0, B], H1 + 2300, ["4150"], frm=H1 + 320))
     t.TK = 26
     return "".join(o)
@@ -120,7 +124,7 @@ def tekening():
 
 def detail():
     """Uitsnede kantoor, nis, technische ruimte en accuruimte, voor blad CV-02 van de tekenset (schaalt mee op het scherm)."""
-    s = t.svg("-4500 -1650 9800 8050", 50, inhoud(), cls="lp")
+    s = t.svg("-4500 -1650 11300 8050", 50, inhoud(), cls="lp")
     return re.sub(r'style="width:[^"]*"', 'style="max-width:760px;margin:0 auto"', s, count=1)
 
 def vul(pad, naam, inhoud_):
