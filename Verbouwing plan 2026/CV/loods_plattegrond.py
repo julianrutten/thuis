@@ -19,7 +19,7 @@ HB = 2450                                  # hal breed
 T0, T1 = 2550, 3970                        # toilet: 142 dwars op de strook
 TX0 = H1 - 1170                            # toilet: 117 langs de strook, tegen de voorgevel
 AB, AL = 2000, 4000                        # accuruimte: ± 2 m breed, 4 m lang, tegen de rechtergevel achter het kantoor
-NIS = 800                                  # diepte van de nis van de kachel
+NIS = 1000                                 # diepte van de nis van de kachel: 1 m (Julian, 14-11-2026)
 VZ = 225                                   # rechtergevel: 155 mm regelwerk met glaswol + 70 mm voorzetwand, gemeten vanaf het sandwichpaneel
 
 STIJL = '''<style>
@@ -66,19 +66,19 @@ def inhoud():
     o.append(tx(-AL/2 - 100, 850, "accuruimte", "nm") + tx(-AL/2 - 100, 1180, "± 2 × 4 m"))
     # ---- schuine technische ruimte achter de nis: van 2 m naar 0, ± 3 m lang
     o.append(f'<path class="schuin" d="M{-NIS-50} {B+50} L{-AL-50} {AB+50}"/>')
-    o.append('<circle class="app" cx="-1500" cy="2740" r="495"/>' + tx(-1500, 2840, "B1", "nm"))
+    o.append('<circle class="app" cx="-1750" cy="2750" r="495"/>' + tx(-1750, 2850, "B1", "nm"))
     o.append('<circle class="app" cx="-2700" cy="2460" r="300"/>' + tx(-2700, 2560, "X1", "nm"))
     o.append(tx(-2500, B + 700, "technische ruimte, schuin:", "tx") + tx(-2500, B + 1030, "± 3 m lang, van 2 m naar 0", "tx"))
     # ---- nis met de kachel: 80 cm diep, 2 m breed, opening naar achteren
-    o.append(r(-740, 2875, 540, 500, "app") + tx(-470, 3225, "K1", "nm"))
-    o.append(r(-NIS - 110, 3500, 120, 500, "gat") + f'<path class="pijl" d="M-250 3750 H-1250"/>')
-    o.append(tx(200, 2620, "kachel K1 in een nis:", "tl") + tx(200, 2950, "80 cm diep, 2 m breed", "tl"))
+    o.append(r(-800, 2875, 540, 500, "app") + tx(-530, 3225, "K1", "nm"))
+    o.append(r(-NIS - 110, 3500, 120, 500, "gat") + f'<path class="pijl" d="M-250 3750 H{-NIS-450}"/>')
+    o.append(tx(200, 2620, "kachel K1 in een nis:", "tl") + tx(200, 2950, "1 m diep, 2 m breed", "tl"))
     # ---- hal, toilet en keukentje tegen de voorgevel
     o.append(r(H0, HB, H1 - H0, 100, "kaal"))                                       # hal | toilet en keukentje
     o.append(r(TX0 - 100, T0, 100, B - T0, "kaal"))                                 # keukentje | toilet
     o.append(r(TX0, T1, H1 - TX0, B - T1, "kaal"))                                  # rest tot de binnenwand
     # ---- deuren
-    o.append(r(800, B - 10, 900, 190, "gat") + f'<path class="blad" d="M1700 {B} v-900"/><path class="zw" d="M1700 {B-900} A900 900 0 0 0 800 {B}"/>')   # kantoor - loods: nieuwe deur 80 cm uit de nis van de kachel, draait naar binnen naar de kant van het bureau (Julian); de oude deur (3930-4830) gaat dicht
+    o.append(r(2000, B - 10, 900, 190, "gat") + f'<path class="blad" d="M2900 {B} v-900"/><path class="zw" d="M2900 {B-900} A900 900 0 0 0 2000 {B}"/>')   # kantoor - loods: nieuwe deur 2 m uit de nis van de kachel, draait naar binnen naar de kant van het bureau (Julian); de oude deur (3930-4830) gaat dicht
     o.append(r(G1 - 1100, B - 10, 900, 120, "gat") + deur_h(G1 - 1100, B, 900, omlaag=False))   # berging - loods, 20 cm uit de hoek
     o.append(r(G1 - 10, 1625, 120, 900, "gat") + deur_v(G1, 1625, 900, rechts=False))           # berging - voorkamer, in het midden
     o.append(r(V1 - 10, 1050, 120, 900, "gat") + deur_v(V1, 1050, 900, rechts=False))           # voorkamer - hal, in lijn met de buitendeur
