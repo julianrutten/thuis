@@ -85,7 +85,7 @@ def inhoud():
     o.append(r(H1 - 10, 1050, 110, 900, "gat") + deur_v(H1, 1050, 900, rechts=False))           # buitendeur in de voorgevel
     o.append(r(TX0 + 200, HB - 10, 750, 120, "gat") + f'<path class="blad" d="M{TX0+150} {HB+130} h800"/>')   # schuifdeur toilet
     # ---- kantoor
-    o.append(r(1600, -90, 1000, 90, "raam") + tx(2100, -180, "raam, 1 m", "tx"))                # 160 cm van de achterwand; komt achter de voorzetwand
+    o.append(r(1600, -90, 1000, VZ + 90, "raam") + tx(2100, -180, "raam, 1 m", "tx"))           # 160 cm van de achterwand; blijft zichtbaar (opening in de voorzetwand)
     o.append(blok(3300, 1300, ["Kantoor", "415 × 645 · netto 392 breed", "21–22 °C · rondom geïsoleerd", "kachel en airco, geen radiator"]))
     o.append('<path class="pijl" d="M500 600 H-700"/>' + tx(250, 860, "bestaande afzuiging", "tl"))
     # ---- buiten
