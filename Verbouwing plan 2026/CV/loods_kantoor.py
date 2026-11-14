@@ -22,10 +22,12 @@ RAAM = (1600, 2600)         # raam: 160 cm uit de achterwand, 1 m breed
 DEUR_OUD = (OUD - 120 - 900, OUD - 120)   # bestaande deur naar de loods: 12 cm van de oude wand (Julian); wordt dichtgezet
 DEUR = (3100, 4000)         # deur: 83 cm naar links geschoven, direct achter de bank van de zithoek; draait naar binnen naar de kant van het bureau (Julian); breedte 90 aangenomen
 # zithoek bij de kachel (maten Julian): bank 125 x 75, salontafel 95 x 58 (ovaal), twee stoelen 70 x 70
-BANK = (2250, 2250, 750, 1250)   # tegenover de kachel
-TAFEL = (1425, 2875, 475, 290)   # midden x, midden y, halve lengte, halve breedte
-STOELEN = ((700, 1535), (1450, 1535))   # aan de kant van het raam
-SNEDE = 2200                # doorsnede C: over het raam, tussen de stoelen en de bank door
+# losse opstelling (Julian: "het mag wel wat speelser"): midden x, midden y, draaiing in graden
+BANK = (2380, 2900, 12)          # 75 x 125, schuin tegenover de kachel
+TAFEL = (1350, 2900, -10)        # 58 x 95, een kwartslag gedraaid: de lange kant langs de bank
+STOELEN = ((820, 1930, -18), (1900, 1650, 14))   # aan de kant van het raam, naar de tafel gedraaid
+SNEDE = 2450                # doorsnede C: over het raam, rechts van de stoelen; snijdt de bank
+BANK_Y = (2240, 3560)       # waar de snede de bank raakt
 KX = RAAM[1] + 200          # de hoge kasten beginnen 20 cm rechts van het raam (Julian)
 NIS = 800                   # schouw van de kachel: 80 cm in de wand
 UIT = 240                   # en 24 cm ervoor (wangen en kap, betegeld): samen 104 diep, kachel van 54 in het midden
@@ -140,11 +142,12 @@ def plattegrond():
     o.append(t.chain_h([0, OUD, L], B + 1130, ["4950 · tot de oude wand", "1600 opgeschoven"], frm=B + 860))
     o.append(tx(DEUR[0] + 400, B - 230, "nieuwe deur"))
     # ---- zitplek bij de kachel (voorstel): stoel voor de plank bij het raam, buiten de looproute
-    o.append(f'<rect class="plank" x="{BANK[0]}" y="{BANK[1]}" width="{BANK[2]}" height="{BANK[3]}" rx="90"/>' + txr(BANK[0] + 330, BANK[1] + BANK[3]/2, "bank") + txr(BANK[0] + 520, BANK[1] + BANK[3]/2, "125 × 75"))
-    o.append(f'<ellipse class="plank" cx="{TAFEL[0]}" cy="{TAFEL[1]}" rx="{TAFEL[2]}" ry="{TAFEL[3]}"/>' + tx(TAFEL[0], TAFEL[1] - 20, "tafel") + tx(TAFEL[0], TAFEL[1] + 150, "95 × 58"))
-    for sx, sy in STOELEN:
-        o.append(f'<rect class="plank" x="{sx}" y="{sy}" width="700" height="700" rx="110"/>' + tx(sx + 350, sy + 330, "stoel") + tx(sx + 350, sy + 500, "70 × 70"))
-    o.append(t.chain_v([BANK[1] + BANK[3], B], BANK[0] + 380, [str(B - BANK[1] - BANK[3])]))
+    bx, by, bh = BANK
+    o.append(f'<rect class="plank" x="{bx-375}" y="{by-625}" width="750" height="1250" rx="90" transform="rotate({bh} {bx} {by})"/>' + tx(bx, by - 20, "bank") + tx(bx, by + 150, "125 × 75"))
+    tx_, ty_, th = TAFEL
+    o.append(f'<ellipse class="plank" cx="{tx_}" cy="{ty_}" rx="290" ry="475" transform="rotate({th} {tx_} {ty_})"/>' + tx(tx_, ty_ - 20, "tafel") + tx(tx_, ty_ + 150, "95 × 58"))
+    for sx, sy, sh in STOELEN:
+        o.append(f'<rect class="plank" x="{sx-350}" y="{sy-350}" width="700" height="700" rx="110" transform="rotate({sh} {sx} {sy})"/>' + tx(sx, sy - 20, "stoel") + tx(sx, sy + 150, "70 × 70"))
     o.append(t.chain_v([0, AB, B], -1450, ["2100", "2050 · schouw"], frm=-960))
     o.append(t.chain_v([0, RG, FR, B], L + 580, ["", "600", "3395"], frm=L + 160) + tx(L + 370, 125, "155"))
     t.TK = 26
@@ -201,7 +204,7 @@ def doorsnede():
     # ---- bureau erachter
     o.append(R(B - 2000, BH - 30, 2000, 30, "top") + R(B - 1960, 0, 40, BH - 30, "zicht") + R(B - 60, 0, 40, BH - 30, "zicht"))
     o.append(tx(B - 320, -(BH + 60), "bureau, erachter"))
-    o.append(f'<rect class="zicht" x="{BANK[1]}" y="-820" width="{BANK[3]}" height="820" rx="40"/>' + tx(BANK[1] + BANK[3]/2, -430, "bank, erachter") + tx(BANK[1] + BANK[3]/2, -340, "± 80 hoog"))
+    o.append(f'<rect class="zicht" x="{BANK_Y[0]}" y="-820" width="{BANK_Y[1]-BANK_Y[0]}" height="820" rx="40"/>' + tx(sum(BANK_Y)/2, -430, "bank") + tx(sum(BANK_Y)/2, -340, "± 80 hoog"))
     o.append(f'<path class="vloer" d="M-650 0 H{B+500}"/>')
     o.append(tx(2700, -1500, "Kantoor", "nm") + txr(B + 330, -1900, "loods", "ti"))
     # ---- maten
@@ -256,8 +259,8 @@ BLADEN = """<!-- ============================================================ BL
         </ul></div>
       <div class="card klein"><h3>Zithoek bij de kachel</h3>
         <ul>
-          <li>Bank 125 × 75 tegenover de kachel, salontafel 95 × 58 ervoor, twee stoelen 70 × 70 aan de kant van het raam.</li>
-          <li>Tafel op ± 1 m van de kachel (eis: 80 cm vrij), bank op ± 2,3 m; 65 cm vrij langs de binnenwand.</li>
+          <li>Los opgesteld: bank 125 × 75 schuin tegenover de kachel, salontafel 95 × 58 dwars ervoor, twee stoelen 70 × 70 aan de kant van het raam.</li>
+          <li>Tafel op ± 1 m van de kachel (eis: 80 cm vrij), bank op ± 2 m; ± 55 cm vrij langs de binnenwand.</li>
         </ul></div>
       <div class="card klein"><h3>Schouw voor de kachel (voorstel)</h3>
         <ul>
