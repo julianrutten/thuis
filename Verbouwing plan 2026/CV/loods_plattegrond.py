@@ -59,7 +59,7 @@ def inhoud():
     o.append(r(-160, 0, 160, AB + 100, "iso") + r(K1x, 0, 100, B, "iso"))
     o.append(r(-NIS - 100, B, NIS + 100, 100, "kaal") + r(0, B, K1x + 100, 160, "iso"))     # binnenwand: langs de nis kaal, langs het kantoor 100 mm glaswol
     o.append(r(-NIS - 100, AB + 100, 100, B - AB - 100, "kaal"))                    # achterwand van de nis
-    o.append(r(V1, B, H1 - V1, 100, "kaal") + r(G0, B, V1 + 100 - G0, 160, "iso"))        # binnenwand: slaapkamer en voorkamer van binnenuit 100 mm glaswol (Julian, 14-11-2026); hal en toilet kaal
+    o.append(r(G0, B, H1 - G0, 160, "iso"))                                         # binnenwand: slaapkamer, voorkamer, keukentje en toilet van binnenuit 100 mm glaswol (Julian, 14-11-2026)
     o.append(r(G1, 0, 100, B, "iso") + r(V1, 0, 100, HB + 100, "kaal"))             # dwarswanden: slaapkamer-voorkamer 100 mm glaswol, voorkamer-hal kaal
     # ---- accuruimte tegen de rechtergevel, achter het kantoor
     o.append(r(-AL - 100, AB, AL - 60, 100, "kaal") + r(-AL - 100, 0, 100, AB + 100, "kaal"))
@@ -78,7 +78,7 @@ def inhoud():
     # ---- hal, toilet en keukentje tegen de voorgevel
     o.append(r(H0, HB, H1 - H0, 100, "kaal"))                                       # hal | toilet en keukentje
     o.append(r(TX0 - 100, T0, 100, B - T0, "kaal"))                                 # keukentje | toilet
-    o.append(r(TX0, T1, H1 - TX0, B - T1, "kaal"))                                  # rest tot de binnenwand
+    o.append(r(TX0, T1, H1 - TX0, B - T1, "iso"))                                   # rest tot de binnenwand: de loodskant van het toilet, geïsoleerd
     # ---- deuren
     o.append(r(3100, B - 10, 900, 190, "gat") + f'<path class="blad" d="M4000 {B} v-900"/><path class="zw" d="M4000 {B-900} A900 900 0 0 0 3100 {B}"/>')   # kantoor - loods: deur op 3,10-4,00 m (83 cm naar links geschoven), achter de bank van de zithoek, draait naar binnen naar de kant van het bureau (Julian); de oude deur (3930-4830) gaat dicht
     o.append(r(G1 - 1100, B - 10, 900, 120, "gat") + deur_h(G1 - 1100, B, 900, omlaag=False))   # berging - loods, 20 cm uit de hoek
