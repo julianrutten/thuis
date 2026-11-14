@@ -19,7 +19,7 @@ HB = 2450                                  # hal breed
 T0, T1 = 2550, 3970                        # toilet: 142 dwars op de strook
 TX0 = H1 - 1170                            # toilet: 117 langs de strook, tegen de voorgevel
 AB, AL = 2000, 4000                        # accuruimte: ± 2 m breed, 4 m lang, tegen de rechtergevel achter het kantoor
-NIS = 1000                                 # diepte van de nis van de kachel: 1 m (Julian, 14-11-2026)
+NIS = 800                                  # schouw van de kachel: 80 cm in de wand, 24 cm ervoor (zie loods_kantoor.py)
 VZ = 225                                   # rechtergevel: 155 mm regelwerk met glaswol + 70 mm voorzetwand, gemeten vanaf het sandwichpaneel
 
 STIJL = '''<style>
@@ -66,13 +66,15 @@ def inhoud():
     o.append(tx(-AL/2 - 100, 850, "accuruimte", "nm") + tx(-AL/2 - 100, 1180, "± 2 × 4 m"))
     # ---- schuine technische ruimte achter de nis: van 2 m naar 0, ± 3 m lang
     o.append(f'<path class="schuin" d="M{-NIS-50} {B+50} L{-AL-50} {AB+50}"/>')
-    o.append('<circle class="app" cx="-1750" cy="2750" r="495"/>' + tx(-1750, 2850, "B1", "nm"))
+    o.append('<circle class="app" cx="-1650" cy="2700" r="495"/>' + tx(-1650, 2800, "B1", "nm"))
     o.append('<circle class="app" cx="-2700" cy="2460" r="300"/>' + tx(-2700, 2560, "X1", "nm"))
     o.append(tx(-2500, B + 700, "technische ruimte, schuin:", "tx") + tx(-2500, B + 1030, "± 3 m lang, van 2 m naar 0", "tx"))
     # ---- nis met de kachel: 80 cm diep, 2 m breed, opening naar achteren
-    o.append(r(-800, 2875, 540, 500, "app") + tx(-530, 3225, "K1", "nm"))
+    o.append(r(0, AB, 240, 100, "kaal") + r(0, B - 100, 240, 100, "kaal"))                              # wangen van de schouw, 24 cm vóór de wand
+    o.append(r(-1090, 3035, 540, 80, "app") + '<circle class="app" cx="-1090" cy="3075" r="75"/>')      # rookgasafvoer: achteruit door de wand, in de technische ruimte omhoog door het dak
+    o.append(r(-550, 2825, 540, 500, "app") + tx(-280, 3175, "K1", "nm"))                        # 25 cm van de achterwand, midden in de schouw
     o.append(r(-NIS - 110, 3500, 120, 500, "gat") + f'<path class="pijl" d="M-250 3750 H{-NIS-450}"/>')
-    o.append(tx(200, 2620, "kachel K1 in een nis:", "tl") + tx(200, 2950, "1 m diep, 2 m breed", "tl"))
+    o.append(tx(330, 2620, "kachel K1 in een schouw:", "tl") + tx(330, 2950, "104 diep, 2 m breed", "tl"))
     # ---- hal, toilet en keukentje tegen de voorgevel
     o.append(r(H0, HB, H1 - H0, 100, "kaal"))                                       # hal | toilet en keukentje
     o.append(r(TX0 - 100, T0, 100, B - T0, "kaal"))                                 # keukentje | toilet

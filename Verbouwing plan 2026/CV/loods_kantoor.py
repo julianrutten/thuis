@@ -22,7 +22,9 @@ RAAM = (1600, 2600)         # raam: 160 cm uit de achterwand, 1 m breed
 DEUR_OUD = (OUD - 120 - 900, OUD - 120)   # bestaande deur naar de loods: 12 cm van de oude wand (Julian); wordt dichtgezet
 DEUR = (2000, 2900)         # nieuwe deur: 2 m uit de nis van de kachel, draait naar binnen naar de kant van het bureau (Julian); breedte 90 aangenomen
 KX = RAAM[1] + 200          # de hoge kasten beginnen 20 cm rechts van het raam (Julian)
-NIS = 1000                  # diepte van de nis van de kachel: 1 m (Julian, 14-11-2026), nis ± 2 x 1 m
+NIS = 800                   # schouw van de kachel: 80 cm in de wand
+UIT = 240                   # en 24 cm ervoor (wangen en kap, betegeld): samen 104 diep, kachel van 54 in het midden
+KY = 2825                   # kachel: midden tussen de wangen (2100 tot 4050)
 AB = 2100                   # achterwand tot hier langs de accuruimte; daarna de nis
 ST = 1200                   # ruimte voor de stoel, tussen het blad en de wand van de slaapkamer (= lengte van het hoekstuk)
 AX = L - ST - 1000          # voorkant van het bureau
@@ -50,6 +52,7 @@ def stijl(k, f):
             f"{p} .pijl,{p} .pijl2{{stroke-width:{14*f}px}}{p} .vloer{{stroke-width:{16*f}px}}{p} .plaf{{stroke-width:{12*f}px}}")
 
 STIJL = '''<style>
+ul.chk li{break-inside:avoid}
 .kp text{font-family:Inter,Arial,sans-serif}
 .kp .dim{fill:none;stroke:#1d1d1b}.kp .ext{fill:none;stroke:#777}.kp .dimt{fill:#1d1d1b;text-anchor:middle;letter-spacing:0}
 .kp .nm{font-weight:700;fill:#1d1d1b;text-anchor:middle}.kp .gr{font-weight:700;fill:#1d1d1b;text-anchor:middle}
@@ -87,7 +90,9 @@ def kamer():
     o.append(r(DEUR[0], B - 8, 900, 180, "gat"))
     o.append(f'<path class="blad" d="M{DEUR[1]} {B} v-900"/><path class="zw" d="M{DEUR[1]} {B-900} A900 900 0 0 0 {DEUR[0]} {B}"/>')
     # ---- kachel in de nis
-    o.append(r(-800, 2875, 540, 500, "app"))                                     # 20 cm vrij achter de kachel
+    o.append(r(0, AB - 100, UIT, 100, "kaal") + r(0, B - 100, UIT, 100, "kaal") + f'<path class="aan" d="M{UIT} {AB} V{B-100}"/>')   # wangen en kap vóór de wand
+    o.append(r(-NIS - 290, KY + 210, 540, 80, "app") + f'<circle class="app" cx="{-NIS-290}" cy="{KY+250}" r="70"/>')     # rookgasafvoer achteruit, in de technische ruimte omhoog
+    o.append(r(-NIS + 250, KY, 540, 500, "app"))                                 # kachel 54 diep, 25 cm van de achterwand en 25 cm achter de voorkant van de schouw
     # ---- langs de gevel: plank met schuifdeuren eronder tot het raam, daarna hoge kasten
     o.append(r(0, VZ, KX, PDP, "plank") + f'<path class="schuif" d="M0 {FR-40} H{KX}"/>')
     o.append(r(KX, RG, L - KX, KD, "kast") + f'<path class="schuif" d="M{KX} {FR-40} H{L}"/>')
@@ -95,8 +100,9 @@ def kamer():
 
 def plattegrond():
     o = [STIJL, KOP] + kamer()
-    o.append(tx(-530, 3175, "K1", "nm") + tx(-500, 2420, "nis") + tx(-500, 2590, "1 m diep"))
-    o.append(r(-260, 2775, 800, 700, "aan") + tx(600, 3170, "80 vrij", "tl"))
+    o.append(tx(-NIS + 520, KY + 300, "K1", "nm") + tx(-330, 2330, "schouw", "nm") + tx(-330, 2500, "80 in de wand,") + tx(-330, 2670, "24 ervoor"))
+    o.append(r(-NIS + 790, KY - 100, 800, 700, "aan") + tx(830, KY + 300, "80 vrij", "tl"))
+    o.append(f'<path class="schuif" d="M{-NIS-290} {KY+320} V{B+330}"/>' + tx(-1800, B + 480, "rookgasafvoer Ø 80:", "tl") + tx(-1800, B + 650, "achteruit, in de technische", "tl") + tx(-1800, B + 820, "ruimte door het dak", "tl"))
     # ---- airco en afzuiging op de achterwand (plek aangenomen)
     o.append(r(20, 1050, 210, 800, "aan") + tx(300, 1400, "airco,", "tl") + tx(300, 1570, "afzuiging", "tl"))
     o.append(tx(-560, 1050, "accu-") + tx(-560, 1220, "ruimte"))
@@ -119,7 +125,7 @@ def plattegrond():
     o.append(f'<path class="pijl" d="M1900 {B+330} h300"/><path class="pijl" d="M1900 -235 h300"/>')
     # ---- namen
     o.append(tx(3000, 1700, "Kantoor", "nm") + tx(3000, 1880, "655 × 392 netto"))
-    o.append(tx(900, B + 420, "loods", "ti"))
+    o.append(tx(1500, B + 420, "loods", "ti"))
     o.append(txr(L + 300, 2300, "slaapkamer", "ti"))
     o.append(tx(0, -700, "rechtergevel · het raam van 1 m blijft zichtbaar, de plank loopt eronder door", "tl"))
     # ---- maten
@@ -129,8 +135,8 @@ def plattegrond():
     o.append(t.chain_h([0, OUD, L], B + 1130, ["4950 · tot de oude wand", "1600 opgeschoven"], frm=B + 860))
     o.append(tx(DEUR[0] + 400, B - 230, "nieuwe deur"))
     # ---- zitplek bij de kachel (voorstel): stoel voor de plank bij het raam, buiten de looproute
-    o.append('<rect class="aan" x="1150" y="2725" width="800" height="800" rx="120"/>' + tx(1550, 3095, "stoel") + tx(1550, 3265, "(voorstel)"))
-    o.append(t.chain_v([0, AB, B], -1600, ["2100", "2050 · nis"], frm=-1160))
+    o.append('<rect class="aan" x="1250" y="2675" width="700" height="800" rx="120"/>' + tx(1600, 3045, "stoel") + tx(1600, 3215, "(voorstel)"))
+    o.append(t.chain_v([0, AB, B], -1450, ["2100", "2050 · schouw"], frm=-960))
     o.append(t.chain_v([0, RG, FR, B], L + 580, ["", "600", "3395"], frm=L + 160) + tx(L + 370, 125, "155"))
     t.TK = 26
     return t.svg(f"-1850 -880 {L+2500} 6240", 50, "".join(o), cls="kp")
@@ -218,12 +224,14 @@ BLADEN = """<!-- ============================================================ BL
   <div style="display:grid;grid-template-columns:181mm 1fr;gap:5mm;margin-top:2mm;align-items:start">
     <div>
 %(plan)s
-      <div class="card klein" style="margin-top:2mm"><h3>Nog opmeten of kiezen (op blad 8 en 9 aangenomen, met ±)</h3>
+      <div class="card klein" style="margin-top:2mm"><h3>Nog opmeten, kiezen of nalopen (± op blad 8 en 9 is aangenomen)</h3>
         <ul class="chk" style="columns:2;column-gap:7mm;padding-left:0">
           <li>Plafondhoogte bij de gevel en bij de binnenwand.</li>
           <li>Hoge kasten: tot het plafond? Hoeveel deuren?</li>
           <li>Hoogte van het bureaublad (de plank ligt op 71).</li>
-          <li>Wand naar de slaapkamer: 1,60 m opgeschoven; voor het bureau hoeft dat niet meer, 1,50 m kan ook.</li>
+          <li>Wand naar de slaapkamer: 1,60 m opgeschoven; voor het bureau kan 1,50 m ook.</li>
+          <li>Deur 90 breed; hoekstuk links van de stoel.</li>
+          <li>Spanten: ± 1,5 cm vóór het regelwerk; kasten daar uitsparen.</li>
         </ul></div>
     </div>
     <div style="display:flex;flex-direction:column;gap:3mm">
@@ -231,20 +239,19 @@ BLADEN = """<!-- ============================================================ BL
         <ul>
           <li>Blad 200 × 100 met hoekstuk 120 × 60 achterin het kantoor: rug naar de wand van de slaapkamer, hoekstuk in de hoek tegen de binnenwand.</li>
           <li>Achter het blad 1,2 m voor de stoel; tussen de kasten en het bureau 1,4 m.</li>
-          <li>Het raam zit schuin rechts voor je; de deur en de kachel zijn in beeld.</li>
         </ul></div>
       <div class="card klein"><h3>Deur verplaatsen</h3>
         <ul>
-          <li>Nieuwe deur 2 m uit de nis van de kachel: 2,00 tot 2,90 m uit de achterwand. Draait naar binnen, naar de kant van het bureau; open ligt het blad tegen de binnenwand.</li>
+          <li>Nieuwe deur op 2,00 tot 2,90 m uit de achterwand. Draait naar binnen, naar de kant van het bureau; open ligt het blad tegen de binnenwand.</li>
           <li>De oude opening (3,93 tot 4,83 m) dichtzetten, met 100 mm glaswol zoals de rest van die wand.</li>
-          <li>Rechts van de deur 3,65 m voor het bureau; links een hoek van 2 m bij de kachel. De nis is 1 m diep en 2 m breed.</li>
-          <li>Zitplek bij de kachel (voorstel, gestreept): een stoel op ± 1,4 m vóór de kachel, links van de deur.</li>
+          <li>Rechts van de deur 3,65 m voor het bureau; links een hoek van 2 m bij de kachel.</li>
+          <li>Zitplek bij de kachel (voorstel, gestreept): een stoel op ± 1,2 m vóór de kachel, links van de deur.</li>
         </ul></div>
-      <div class="card klein"><h3>Aangenomen, graag nalopen</h3>
-        <ul class="chk" style="padding-left:0">
-          <li>Deur: 90 breed, scharnier aan de kant van het bureau.</li>
-          <li>Hoekstuk: haaks aan de zitkant, links van de stoel.</li>
-          <li>Spanten: ± 1,5 cm vóór het regelwerk; kasten daar uitsparen.</li>
+      <div class="card klein"><h3>Schouw voor de kachel (voorstel)</h3>
+        <ul>
+          <li>80 cm in de wand en 24 cm ervoor: 104 diep, 2 m breed. Wangen en kap steken uit en worden betegeld.</li>
+          <li>De kachel (54 diep) staat in het midden: 25 cm van de achterwand, 25 cm achter de voorkant.</li>
+          <li>Rookgasafvoer achteruit door de wand, in de technische ruimte door het dak.</li>
         </ul></div>
     </div>
   </div>
