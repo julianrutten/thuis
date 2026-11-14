@@ -78,7 +78,7 @@ def inhoud():
     o.append(r(TX0 - 100, T0, 100, B - T0, "kaal"))                                 # keukentje | toilet
     o.append(r(TX0, T1, H1 - TX0, B - T1, "kaal"))                                  # rest tot de binnenwand
     # ---- deuren
-    o.append(r(3400, B - 10, 900, 190, "gat") + deur_h(3400, B, 900, omlaag=False))             # kantoor - loods
+    o.append(r(3400, B - 10, 900, 190, "gat") + deur_h(3400, B + 160, 900, omlaag=True))        # kantoor - loods: draait naar buiten, scharnier aan de kant van de kachel (Julian)
     o.append(r(G1 - 1100, B - 10, 900, 120, "gat") + deur_h(G1 - 1100, B, 900, omlaag=False))   # berging - loods, 20 cm uit de hoek
     o.append(r(G1 - 10, 1625, 120, 900, "gat") + deur_v(G1, 1625, 900, rechts=False))           # berging - voorkamer, in het midden
     o.append(r(V1 - 10, 1050, 120, 900, "gat") + deur_v(V1, 1050, 900, rechts=False))           # voorkamer - hal, in lijn met de buitendeur
