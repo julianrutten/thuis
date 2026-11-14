@@ -161,7 +161,7 @@ ol.notes b{font-weight:600}
   <thead><tr><th>Onderdeel</th><th>Keuze</th><th>Plaats</th></tr></thead>
   <tbody>
     <tr><td>Pelletkachel K1</td><td>Nordic Fire HRV Torsby: 3,3–15 kW, waarvan 11,7 kW naar water. Julian zet hem aan op koude dagen; hij stookt het vat dan naar ±75 °C</td><td>Kantoor in loods</td></tr>
-    <tr><td>Warmtepomp WP1</td><td>Lucht/water monoblock 12 kW (HouseHeating HH-C3-12, 3-fase). Hoofdbron: houdt het vat het hele jaar op 55 °C; geblokkeerd zolang het vat boven 58 °C is</td><td>Buiten bij loods</td></tr>
+    <tr><td>Warmtepomp WP1</td><td>Lucht/water monoblock 8 kW (HouseHeating HH-C3-8, 3-fase). Hoofdbron: houdt het vat het hele jaar op 55 °C; geblokkeerd zolang het vat boven 58 °C is</td><td>Buiten bij loods</td></tr>
     <tr><td>Buffer B1</td><td>Eén vat van 750 L; in de retour van de kachel een mengventiel van 55 °C</td><td>Technische ruimte loods</td></tr>
     <tr><td>Expansievat X1</td><td>200 L, voordruk 1,0 bar, veiligheidsventielen 2,5 bar</td><td>Technische ruimte loods</td></tr>
     <tr><td>Verwarming loods</td><td>P3 naar radiatoren in voorkamer, kantoor en toilet, elk met thermostaatkraan</td><td>Loods</td></tr>
@@ -263,22 +263,22 @@ ol.notes b{font-weight:600}
 <section id="warmtepomp" class="stack">
 <div>
 <p class="eyebrow">Warmtepomp</p>
-<h2>12 kW, het hele jaar op 55 °C</h2>
+<h2>8 kW, het hele jaar op 55 °C</h2>
 <p>De warmtepomp is de hoofdbron en houdt het hele vat het hele jaar op 55 °C. De winterstand van 45 °C is vervallen. De rekensom van Julian: bij −2 °C is de COP naar 55 °C 2,44, dus 410 kWh stroom per 1000 kWh warmte, €123 bij €0,30 per kWh. Dezelfde warmte uit pellets kost ±€110. De kachel loont dus pas rond −2 °C; Julian zet hem op koude dagen zelf aan.</p>
 </div>
 <div class="tbl"><table>
-  <thead><tr><th>HouseHeating HH-C3-12 (technische handleiding, EN 14511 bij 7 °C buiten)</th><th class="n">Vermogen</th><th class="n">COP</th></tr></thead>
+  <thead><tr><th>HouseHeating HH-C3-8 (technische handleiding, EN 14511 bij 7 °C buiten)</th><th class="n">Vermogen</th><th class="n">COP</th></tr></thead>
   <tbody>
-    <tr><td>Water 30/35 °C</td><td class="n">4,3–15,2 kW, nominaal 12,05</td><td class="n">4,62</td></tr>
-    <tr class="pick"><td>Water 47/55 °C</td><td class="n">4,25–14,55 kW, nominaal 12,18</td><td class="n">3,01</td></tr>
-    <tr><td>SCOP 35 °C / 55 °C</td><td class="n"></td><td class="n">4,74 / 3,7</td></tr>
+    <tr><td>Water 30/35 °C</td><td class="n">4,1–12,1 kW, nominaal 8,24</td><td class="n">4,96</td></tr>
+    <tr class="pick"><td>Water 47/55 °C</td><td class="n">4,05–12,15 kW, nominaal 8,13</td><td class="n">3,12</td></tr>
+    <tr><td>SCOP 35 °C / 55 °C</td><td class="n"></td><td class="n">4,84 / 3,6</td></tr>
     <tr><td>Werkgebied</td><td class="n">−25 tot 35 °C buiten</td><td class="n">water 20–75 °C</td></tr>
     <tr><td>Voeding</td><td class="n">380–415 V 3N~, maximaal 10 A en 5,85 kW</td><td class="n">kabel 5 × 4 mm²</td></tr>
-    <tr><td>Aansluitingen, geluid</td><td class="n">1"</td><td class="n">67–68 dB(A) geluidsvermogen</td></tr>
+    <tr><td>Aansluitingen, geluid</td><td class="n">1"</td><td class="n">58 dB(A) geluidsvermogen</td></tr>
   </tbody>
 </table></div>
 <ol class="notes">
-  <li><b>12 kW omdat de loods meedoet.</b> De begane grond vraagt ±5 kW bij −10 °C. Daar komen voorkamer, kantoor en toilet in de loods bij. R290, €4.099 bij HGB Trading (13-11-2026). Het kleinste vermogen is ±4,3 kW; bij minder vraag vangt het vat van 750 L het pendelen op.</li>
+  <li><b>8 kW in plaats van 12 kW (Julian, 14-11-2026).</b> Het huis vraagt rond het vriespunt ±5,5 kW met tapwater en verliezen; de HH-C3-8 levert volgens Julian bij −2 °C buiten nog ±6,5 kW naar 55 °C (COP ±2,4) en bij −20 °C ±4,5 kW. Onder ±0 °C stookt de kachel (11,7 kW), en als reserve zijn er E2 in huis (3 kW), de airco's in huis, de airco van 30 kW in de loods en die van 2,5 kW in het kantoor. R290, €3.599 bij HGB Trading (14-11-2026), €500 minder dan de 12 kW; ISDE €2.800 volgens de winkel (meldcode KA28389). Het kleinste vermogen is ±4,1 kW, vrijwel gelijk aan de 12 kW; bij minder vraag vangt het vat van 750 L het pendelen op. De Intergas Xceed die Julian ook vond, lijkt dezelfde machine, maar wordt verkocht met een aparte binnenunit (set €4.799).</li>
   <li><b>Blokkeren.</b> De handleiding noemt een SG-ready-ingang en een koppelingsschakelaar (extern contact). Daarmee kan de regelaar de warmtepomp blokkeren zolang het vat boven 58 °C is; de instelling is nog niet uitgezocht.</li>
   <li><b>Elektrisch.</b> Aardlekschakelaar 30 mA en een automaat met D-karakteristiek (handleiding).</li>
   <li><b>Atlantic Explorer V5 (warmtepompboiler) is geen alternatief.</b> Hij neemt maximaal 700 W op, dus ±2 kW thermisch. Het is een tapwaterboiler zonder CV-aansluiting.</li>
@@ -550,7 +550,7 @@ ol.notes b{font-weight:600}
     <tr><td><a href="https://www.oeg.net/nl" style="color:var(--ink)">OEG</a> (Duits, Nederlandse site en btw)</td><td>Thermostaat met maximaalbeveiliging voor E2: JUMO 603070/0170 met dompelhuls (€219,19). Veiligheidsventiel VV2: overstortventiel ½ inch, 2,5 bar (€8,59)</td><td>Verzendkosten komen erbij</td></tr>
     <tr><td>Oventrop Regumaq / PAW Friwa (OEG)</td><td>Verswatermodules, ter vergelijking. Regumaq X-30: 500 × 860 × 260. PAW FriwaMini bij OEG: 494 × 539 × 314, €2.519</td><td>Te groot of te duur voor de plek onder het vat</td></tr>
     <tr><td><a href="https://benem.nl/buizen/terrendis.html" style="color:var(--ink)">Benem</a></td><td>Terrendis Heat Duo 40/160, €67 per meter (12-11-2026)</td><td>Catalogus met warmteverliezen opvragen</td></tr>
-    <tr><td>HGB Trading</td><td>Warmtepomp HH-C3-12 (€4.099); buffervat ZK-750 als lager alternatief</td><td>Meldcode voor de subsidie nagaan</td></tr>
+    <tr><td>HGB Trading</td><td>Warmtepomp HH-C3-8 (€3.599); buffervat ZK-750 als lager alternatief</td><td>ISDE €2.800 volgens de winkel, meldcode KA28389</td></tr>
     <tr><td>Watts Microflex Duo / Uponor Ecoflex</td><td>Duoleiding 2 × 40, ter vergelijking</td><td>Vaak via groothandel</td></tr>
   </tbody>
 </table></div>
