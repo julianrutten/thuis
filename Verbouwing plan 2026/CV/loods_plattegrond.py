@@ -9,6 +9,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "Bijkeuken"))
 sys.dont_write_bytecode = True
 import tekening as t
+import loods_kantoor as k          # de inrichting van het kantoor (blad 7) komt hier op 1:100 terug
 
 B = 4150                                   # binnenmaat van de rechtergevel tot de binnenwand
 K0, K1x = 0, 6550                          # kantoor: wand naar de slaapkamer 1,60 m opgeschoven (was 4950), voor het bureau
@@ -35,6 +36,8 @@ STIJL = '''<style>
 .lp .duo{fill:none;stroke:#1d1d1b;stroke-width:34px;stroke-dasharray:320 90 50 90}
 .lp .app{fill:#fff;stroke:#1d1d1b;stroke-width:18px}.lp .rad{fill:#1d1d1b}.lp .raam{fill:#fff;stroke:#1d1d1b;stroke-width:10px}
 .lp .pijl{fill:none;stroke:#1d1d1b;stroke-width:22px;marker-end:url(#lpkop)}.lp .ld{stroke:#1d1d1b;stroke-width:8px;fill:none}
+.lp .kast{fill:#e1ded7;stroke:#1d1d1b;stroke-width:10px}.lp .bur{fill:#fff;stroke:#1d1d1b;stroke-width:22px}
+.lp .gord{fill:none;stroke:#1d1d1b;stroke-width:16px;stroke-dasharray:70 45}
 </style><defs><marker id="lpkop" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#1d1d1b"/></marker></defs>'''
 
 def r(x, y, w, h, c): return f'<rect class="{c}" x="{x}" y="{y}" width="{w}" height="{h}"/>'
@@ -54,7 +57,7 @@ def inhoud():
     o = [STIJL]
     # ---- buitenwanden: rechtergevel (boven) en voorgevel (rechts)
     o.append(r(-AL - 100, -90, H1 + 190 + AL, 90, "iso") + r(H1, -90, 90, B + 190, "iso"))      # sandwichpanelen
-    o.append(r(0, 0, K1x, VZ, "iso") + r(G0, 0, G1 - G0, VZ, "iso") + r(V0, 0, V1 - V0, VZ, "iso"))   # isolatie en voorzetwand, niet in de hal
+    o.append(r(0, 0, k.KX, VZ, "iso") + r(k.KX - 5, 0, K1x - k.KX + 5, k.RG, "iso") + r(G0, 0, G1 - G0, VZ, "iso") + r(V0, 0, V1 - V0, VZ, "iso"))   # isolatie en voorzetwand, niet in de hal
     # ---- kantoor: achterwand naar de accuruimte, wand naar de slaapkamer; de wand naar de loods is kaal
     o.append(r(-160, 0, 160, AB + 100, "iso") + r(K1x, 0, 100, B, "iso"))
     o.append(r(-NIS - 100, B, NIS + 100, 100, "kaal") + r(0, B, K1x + 100, 160, "iso"))     # binnenwand: langs de nis kaal, langs het kantoor 100 mm glaswol
@@ -63,7 +66,7 @@ def inhoud():
     o.append(r(G1, 0, 100, B, "iso") + r(V1, 0, 100, HB + 100, "kaal"))             # dwarswanden: slaapkamer-voorkamer 100 mm glaswol, voorkamer-hal kaal
     # ---- accuruimte tegen de rechtergevel, achter het kantoor
     o.append(r(-AL - 100, AB, AL - 60, 100, "kaal") + r(-AL - 100, 0, 100, AB + 100, "kaal"))
-    o.append(tx(-AL/2 - 100, 850, "accuruimte", "nm") + tx(-AL/2 - 100, 1180, "± 2 × 4 m"))
+    o.append(tx(-AL/2 - 100, 1100, "accuruimte", "nm"))
     # ---- schuine technische ruimte achter de nis: van 2 m naar 0, ± 3 m lang
     o.append(f'<path class="schuin" d="M{-NIS-50} {B+50} L{-AL-50} {AB+50}"/>')
     o.append('<circle class="app" cx="-1650" cy="2700" r="495"/>' + tx(-1650, 2800, "B1", "nm"))
@@ -74,7 +77,6 @@ def inhoud():
     o.append(r(-1090, 3035, 540, 80, "app") + '<circle class="app" cx="-1090" cy="3075" r="75"/>')      # rookgasafvoer: achteruit door de wand, in de technische ruimte omhoog door het dak
     o.append(r(-550, 2825, 540, 500, "app") + tx(-280, 3175, "K1", "nm"))                        # 25 cm van de achterwand, midden in de schouw
     o.append(r(-NIS - 110, 3500, 120, 500, "gat") + f'<path class="pijl" d="M-250 3750 H{-NIS-450}"/>')
-    o.append(tx(330, 2620, "kachel K1 in een schouw:", "tl") + tx(330, 2950, "104 diep, 2 m breed", "tl"))
     # ---- hal, toilet en keukentje tegen de voorgevel
     o.append(r(H0, HB, H1 - H0, 100, "kaal"))                                       # hal | toilet en keukentje
     o.append(r(TX0 - 100, T0, 100, B - T0, "kaal"))                                 # keukentje | toilet
@@ -88,8 +90,19 @@ def inhoud():
     o.append(r(TX0 + 200, HB - 10, 750, 120, "gat") + f'<path class="blad" d="M{TX0+150} {HB+130} h800"/>')   # schuifdeur toilet
     # ---- kantoor
     o.append(r(1600, -90, 1000, VZ + 90, "raam") + tx(2100, -180, "raam, 1 m", "tx"))           # 160 cm van de achterwand; blijft zichtbaar (opening in de voorzetwand)
-    o.append(blok(3300, 1300, ["Kantoor", "415 × 655 · netto 392 breed", "21–22 °C · rondom geïsoleerd", "kachel en airco, geen radiator"]))
-    o.append('<path class="pijl" d="M500 600 H-700"/>' + tx(250, 860, "bestaande afzuiging", "tl"))
+    # inrichting van blad 7 (bron: loods_kantoor.py), zonder tekst: plank met lage kast, hoge kasten, airco, rooster van de afzuiging
+    o.append(r(0, VZ, k.KX, k.PDP, "meub") + r(k.KX, k.RG, K1x - k.KX, k.KD, "kast"))
+    o.append(r(60, VZ + 10, 800, 200, "aan") + r(-70, 1300, 70, 300, "raam"))
+    (ax, ay, aw, ah), (zx, zy, zw, zh) = k.COCKPIT
+    o.append(f'<path class="meub" d="M{ax} {ay} h{aw} v{zy-ay} h{zw} v{zh} h{-zw} v{ay+ah-zy-zh} h{-aw} Z"/>')
+    bx, by, bh = k.BANK
+    o.append(f'<rect class="meub" x="{bx-375}" y="{by-625}" width="750" height="1250" rx="90" transform="rotate({bh} {bx} {by})"/>')
+    tx_, ty_, th = k.TAFEL
+    o.append(f'<ellipse class="meub" cx="{tx_}" cy="{ty_}" rx="290" ry="475" transform="rotate({th} {tx_} {ty_})"/>')
+    for sx, sy, sh in k.STOELEN:
+        o.append(f'<rect class="meub" x="{sx-350}" y="{sy-350}" width="700" height="700" rx="110" transform="rotate({sh} {sx} {sy})"/>')
+    o.append(r(k.AX, B - 2000, 1000, 2000, "bur") + r(k.AX + 1000, B - 600, k.ST, 600, "bur") + f'<path d="M{k.AX+1000} {B-586} V{B-14}" stroke="#fff" stroke-width="34"/>')
+    o.append(tx(3550, 1500, "Kantoor", "nm"))
     # ---- buiten
     o.append(r(-2500, -1050, 1300, 450, "app") + tx(-1850, -720, "WP1", "nm"))
     o.append('<rect class="aan" x="-950" y="-1000" width="800" height="350"/>')
@@ -98,17 +111,20 @@ def inhoud():
     # ---- berging, voorkamer, hal, toilet
     # slaapkamer: bed 2100 x 1800 met het hoofdeind tegen de wand van het kantoor, twee ledikanten 1400 x 700 langs de gevel
     o.append(r(G0, 1525, 2100, 1800, "meub") + f'<path class="ld" d="M{G0+450} 1525 v1800"/>')
-    o.append(r(7200, VZ, 1400, 700, "meub") + r(8600, VZ, 1400, 700, "meub") + tx(7900, VZ + 440, "70 × 140") + tx(9300, VZ + 440, "70 × 140"))
-    o.append(blok(G0 + 1050, 2050, ["Slaapkamer", "335 × 392", "± 17 °C", "geen radiator"]))
-    o.append(r(15700, VZ + 40, 1600, 110, "rad") + tx(16500, VZ + 480, "R2 · 600 × 1600"))
-    o.append(blok(14040, 1750, ["Voorkamer", "415 × 788 · netto 392 breed", "15–16 °C · ± 50 uur per seizoen in gebruik", "± 1,1 kW bij −10 °C · ± 1,3 kW in gebruik"]))
+    # ledikanten uit elkaar: één tegen de wand van het kantoor, één tegen die van de voorkamer; ertussen een gordijn (Julian, 14-11-2026)
+    o.append(r(G0, VZ, 1400, 700, "meub") + r(G1 - 1400, VZ, 1400, 700, "meub"))
+    o.append(f'<path class="gord" d="M{(G0+G1)/2} {VZ} v700"/>')
+    t.TK = 70
+    o.append(t.chain_h([G0 + 1400, G1 - 1400], VZ + 1050, [f"{G1 - G0 - 2800} · gordijn"]))
+    o.append(tx(G0 + 1050, 3800, "Slaapkamer", "nm"))
+    o.append(r(15700, VZ + 40, 1600, 110, "rad") + tx(16500, VZ + 480, "R2"))
+    o.append(tx(14040, 2150, "Voorkamer", "nm"))
     # ---- duoleiding: boven het vlakke plafond langs de binnenwand naar voren, bij de hal dwars naar de rechtergevel en omlaag (A)
     o.append(f'<path class="duo" d="M{-NIS-100} 3950 H{V1-100} V{VZ+130}"/><circle cx="{V1-100}" cy="{VZ+130}" r="110" fill="#1d1d1b"/>')
-    o.append(tx(11400, 3800, "meerlagenbuis 2 × 32 mm boven het plafond", "ti"))
-    o.append(tx(V1 - 340, 800, "A", "nm") + tx(15000, 900, "A · omlaag in een koof,", "tr") + tx(15000, 1230, "over op de duoleiding naar het huis", "tr"))
+    o.append(tx(V1 - 340, 800, "A", "nm"))
     o.append(tx(V1 - 420, 3500, "keukentje", "tr") + f'<rect class="aan" x="{H0+60}" y="{T0+60}" width="{TX0-100-H0-120}" height="{B-T0-120}"/>')
-    o.append(blok(18800, 420, ["Hal", "245 × 197"]))
-    o.append(blok((TX0 + H1)/2, 3150, ["Toilet", "117 × 142"]) + r(TX0 + 60, T1 - 150, 400, 90, "rad"))
+    o.append(tx(18800, 620, "Hal", "nm"))
+    o.append(tx((TX0 + H1)/2, 3250, "Toilet", "nm") + r(TX0 + 60, T1 - 150, 400, 90, "rad"))
     o.append(tx(18200, B + 1050, "R4 toilet: 18–19 °C · ± 0,3 kW"))
     o.append(tx(H1 + 350, 1000, "buitendeur", "tl") + tx(H1 + 350, 1330, "voorgevel", "tl"))
     # ---- loods en maten
