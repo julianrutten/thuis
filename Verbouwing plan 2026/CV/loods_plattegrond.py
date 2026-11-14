@@ -83,7 +83,7 @@ def inhoud():
     # het toilet loopt op de tekening door tot de binnenwand: één wand, net als bij de voorkamer (Julian, 14-11-2026)
     # ---- deuren
     o.append(r(3100, B - 10, 900, 190, "gat") + f'<path class="blad" d="M4000 {B} v-900"/><path class="zw" d="M4000 {B-900} A900 900 0 0 0 3100 {B}"/>')   # kantoor - loods: deur op 3,10-4,00 m (83 cm naar links geschoven), achter de bank van de zithoek, draait naar binnen naar de kant van het bureau (Julian); de oude deur (3930-4830) gaat dicht
-    o.append(r(G1 - 1100, B - 10, 900, 190, "gat") + deur_h(G1 - 1100, B + 160, 900, omlaag=True))   # slaapkamer - loods, 20 cm uit de hoek: draait naar buiten (Julian, 14-11-2026)
+    o.append(r(G1 - 1100, B - 10, 900, 190, "gat") + f'<path class="blad" d="M{G1-200} {B+160} v900"/><path class="zw" d="M{G1-200} {B+1060} A900 900 0 0 1 {G1-1100} {B+160}"/>')   # slaapkamer - loods, 20 cm uit de hoek: draait naar buiten, rechtsdraaiend: scharnier aan de kant van de voorkamer (Julian, 14-11-2026)
     o.append(r(G1 - 10, 1625, 120, 900, "gat") + deur_v(G1 + 100, 1625, 900, rechts=True))      # slaapkamer - voorkamer, in het midden: draait naar de voorkamer (Julian, 14-11-2026)
     o.append(r(V1 - 10, 1050, 120, 900, "gat") + deur_v(V1, 1050, 900, rechts=False))           # voorkamer - hal, in lijn met de buitendeur
     o.append(r(H1 - 10, 1050, 110, 900, "gat") + deur_v(H1, 1050, 900, rechts=False))           # buitendeur in de voorgevel
