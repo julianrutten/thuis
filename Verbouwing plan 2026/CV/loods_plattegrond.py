@@ -78,7 +78,7 @@ def inhoud():
     # ---- hal, toilet en keukentje tegen de voorgevel
     o.append(r(H0, HB, H1 - H0, 100, "kaal"))                                       # hal | toilet en keukentje
     o.append(r(TX0 - 100, T0, 100, B - T0, "kaal"))                                 # keukentje | toilet
-    o.append(r(TX0, T1, H1 - TX0, B - T1, "iso"))                                   # rest tot de binnenwand: de loodskant van het toilet, geïsoleerd
+    # het toilet loopt op de tekening door tot de binnenwand: één wand, net als bij de voorkamer (Julian, 14-11-2026)
     # ---- deuren
     o.append(r(3100, B - 10, 900, 190, "gat") + f'<path class="blad" d="M4000 {B} v-900"/><path class="zw" d="M4000 {B-900} A900 900 0 0 0 3100 {B}"/>')   # kantoor - loods: deur op 3,10-4,00 m (83 cm naar links geschoven), achter de bank van de zithoek, draait naar binnen naar de kant van het bureau (Julian); de oude deur (3930-4830) gaat dicht
     o.append(r(G1 - 1100, B - 10, 900, 120, "gat") + deur_h(G1 - 1100, B, 900, omlaag=False))   # berging - loods, 20 cm uit de hoek
