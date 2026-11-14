@@ -83,8 +83,8 @@ def inhoud():
     # het toilet loopt op de tekening door tot de binnenwand: één wand, net als bij de voorkamer (Julian, 14-11-2026)
     # ---- deuren
     o.append(r(3100, B - 10, 900, 190, "gat") + f'<path class="blad" d="M4000 {B} v-900"/><path class="zw" d="M4000 {B-900} A900 900 0 0 0 3100 {B}"/>')   # kantoor - loods: deur op 3,10-4,00 m (83 cm naar links geschoven), achter de bank van de zithoek, draait naar binnen naar de kant van het bureau (Julian); de oude deur (3930-4830) gaat dicht
-    o.append(r(G1 - 1100, B - 10, 900, 120, "gat") + deur_h(G1 - 1100, B, 900, omlaag=False))   # berging - loods, 20 cm uit de hoek
-    o.append(r(G1 - 10, 1625, 120, 900, "gat") + deur_v(G1, 1625, 900, rechts=False))           # berging - voorkamer, in het midden
+    o.append(r(G1 - 1100, B - 10, 900, 190, "gat") + deur_h(G1 - 1100, B + 160, 900, omlaag=True))   # slaapkamer - loods, 20 cm uit de hoek: draait naar buiten (Julian, 14-11-2026)
+    o.append(r(G1 - 10, 1625, 120, 900, "gat") + deur_v(G1 + 100, 1625, 900, rechts=True))      # slaapkamer - voorkamer, in het midden: draait naar de voorkamer (Julian, 14-11-2026)
     o.append(r(V1 - 10, 1050, 120, 900, "gat") + deur_v(V1, 1050, 900, rechts=False))           # voorkamer - hal, in lijn met de buitendeur
     o.append(r(H1 - 10, 1050, 110, 900, "gat") + deur_v(H1, 1050, 900, rechts=False))           # buitendeur in de voorgevel
     o.append(r(TX0 + 200, HB - 10, 750, 120, "gat") + f'<path class="blad" d="M{TX0+150} {HB+130} h800"/>')   # schuifdeur toilet
@@ -116,7 +116,10 @@ def inhoud():
     o.append(f'<path class="gord" d="M{(G0+G1)/2} {VZ} v700"/>')
     t.TK = 70
     o.append(t.chain_h([G0 + 1400, G1 - 1400], VZ + 1050, [f"{G1 - G0 - 2800} · gordijn"]))
-    o.append(tx(G0 + 1050, 3800, "Slaapkamer", "nm"))
+    o.append(tx(G0 + 1250, 2520, "Slaapkamer", "nm"))
+    # vrije ruimte rond het bed: voeteneind tot de wand van de voorkamer, zijkant tot de binnenwand en tot de ledikanten
+    o.append(t.chain_h([G0 + 2100, G1], 2900, [str(G1 - G0 - 2100)]))
+    o.append(t.chain_v([3325, B], G0 + 1050, [str(B - 3325)]) + t.chain_v([VZ + 700, 1525], G0 + 400, [str(1525 - VZ - 700)]))
     o.append(r(15700, VZ + 40, 1600, 110, "rad") + tx(16500, VZ + 480, "R2"))
     o.append(tx(14040, 2150, "Voorkamer", "nm"))
     # ---- duoleiding: boven het vlakke plafond langs de binnenwand naar voren, bij de hal dwars naar de rechtergevel en omlaag (A)
@@ -128,7 +131,7 @@ def inhoud():
     o.append(tx(18200, B + 1050, "R4 toilet: 18–19 °C · ± 0,3 kW"))
     o.append(tx(H1 + 350, 1000, "buitendeur", "tl") + tx(H1 + 350, 1330, "voorgevel", "tl"))
     # ---- loods en maten
-    o.append(tx(9300, B + 1050, "loods · de airco houdt 10–12 °C aan", "ti"))
+    o.append(tx(12800, B + 1050, "loods · de airco houdt 10–12 °C aan", "ti"))
     t.TK = 100
     o.append(t.chain_h([-AL, K0, K1x, G0, G1, V0, V1, H0, H1], B + 2000, ["± 4000", "6550", "", "3350", "", "7880", "", "1970"], frm=B + 1450))
     o.append(t.chain_v([0, B], H1 + 2300, ["4150"], frm=H1 + 320))
