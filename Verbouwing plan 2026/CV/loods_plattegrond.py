@@ -59,8 +59,8 @@ def inhoud():
     o.append(r(-160, 0, 160, AB + 100, "iso") + r(K1x, 0, 100, B, "iso"))
     o.append(r(-NIS - 100, B, NIS + 100, 100, "kaal") + r(0, B, K1x + 100, 160, "iso"))     # binnenwand: langs de nis kaal, langs het kantoor 100 mm glaswol
     o.append(r(-NIS - 100, AB + 100, 100, B - AB - 100, "kaal"))                    # achterwand van de nis
-    o.append(r(G0, B, H1 - G0, 100, "kaal"))                                        # binnenwand berging en voorkamer
-    o.append(r(G1, 0, 100, B, "kaal") + r(V1, 0, 100, HB + 100, "kaal"))            # dwarswanden
+    o.append(r(V1, B, H1 - V1, 100, "kaal") + r(G0, B, V1 + 100 - G0, 160, "iso"))        # binnenwand: slaapkamer en voorkamer van binnenuit 100 mm glaswol (Julian, 14-11-2026); hal en toilet kaal
+    o.append(r(G1, 0, 100, B, "iso") + r(V1, 0, 100, HB + 100, "kaal"))             # dwarswanden: slaapkamer-voorkamer 100 mm glaswol, voorkamer-hal kaal
     # ---- accuruimte tegen de rechtergevel, achter het kantoor
     o.append(r(-AL - 100, AB, AL - 60, 100, "kaal") + r(-AL - 100, 0, 100, AB + 100, "kaal"))
     o.append(tx(-AL/2 - 100, 850, "accuruimte", "nm") + tx(-AL/2 - 100, 1180, "± 2 × 4 m"))
@@ -100,8 +100,8 @@ def inhoud():
     o.append(r(G0, 1525, 2100, 1800, "meub") + f'<path class="ld" d="M{G0+450} 1525 v1800"/>')
     o.append(r(7200, VZ, 1400, 700, "meub") + r(8600, VZ, 1400, 700, "meub") + tx(7900, VZ + 440, "70 × 140") + tx(9300, VZ + 440, "70 × 140"))
     o.append(blok(G0 + 1050, 2050, ["Slaapkamer", "335 × 392", "± 17 °C", "geen radiator"]))
-    o.append(r(15300, VZ + 40, 2000, 110, "rad") + tx(16300, VZ + 480, "R2 · 600 × 2000"))
-    o.append(blok(14040, 1750, ["Voorkamer", "415 × 788 · netto 392 breed", "15–16 °C · ± 50 uur per seizoen in gebruik", "± 1,4 kW bij −10 °C · ± 1,8 kW in gebruik"]))
+    o.append(r(15700, VZ + 40, 1600, 110, "rad") + tx(16500, VZ + 480, "R2 · 600 × 1600"))
+    o.append(blok(14040, 1750, ["Voorkamer", "415 × 788 · netto 392 breed", "15–16 °C · ± 50 uur per seizoen in gebruik", "± 1,1 kW bij −10 °C · ± 1,3 kW in gebruik"]))
     # ---- duoleiding: boven het vlakke plafond langs de binnenwand naar voren, bij de hal dwars naar de rechtergevel en omlaag (A)
     o.append(f'<path class="duo" d="M{-NIS-100} 3950 H{V1-100} V{VZ+130}"/><circle cx="{V1-100}" cy="{VZ+130}" r="110" fill="#1d1d1b"/>')
     o.append(tx(11400, 3800, "meerlagenbuis 2 × 32 mm boven het plafond", "ti"))
