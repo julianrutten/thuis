@@ -94,11 +94,10 @@ def inhoud():
     o.append(tx(-AL - 100, -1300, "buiten: warmtepomp WP1 naast de buitenunit van de airco (blijft)", "tl"))
     o.append(tx(4300, -480, "rechtergevel: sandwichpaneel, 150 mm glaswol in het regelwerk en 70 mm voorzetwand = 225 mm", "tl"))
     # ---- berging, voorkamer, hal, toilet
-    o.append(r(7300, B - 150, 1000, 110, "rad") + tx(7800, B - 480, "R6 · 600 × 1000"))            # op de binnenwand: langs de gevel staan de ledikanten
     # slaapkamer: bed 2100 x 1800 met het hoofdeind tegen de wand van het kantoor, twee ledikanten 1400 x 700 langs de gevel
     o.append(r(G0, 1525, 2100, 1800, "meub") + f'<path class="ld" d="M{G0+450} 1525 v1800"/>')
     o.append(r(7200, VZ, 1400, 700, "meub") + r(8600, VZ, 1400, 700, "meub") + tx(7900, VZ + 440, "70 × 140") + tx(9300, VZ + 440, "70 × 140"))
-    o.append(blok(G0 + 1050, 2050, ["Slaapkamer", "345 × 392", "18 °C", "bed 180 × 210"]))
+    o.append(blok(G0 + 1050, 2050, ["Slaapkamer", "345 × 392", "± 17 °C", "geen radiator"]))
     o.append(r(15300, VZ + 40, 2000, 110, "rad") + tx(16300, VZ + 480, "R2 · 600 × 2000"))
     o.append(blok(14040, 1750, ["Voorkamer", "415 × 788 · netto 392 breed", "15–16 °C · ± 50 uur per seizoen in gebruik", "± 1,4 kW bij −10 °C · ± 1,8 kW in gebruik"]))
     # ---- duoleiding: boven het vlakke plafond langs de binnenwand naar voren, bij de hal dwars naar de rechtergevel en omlaag (A)
